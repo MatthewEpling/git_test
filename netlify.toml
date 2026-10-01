@@ -1,0 +1,7 @@
+# Build the Vite app and publish the static output (without this, Netlify serves the raw source).
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
