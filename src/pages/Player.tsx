@@ -47,7 +47,7 @@ export function Player({ launch, onExit }: Props) {
   const [paused, setPaused] = useState(false);
   const [ff, setFf] = useState(false);
   const [idle, setIdle] = useState(false);
-  const [stats, setStats] = useState<SessionStats>({ fps: 0, speed: 0, audioMs: 0, coreMs: 0, coreMaxMs: 0, presentMs: 0, lateFrames: 0, underruns: 0, vsync: false, refreshHz: 0 });
+  const [stats, setStats] = useState<SessionStats>({ fps: 0, speed: 0, audioMs: 0, coreMs: 0, coreMaxMs: 0, presentMs: 0, lateFrames: 0, underruns: 0, underrunsPerSec: 0, vsync: false, refreshesPerFrame: 0, refreshHz: 0 });
   const [panel, setPanel] = useState<Panel>(null);
   const [settingsTab, setSettingsTab] = useState<SettingsTab | null>(null);
   const [slot, setSlot] = useState(1);
@@ -609,7 +609,7 @@ export function Player({ launch, onExit }: Props) {
             </button>
           </div>
           <div className="overlay-bottom">
-            <span className="stats">
+            <span className="stats" hidden={settings.video.showFps}>
               {stats.fps.toFixed(0)} fps · {Math.round(stats.speed * 100)}%{ff ? ' · fast forward' : ''}
               {guests ? ` · ${guests + 1} players online` : ''}
             </span>
@@ -625,11 +625,12 @@ export function Player({ launch, onExit }: Props) {
               </span>
               <span>display {stats.presentMs.toFixed(1)} ms</span>
               <span className={stats.lateFrames ? 'warn' : ''}>late frames {stats.lateFrames}/s</span>
-              <span className={stats.audioMs < 20 ? 'warn' : ''}>
-                audio buffer {stats.audioMs.toFixed(0)} ms · dropouts {stats.underruns}
+              <span className={stats.audioMs < 20 || stats.underrunsPerSec ? 'warn' : ''}>
+                audio buffer {stats.audioMs.toFixed(0)} ms · dropouts {stats.underrunsPerSec}/s ({stats.underruns} total)
               </span>
               <span>
-                {stats.vsync ? 'synced to display' : 'timer paced'} · {stats.refreshHz.toFixed(0)} Hz
+                {stats.vsync ? `synced to display (1 frame per ${stats.refreshesPerFrame} refresh${stats.refreshesPerFrame > 1 ? 'es' : ''})` : 'timer paced'} ·{' '}
+                {stats.refreshHz.toFixed(0)} Hz
               </span>
             </span>
           )}

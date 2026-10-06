@@ -4,6 +4,7 @@
 import { FlycastCore, CONTENT_DIR, SAVE_DIR, SYSTEM_DIR, type VideoFrame } from './core';
 import { Presenter, type PresenterSettings } from './presenter';
 import { AudioOutput } from './audio';
+import { FramePacer } from './pacing';
 import { DEVICE, deviceBase } from './libretro';
 import { InputManager, type PortConfig } from '../input/manager';
 import { loadSaveFiles, storeSaveFile, readState, writeState } from '../storage/saves';
@@ -77,8 +78,12 @@ export interface SessionStats {
   lateFrames: number;
   /** Audio buffer underruns since the game started (heard as crackles). */
   underruns: number;
-  /** True when frames are locked one-per-refresh to the display. */
+  /** Underruns during the last second. */
+  underrunsPerSec: number;
+  /** True when frames are locked to the display's refresh (every Nth refresh). */
   vsync: boolean;
+  /** Display refreshes per emulated frame when locked (1 at 60 Hz, 2 at 120 Hz, 3 at 180 Hz). */
+  refreshesPerFrame: number;
   refreshHz: number;
 }
 
@@ -95,7 +100,6 @@ export class EmulatorSession {
   private events: SessionEvents;
   private raf = 0;
   private last = 0;
-  private acc = 0;
   private frameMs = 1000 / 59.94;
   private stopped = false;
   private savedMtimes = new Map<string, number>();
@@ -103,9 +107,8 @@ export class EmulatorSession {
   private statsAcc = { frames: 0, since: performance.now(), coreMs: 0, coreMax: 0, steps: 0, presentMs: 0, presents: 0, late: 0 };
   /** Audio produced during the current frame; flushed to the worklet once per frame. */
   readonly pendingAudio: Int16Array[] = [];
-  /** Smoothed time between display refreshes. */
-  private refreshMs = 0;
-  private vsync = false;
+  private pacer = new FramePacer(1000 / 59.94);
+  private lastUnderruns = 0;
   paused = false;
   fastForward = false;
   fastForwardSpeed = 3;
@@ -187,6 +190,7 @@ export class EmulatorSession {
       }
       session.applyPorts(input.ports);
       session.frameMs = 1000 / core.timing.fps;
+      session.pacer.frameMs = session.frameMs;
       session.snapshotSaveMtimes();
 
       await session.audio.init(core.timing.sampleRate);
@@ -212,41 +216,22 @@ export class EmulatorSession {
       this.raf = requestAnimationFrame(tick);
       const dt = Math.min(now - this.last, 250);
       this.last = now;
-      // Learn the display's refresh interval (ignore hitches and tab switches).
-      if (dt > 4 && dt < 40) this.refreshMs = this.refreshMs ? this.refreshMs * 0.97 + dt * 0.03 : dt;
       if (this.paused) {
         this.presenter.resize();
         if (this.presenter.needsRedraw()) this.presenter.draw();
         return;
       }
-
-      // On a display that refreshes at (almost) the console's rate, run exactly one
-      // frame per refresh for perfectly even motion; the audio resampler absorbs the
-      // tiny rate difference. Otherwise (120/144 Hz, fast forward) use an accumulator.
-      this.vsync = !this.fastForward && this.refreshMs > 0 && Math.abs(this.refreshMs - this.frameMs) / this.frameMs < 0.02;
-      let toRun: number;
-      if (this.vsync) {
-        // After a hitch, catch up (at most 3 frames) so game time and audio stay whole.
-        toRun = dt > this.frameMs * 1.6 ? Math.min(3, Math.round(dt / this.frameMs)) : 1;
-        if (toRun > 1) this.statsAcc.late++;
-        this.acc = 0;
-      } else {
-        this.acc += dt * (this.fastForward ? this.fastForwardSpeed : 1);
-        const maxFrames = this.fastForward ? this.fastForwardSpeed + 1 : 3;
-        toRun = Math.min(maxFrames, Math.floor(this.acc / this.frameMs));
-        this.acc -= toRun * this.frameMs;
-        if (toRun === maxFrames && this.acc > this.frameMs) {
-          this.acc = 0; // too slow to keep up: drop the backlog instead of spiralling
-          this.statsAcc.late++;
-        }
-      }
+      const pace = this.pacer.next(dt, this.fastForward, this.fastForwardSpeed);
+      const toRun = pace.frames;
+      if (pace.late) this.statsAcc.late++;
 
       let frame: VideoFrame | null = null;
       for (let i = 0; i < toRun; i++) frame = this.step() ?? frame;
       const t0 = performance.now();
       if (frame) this.presenter.upload(frame, this.coreCanvas);
       this.presenter.resize();
-      this.presenter.draw();
+      // On refreshes without a new frame (e.g. 2 of every 3 at 180 Hz) the picture is unchanged.
+      if (frame || this.presenter.needsRedraw()) this.presenter.draw();
       this.statsAcc.presentMs += performance.now() - t0;
       this.statsAcc.presents++;
       if (toRun) for (const h of this.presentHooks) h();
@@ -307,10 +292,13 @@ export class EmulatorSession {
         presentMs: a.presents ? a.presentMs / a.presents : 0,
         lateFrames: a.late,
         underruns: this.audio.underruns,
-        vsync: this.vsync,
-        refreshHz: this.refreshMs ? 1000 / this.refreshMs : 0,
+        underrunsPerSec: this.audio.underruns - this.lastUnderruns,
+        vsync: this.pacer.vsync,
+        refreshesPerFrame: this.pacer.refreshesPerFrame,
+        refreshHz: this.pacer.refreshMs ? 1000 / this.pacer.refreshMs : 0,
       });
       this.statsAcc = { frames: 0, since: now, coreMs: 0, coreMax: 0, steps: 0, presentMs: 0, presents: 0, late: 0 };
+      this.lastUnderruns = this.audio.underruns;
     }
   }
 
