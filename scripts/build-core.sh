@@ -126,6 +126,7 @@ em++ -O2 -fwasm-exceptions -c "$PATCHES/snippets/flycast-debug.c" -o flycast-deb
   -I"$SRC/core/deps/stb" -I"$SRC/core/deps/xxHash" -std=c++17 -DTARGET_NO_OPENMP -DLIBRETRO -DTARGET_NO_THREADS
 
 # ── Link ────────────────────────────────────────────────────────────────────
+# zlib comes from the bundled libz.a below, not the Emscripten port (avoids a download).
 LIBS="libflycast_libretro.a libflycast-resources.a core/deps/libelf/libelf.a core/deps/nowide/libnowide.a core/deps/miniupnpc/libminiupnpc.a core/deps/libchdr/libchdr-static.a core/deps/tinygettext/libtinygettext.a core/deps/libzip/lib/libzip.a core/deps/xxHash/cmake_unofficial/libxxhash.a core/deps/libchdr/deps/zlib-*/libz.a core/deps/libchdr/deps/lzma-*/liblzma.a core/deps/libchdr/deps/zstd-*/build/cmake/lib/libzstd.a"
 EXPORTS='["_retro_api_version","_retro_init","_retro_deinit","_retro_set_environment","_retro_set_video_refresh","_retro_set_audio_sample","_retro_set_audio_sample_batch","_retro_set_input_poll","_retro_set_input_state","_retro_get_system_info","_retro_get_system_av_info","_retro_load_game","_retro_unload_game","_retro_run","_retro_reset","_retro_serialize_size","_retro_serialize","_retro_unserialize","_retro_cheat_reset","_retro_cheat_set","_retro_get_memory_data","_retro_get_memory_size","_retro_get_region","_retro_set_controller_port_device","_romdev_sh4_regs_get","_romdev_aica_get","_romdev_dc_kcode_get","_romdev_aica_prof_ms","_romdev_jit_stats","_romdev_gpu_prof_ms","_malloc","_free","_emscripten_GetProcAddress","_wasm_mem_read8","_wasm_mem_read16","_wasm_mem_read32","_wasm_mem_write8","_wasm_mem_write16","_wasm_mem_write32","_wasm_exec_ifb","_wasm_exec_shil_fb"]'
 RUNTIME='["ccall","cwrap","addFunction","removeFunction","HEAPU8","HEAPU16","HEAPU32","HEAP16","HEAP32","HEAPF32","UTF8ToString","stringToUTF8","lengthBytesUTF8","getValue","setValue","FS","dynCall","GL","wasmExports","wasmTable","wasmMemory"]'
@@ -135,7 +136,7 @@ emcc pthread-noop.o flycast-debug.o $LIBS -O3 -fwasm-exceptions \
   -s ALLOW_MEMORY_GROWTH=1 -s INITIAL_MEMORY=536870912 -s MAXIMUM_MEMORY=1073741824 \
   -s STACK_SIZE=4194304 -s ALLOW_TABLE_GROWTH=1 \
   -s EXPORTED_FUNCTIONS="$EXPORTS" -s EXPORTED_RUNTIME_METHODS="$RUNTIME" \
-  -s FILESYSTEM=1 -s INVOKE_RUN=0 -s USE_ZLIB=1 -s MIN_WEBGL_VERSION=2 -s MAX_WEBGL_VERSION=2 \
+  -s FILESYSTEM=1 -s INVOKE_RUN=0 -s MIN_WEBGL_VERSION=2 -s MAX_WEBGL_VERSION=2 \
   -s FULL_ES3=1 -s GL_ENABLE_GET_PROC_ADDRESS=1 -lGL -s ERROR_ON_UNDEFINED_SYMBOLS=0 \
   -o "$OUT/flycast_libretro.js"
 # Expose Emscripten's GL object on the module (Dreamport creates the WebGL context).
