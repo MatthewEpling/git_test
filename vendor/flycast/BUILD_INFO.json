@@ -1,0 +1,1 @@
+{ "flycast": "1251a53aed36da52ddd3499152d12a85b53d8e8c", "emscripten": "emcc (Emscripten gcc/clang-like replacement + linker emulating GNU ld) 4.0.18 (fae107463db4d20a276a27ede393048deaeebf76)", "exceptions": "wasm", "builtAt": "2026-10-06T21:03:47Z" }

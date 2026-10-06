@@ -108,13 +108,13 @@ Dreamport contains no BIOS, no games and no copyrighted Sega code. Only use BIOS
 - **Netplay** adds the stream's latency (typically a few frames on a good connection), and quality depends on the host's upload speed. Room codes need the bundled signaling server; invite codes work anywhere.
 - **Achievements** are local only (see above). CHD/CDI identification by title can pick the wrong revision of a game.
 - **Not included:** NAOMI/Atomiswave arcade games, rewind, the Dreamcast's original online services (broadband adapter), custom texture packs.
-- **The core is built from Flycast plus romdev's WebAssembly recompiler.** `scripts/build-core.sh` builds it with native WebAssembly exceptions into `vendor/flycast/`, which is used when present. If `vendor/flycast/` is missing, `scripts/prepare-core.mjs` falls back to the `romdev-core-flycast` npm build and patches its Node-only loader for the browser (exact-match; the build fails if the core changes).
+- **Two builds of the core ship.** The standard core is the `romdev-core-flycast` npm build (Flycast plus romdev's WebAssembly recompiler); `scripts/prepare-core.mjs` patches its Node-only loader for the browser (exact-match; the build fails if the core changes). Settings → Emulation → Emulator core can switch to an experimental build from `vendor/flycast/` (`scripts/build-core.sh`: native WebAssembly exceptions), which spends less time on CPU emulation. If it's missing or fails to start, the standard core runs instead.
 
 ## How it's built
 
 ### Rebuilding the emulator core
 
-`scripts/build-core.sh` builds the core from Flycast (pinned revision) plus the patches in `scripts/core-patches/` (romdev's WebAssembly SH-4 recompiler, MIT). It uses native WebAssembly exceptions rather than Emscripten's JavaScript-emulated ones, which removes a large per-frame overhead. To rebuild (Linux/macOS, needs git, CMake and the [Emscripten SDK](https://emscripten.org/docs/getting_started/downloads.html) at version 4.0.18, which the script checks for):
+`scripts/build-core.sh` builds the core from Flycast (pinned revision) plus the patches in `scripts/core-patches/` (romdev's WebAssembly SH-4 recompiler, MIT). It uses native WebAssembly exceptions rather than Emscripten's JavaScript-emulated ones, and skips Flycast's SSA optimizer (see `scripts/core-patches/README.md`). To rebuild (Linux/macOS, needs git, CMake and the [Emscripten SDK](https://emscripten.org/docs/getting_started/downloads.html) at version 4.0.18, which the script checks for):
 
 ```bash
 emsdk install 4.0.18 && emsdk activate 4.0.18
@@ -134,8 +134,8 @@ src/netplay/    WebRTC host/guest, input packet codec, invite codes, signaling c
 src/achievements/  RetroAchievements API client, trigger parser/evaluator, runtime
 src/pages/      Home, Player, Guest, Settings
 server/         production server, netplay signaling (WebSocket), RetroAchievements proxy
-scripts/        prepare-core.mjs (copies the core into public/core), build-core.sh + core-patches/ (rebuilds the core)
-vendor/flycast/ the prebuilt core (flycast_libretro.js/.wasm + BUILD_INFO.json)
+scripts/        prepare-core.mjs (copies the cores into public/), build-core.sh + core-patches/ (builds the experimental core)
+vendor/flycast/ the prebuilt experimental core (flycast_libretro.js/.wasm + BUILD_INFO.json)
 tests/          unit tests, end-to-end tests, homebrew test ELFs
 ```
 

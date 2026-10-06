@@ -4,6 +4,10 @@ import { DEFAULT_PRESENTER, type PresenterSettings } from '../emu/presenter';
 import { DEFAULT_HOTKEYS, type HotkeyId } from '../input/bindings';
 import { DEFAULT_INPUT, DEFAULT_PORTS, type InputSettings, type PortConfig } from '../input/manager';
 
+/** 'standard': the romdev-core-flycast npm build. 'native': Dreamport's own build with
+ * native WebAssembly exceptions (experimental). */
+export type CoreBuild = 'standard' | 'native';
+
 export interface AppSettings {
   video: PresenterSettings & { showFps: boolean };
   audio: { volume: number; muted: boolean; latencyMs: number };
@@ -18,6 +22,8 @@ export interface AppSettings {
     fastForwardSpeed: number;
     pauseInBackground: boolean;
     autoSaveState: boolean;
+    /** Which build of the Flycast core to run (see scripts/prepare-core.mjs). */
+    coreBuild: CoreBuild;
   };
   netplay: { displayName: string; signalUrl: string; iceServers: string; videoBitrateKbps: number };
   achievements: { enabled: boolean; notifications: boolean; showUnofficial: boolean };
@@ -30,7 +36,7 @@ export const DEFAULT_SETTINGS: AppSettings = {
   ports: DEFAULT_PORTS,
   hotkeys: DEFAULT_HOTKEYS,
   coreOptions: {},
-  emulation: { allowHleBios: false, fastForwardSpeed: 3, pauseInBackground: true, autoSaveState: true },
+  emulation: { allowHleBios: false, fastForwardSpeed: 3, pauseInBackground: true, autoSaveState: true, coreBuild: 'standard' },
   netplay: {
     displayName: '',
     signalUrl: '',

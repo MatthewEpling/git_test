@@ -628,7 +628,7 @@ export function Player({ launch, onExit }: Props) {
           {settings.video.showFps && (
             <span className="stats fps-corner perf" aria-live="off">
               <span>
-                {stats.fps.toFixed(0)} fps · {Math.round(stats.speed * 100)}% speed
+                {stats.fps.toFixed(0)} fps · {Math.round(stats.speed * 100)}% speed{session?.coreBuild === 'native' ? ' · experimental core' : ''}
               </span>
               <span className={stats.coreMaxMs > 16.7 ? 'warn' : ''}>
                 emulation {stats.coreMs.toFixed(1)} ms (worst {stats.coreMaxMs.toFixed(1)})

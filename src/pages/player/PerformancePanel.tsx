@@ -106,6 +106,9 @@ export function PerformancePanel({ stats }: { stats: SessionStats }) {
         )}
       </div>
       <p className="small muted">
+        You can also switch to the experimental emulator core in Settings → Emulation (restart the game afterwards); it spends less time on CPU emulation.
+      </p>
+      <p className="small muted">
         Changes apply live. Change one at a time and watch the emulation time; it updates every second. They're saved for all games.
       </p>
       <div className="row">

@@ -43,6 +43,21 @@ export function EmulationTab({ liveOptions, inGame }: { liveOptions: CoreOption[
       <SettingRow label="Allow HLE BIOS fallback" hint="Boot discs with Flycast's built-in BIOS replacement when you haven't added a BIOS. Less compatible; off keeps a real BIOS required.">
         <Switch label="Allow HLE BIOS fallback" checked={e.allowHleBios} onChange={(b) => setEmu({ allowHleBios: b })} />
       </SettingRow>
+      <SettingRow
+        label="Emulator core"
+        htmlFor="core-build"
+        hint={
+          <>
+            Experimental is a newer build of the same emulator that spends less time on its CPU emulation. Try it if a game runs below full speed, and compare
+            the emulation time in the performance stats.{inGame && <span className="badge warn">Takes effect after restarting the game</span>}
+          </>
+        }
+      >
+        <select id="core-build" value={e.coreBuild} onChange={(ev) => setEmu({ coreBuild: ev.target.value as typeof e.coreBuild })}>
+          <option value="standard">Standard</option>
+          <option value="native">Experimental (faster CPU)</option>
+        </select>
+      </SettingRow>
       <SettingRow label="Fast-forward speed" htmlFor="ff">
         <select id="ff" value={e.fastForwardSpeed} onChange={(ev) => setEmu({ fastForwardSpeed: Number(ev.target.value) })}>
           {[2, 3, 4, 6, 8].map((n) => (

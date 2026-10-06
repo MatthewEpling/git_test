@@ -1,8 +1,11 @@
-// Copies the Flycast libretro core into public/core.
+// Copies the Flycast libretro cores into public/:
 //
-// Prefers Dreamport's own build in vendor/flycast/ (scripts/build-core.sh: native
-// WebAssembly exceptions, browser file system). Falls back to the romdev-core-flycast
-// npm package, whose glue needs patching to run in a browser:
+//   public/core/         the romdev-core-flycast npm build (the "standard" core)
+//   public/core-native/  Dreamport's own build from vendor/flycast/, when present
+//                        (scripts/build-core.sh: native WebAssembly exceptions; the
+//                        "experimental" core in Settings → Emulation)
+//
+// The npm build's glue needs patching to run in a browser:
 //
 // romdev-core-flycast is built with NODERAWFS (the core reads Node's real disk). The
 // glue throws outside Node and swaps every FS method for the Node-backed one. The
@@ -10,7 +13,7 @@
 // Node FS overrides when actually running under Node. The patch is exact-match: if a
 // future core version changes this code the build fails instead of shipping a broken
 // core.
-import { mkdir, readFile, writeFile, copyFile } from "node:fs/promises";
+import { mkdir, readFile, writeFile, copyFile, rm } from "node:fs/promises";
 import { existsSync } from "node:fs";
 import { createHash } from "node:crypto";
 import path from "node:path";
@@ -19,9 +22,6 @@ import { fileURLToPath } from "node:url";
 const root = path.dirname(path.dirname(fileURLToPath(import.meta.url)));
 const vendored = path.join(root, "vendor/flycast");
 const npmCore = path.join(root, "node_modules/romdev-core-flycast/wasm");
-const useVendored = existsSync(path.join(vendored, "flycast_libretro.wasm"));
-const src = useVendored ? vendored : npmCore;
-const out = path.join(root, "public/core");
 
 const PATCHES = [
   [
@@ -44,22 +44,34 @@ const PATCHES = [
   ],
 ];
 
-let js = await readFile(path.join(src, "flycast_libretro.js"), "utf8");
-// Only the npm build is Node-only; Dreamport's own build already targets the browser.
-const needsPatches = js.includes("NODERAWFS is currently only supported");
-for (const [from, to] of needsPatches ? PATCHES : []) {
-  const count = js.split(from).length - 1;
-  if (count !== 1) {
-    throw new Error(`prepare-core: expected exactly one match for patch, found ${count}:\n${from}`);
+async function prepare(src, out, label) {
+  let js = await readFile(path.join(src, "flycast_libretro.js"), "utf8");
+  // Only the npm build is Node-only; Dreamport's own build already targets the browser.
+  const needsPatches = js.includes("NODERAWFS is currently only supported");
+  for (const [from, to] of needsPatches ? PATCHES : []) {
+    const count = js.split(from).length - 1;
+    if (count !== 1) {
+      throw new Error(`prepare-core: expected exactly one match for patch, found ${count}:\n${from}`);
+    }
+    js = js.replace(from, to);
   }
-  js = js.replace(from, to);
+
+  await mkdir(out, { recursive: true });
+  await writeFile(path.join(out, "flycast_libretro.js"), js);
+  await copyFile(path.join(src, "flycast_libretro.wasm"), path.join(out, "flycast_libretro.wasm"));
+  const wasm = await readFile(path.join(out, "flycast_libretro.wasm"));
+  const hash = createHash("sha256").update(wasm).digest("hex").slice(0, 16);
+  console.log(
+    `prepare-core: ${label} ready in ${path.relative(root, out)} (wasm ${(wasm.length / 1e6).toFixed(1)} MB, sha256 ${hash}…)`,
+  );
 }
 
-await mkdir(out, { recursive: true });
-await writeFile(path.join(out, "flycast_libretro.js"), js);
-await copyFile(path.join(src, "flycast_libretro.wasm"), path.join(out, "flycast_libretro.wasm"));
-const wasm = await readFile(path.join(out, "flycast_libretro.wasm"));
-const hash = createHash("sha256").update(wasm).digest("hex").slice(0, 16);
-console.log(
-  `prepare-core: Flycast core ready in public/core from ${useVendored ? "vendor/flycast" : "romdev-core-flycast (patched)"} (wasm ${(wasm.length / 1e6).toFixed(1)} MB, sha256 ${hash}…)`,
-);
+await prepare(npmCore, path.join(root, "public/core"), "standard core (romdev-core-flycast, patched)");
+const nativeOut = path.join(root, "public/core-native");
+if (existsSync(path.join(vendored, "flycast_libretro.wasm"))) {
+  await prepare(vendored, nativeOut, "experimental core (vendor/flycast)");
+} else {
+  // Don't leave a stale copy behind; the app falls back to the standard core.
+  await rm(nativeOut, { recursive: true, force: true });
+  console.log("prepare-core: no vendor/flycast/ build, so only the standard core is available");
+}

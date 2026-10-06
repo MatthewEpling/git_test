@@ -235,6 +235,19 @@ await check('achievements: sign in, identify, unlock', async () => {
   await page.keyboard.press('Escape');
 });
 
+await check('experimental core runs a game', async () => {
+  const p2 = await newPage();
+  await p2.addInitScript(() => localStorage.setItem('dreamport:settings:v1', JSON.stringify({ emulation: { coreBuild: 'native' } })));
+  await p2.goto(base);
+  await openGame(p2, 'inputtest.elf');
+  await p2.waitForTimeout(1500);
+  const build = await p2.evaluate(() => window.__dreamport.session.coreBuild);
+  assert(build === 'native', `running the ${build} core instead of the experimental one`);
+  const lit = await litFraction(p2);
+  assert(lit > 0.05, `screen looks blank (${(lit * 100).toFixed(1)}% lit)`);
+  await p2.context().close();
+});
+
 // ───────────────────────── Netplay (two browsers) ─────────────────────────
 async function netplay(mode) {
   const hostPage = await newPage({ width: 1200, height: 800 });

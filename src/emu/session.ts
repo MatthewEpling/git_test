@@ -9,9 +9,12 @@ import { DEVICE, deviceBase } from './libretro';
 import { InputManager, type PortConfig } from '../input/manager';
 import { loadSaveFiles, storeSaveFile, readState, writeState } from '../storage/saves';
 import { extOf } from '../content/files';
-import type { AppSettings } from '../storage/settings';
+import type { AppSettings, CoreBuild } from '../storage/settings';
 
-export const CORE_URL = `${import.meta.env.BASE_URL}core/flycast_libretro.js`;
+export const CORE_URLS: Record<CoreBuild, string> = {
+  standard: `${import.meta.env.BASE_URL}core/flycast_libretro.js`,
+  native: `${import.meta.env.BASE_URL}core-native/flycast_libretro.js`,
+};
 
 /** Core options the app always controls (the browser build can't support other values). */
 export const FORCED_OPTIONS: Record<string, string> = {
@@ -100,6 +103,8 @@ export class EmulatorSession {
   readonly coreCanvas: HTMLCanvasElement;
   readonly gameKey: string;
   readonly title: string;
+  /** The core build actually running (after any fallback). */
+  coreBuild: CoreBuild = 'standard';
   private events: SessionEvents;
   private raf = 0;
   private last = 0;
@@ -135,42 +140,57 @@ export class EmulatorSession {
 
   static async start(display: HTMLCanvasElement, settings: AppSettings, launch: LaunchOptions, events: SessionEvents = {}): Promise<EmulatorSession> {
     const progress = events.onLoadProgress ?? (() => undefined);
-    const coreCanvas = document.createElement('canvas');
-    coreCanvas.width = 640;
-    coreCanvas.height = 480;
     const input = new InputManager();
     input.settings = settings.input;
     input.ports = settings.ports.map((p) => ({ ...p }));
 
     progress('Starting the emulator core…', 0.05);
     let session: EmulatorSession | null = null;
-    const core = await FlycastCore.create({
-      coreUrl: CORE_URL,
-      canvas: coreCanvas,
-      username: settings.netplay.displayName || 'Player',
-      optionOverrides: {
-        ...settings.coreOptions,
-        ...FORCED_OPTIONS,
-        reicast_hle_bios: launch.useHleBios ? 'enabled' : 'disabled',
-        // Homebrew that writes pixels straight to VRAM needs the framebuffer path.
-        ...(launch.main && extOf(launch.main.name) === 'elf' ? { reicast_emulate_framebuffer: 'enabled' } : {}),
-      },
-      hooks: {
-        onLog: (level, text) => events.onLog?.(level, text),
-        onMessage: (text) => events.onToast?.(text),
-        onAudio: (s) => session && !session.fastForward && session.pendingAudio.push(s),
-        onInputPoll: () => undefined,
-        inputState: (port, device, index, id) => input.state(port, device, index, id),
-        onRumble: (port, effect, strength) => input.rumble(port, effect, strength),
-        onGeometry: (g) => {
-          if (session) session.presenter.coreAspect = g.aspect;
+    const createCore = (build: CoreBuild, canvas: HTMLCanvasElement) =>
+      FlycastCore.create({
+        coreUrl: CORE_URLS[build],
+        canvas,
+        username: settings.netplay.displayName || 'Player',
+        optionOverrides: {
+          ...settings.coreOptions,
+          ...FORCED_OPTIONS,
+          reicast_hle_bios: launch.useHleBios ? 'enabled' : 'disabled',
+          // Homebrew that writes pixels straight to VRAM needs the framebuffer path.
+          ...(launch.main && extOf(launch.main.name) === 'elf' ? { reicast_emulate_framebuffer: 'enabled' } : {}),
         },
-      },
-    });
+        hooks: {
+          onLog: (level, text) => events.onLog?.(level, text),
+          onMessage: (text) => events.onToast?.(text),
+          onAudio: (s) => session && !session.fastForward && session.pendingAudio.push(s),
+          onInputPoll: () => undefined,
+          inputState: (port, device, index, id) => input.state(port, device, index, id),
+          onRumble: (port, effect, strength) => input.rumble(port, effect, strength),
+          onGeometry: (g) => {
+            if (session) session.presenter.coreAspect = g.aspect;
+          },
+        },
+      });
+    // The experimental build may be missing (a checkout without vendor/flycast/) or fail
+    // to start on some browsers; fall back to the standard build rather than failing.
+    const newCanvas = () => Object.assign(document.createElement('canvas'), { width: 640, height: 480 });
+    let coreBuild: CoreBuild = settings.emulation.coreBuild;
+    let coreCanvas = newCanvas();
+    let core: FlycastCore;
+    try {
+      core = await createCore(coreBuild, coreCanvas);
+    } catch (err) {
+      if (coreBuild === 'standard') throw err;
+      events.onLog?.('warn', `Experimental core failed to start (${err instanceof Error ? err.message : String(err)}); using the standard core`);
+      events.onToast?.('The experimental core could not start, so the standard core is running.');
+      coreBuild = 'standard';
+      coreCanvas = newCanvas();
+      core = await createCore(coreBuild, coreCanvas);
+    }
     const presenter = new Presenter(display);
     presenter.settings = settings.video;
     presenter.coreAspect = core.geometry.aspect;
     session = new EmulatorSession(core, presenter, input, coreCanvas, launch, events);
+    session.coreBuild = coreBuild;
 
     try {
       progress('Loading BIOS and saves…', 0.1);
