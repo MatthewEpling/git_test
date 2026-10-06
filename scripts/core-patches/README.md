@@ -7,7 +7,7 @@ MIT-licensed, copyright Luis Montes (see `LICENSE-romdev`). They are compiled in
 Flycast, which is GPL-2.0-or-later.
 
 `scripts/build-core.sh` applies them to Flycast and builds the core. It follows
-romdev's `build-flycast.sh`, with two changes for speed and the browser:
+romdev's `build-flycast.sh`, with these changes:
 
 - **Native WebAssembly exceptions** (`-fwasm-exceptions`) instead of Emscripten's
   JavaScript-emulated exceptions (`-fexceptions -s DISABLE_EXCEPTION_CATCHING=0`).
@@ -15,3 +15,11 @@ romdev's `build-flycast.sh`, with two changes for speed and the browser:
   JavaScript `invoke_*` trampolines, which cost a large share of each frame.
 - **Browser target with the in-memory file system** instead of `NODERAWFS`, so no
   post-build patching of the loader is needed.
+- **Flycast's SSA block optimizer is skipped** on Emscripten. romdev's published
+  core doesn't run it, and with it the recompiler goes wrong during the real BIOS
+  boot (a black screen before the logo).
+- **Fixes for building with Emscripten 4.0.18** (romdev's version, which the script
+  checks for): the recompiler code cache is a plain array (newer LLVM rejects data in
+  a `.text` section), `cvt_f2i_t` gets a generic canonical version matching the
+  recompiler, the libretro target is a static library, the link uses `em++` and the
+  bundled zlib, and submodules are fetched shallowly.

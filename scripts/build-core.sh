@@ -9,6 +9,13 @@
 # Adapted from romdev's build-flycast.sh (MIT); see scripts/core-patches/README.md.
 set -euo pipefail
 command -v emcc >/dev/null || { echo "emcc not found: source emsdk_env.sh first"; exit 1; }
+# Builds are only verified with romdev's Emscripten (4.0.18); WASM output differs
+# between versions. EMCC_VERSION_OK=1 skips this check.
+EMCC_WANT="4.0.18"
+if [ "${EMCC_VERSION_OK:-0}" != "1" ] && ! emcc --version | head -1 | grep -q " $EMCC_WANT "; then
+  echo "Expected Emscripten $EMCC_WANT (emsdk install $EMCC_WANT && emsdk activate $EMCC_WANT); found: $(emcc --version | head -1)" >&2
+  exit 1
+fi
 
 ROOT="$(cd "$(dirname "$0")/.." && pwd)"
 PATCHES="$ROOT/scripts/core-patches"
@@ -83,12 +90,13 @@ if ! grep -q "romdev_gpu_prof_ms" core/hw/pvr/Renderer_if.cpp; then
 fi
 grep -q "RomdevGpuTimer _rgt" core/hw/pvr/Renderer_if.cpp || { echo "FATAL: gpu prof patch failed"; exit 1; }
 
-# HLE BIOS default ON, exactly as romdev ships it. Dreamport still picks real or HLE
-# BIOS per launch (reicast_hle_bios), but booting the real BIOS was only verified on a
-# core built with this default: without it the BIOS hangs before its logo.
-grep -q "romdev/WASM: we never ship" shell/libretro/option.cpp || \
-  perl -0pi -e 's/Option<bool> UseReios\(CORE_OPTION_NAME "_hle_bios"\);/#if defined(__EMSCRIPTEN__) \/* romdev\/WASM: we never ship a real dc_boot.bin *\/\nOption<bool> UseReios(CORE_OPTION_NAME "_hle_bios", true);\n#else\nOption<bool> UseReios(CORE_OPTION_NAME "_hle_bios");\n#endif/' shell/libretro/option.cpp
-grep -q "romdev/WASM: we never ship" shell/libretro/option.cpp || { echo "FATAL: hle_bios default patch failed"; exit 1; }
+# Skip Flycast's SSA block optimizer. romdev's published core doesn't run it (its
+# code isn't in that binary), and with it the WASM recompiler goes wrong while the
+# real BIOS boots: the console hangs on a black screen before the logo. Homebrew is
+# unaffected either way. The recompiler does its own per-block register caching.
+grep -q "dreamport: no SSA optimizer" core/hw/sh4/dyna/driver.cpp || \
+  perl -0pi -e 's/(\n)\tAnalyseBlock\(this\);\n/$1#ifndef __EMSCRIPTEN__ \/\/ dreamport: no SSA optimizer for the WASM recompiler\n\tAnalyseBlock(this);\n#endif\n/' core/hw/sh4/dyna/driver.cpp
+grep -q "dreamport: no SSA optimizer" core/hw/sh4/dyna/driver.cpp || { echo "FATAL: SSA optimizer patch failed"; exit 1; }
 
 # ── Patches for current Emscripten (not in romdev's script) ─────────────────
 # Newer LLVM rejects data placed in a ".text" section ("data symbols must live in a

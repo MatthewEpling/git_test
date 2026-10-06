@@ -114,9 +114,10 @@ Dreamport contains no BIOS, no games and no copyrighted Sega code. Only use BIOS
 
 ### Rebuilding the emulator core
 
-`scripts/build-core.sh` builds the core from Flycast (pinned revision) plus the patches in `scripts/core-patches/` (romdev's WebAssembly SH-4 recompiler, MIT). It uses native WebAssembly exceptions rather than Emscripten's JavaScript-emulated ones, which removes a large per-frame overhead. To rebuild (Linux/macOS, needs git, CMake and the [Emscripten SDK](https://emscripten.org/docs/getting_started/downloads.html)):
+`scripts/build-core.sh` builds the core from Flycast (pinned revision) plus the patches in `scripts/core-patches/` (romdev's WebAssembly SH-4 recompiler, MIT). It uses native WebAssembly exceptions rather than Emscripten's JavaScript-emulated ones, which removes a large per-frame overhead. To rebuild (Linux/macOS, needs git, CMake and the [Emscripten SDK](https://emscripten.org/docs/getting_started/downloads.html) at version 4.0.18, which the script checks for):
 
 ```bash
+emsdk install 4.0.18 && emsdk activate 4.0.18
 source /path/to/emsdk/emsdk_env.sh
 scripts/build-core.sh          # writes vendor/flycast/; takes 15–30 minutes
 ```
