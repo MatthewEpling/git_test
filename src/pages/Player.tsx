@@ -77,7 +77,11 @@ export function Player({ launch, onExit }: Props) {
     (async () => {
       const s = getSettings();
       const [boot, flash] = await Promise.all([loadBiosData('boot'), loadBiosData('flash')]);
-      const isElf = extOf(launch.main.name) === 'elf';
+      const isElf = !!launch.main && extOf(launch.main.name) === 'elf';
+      if (!boot && !launch.main) {
+        setStatus({ kind: 'error', text: 'Starting the console without a disc needs your Dreamcast BIOS (dc_boot.bin).' });
+        return;
+      }
       if (!boot && !isElf && !s.emulation.allowHleBios) {
         setStatus({
           kind: 'error',
@@ -418,6 +422,7 @@ export function Player({ launch, onExit }: Props) {
     const s = getSettings();
     (async () => {
       const account = await loadAccount();
+      if (!launch.main) return setAch({ kind: 'none', text: 'No game is running.' });
       if (!s.achievements.enabled) return setAch({ kind: 'off', reason: 'Achievement tracking is turned off.' });
       if (!account) return setAch({ kind: 'off', reason: 'Sign in to RetroAchievements to track achievements for this game.' });
       let gameId = 0;
@@ -430,7 +435,7 @@ export function Player({ launch, onExit }: Props) {
           // CHD/CDI or an unknown dump: wait for the BIOS to load the disc header, then match by title.
           setAch({ kind: 'loading', text: 'Identifying the game…' });
           let header = null;
-          const waits = extOf(launch.main.name) === 'elf' ? 0 : 40;
+          const waits = !launch.main || extOf(launch.main.name) === 'elf' ? 0 : 40;
           for (let i = 0; i < waits && !cancelled && !header; i++) {
             await new Promise((r) => setTimeout(r, 500));
             header = headerFromRam(session.core);

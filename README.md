@@ -41,7 +41,8 @@ npm run test:e2e     # end-to-end in headless Chromium; needs `npx playwright in
    - homebrew **ELF**
 
    Games can be kept in a library stored in the browser's private file system (OPFS), so you only add them once.
-3. Homebrew ELFs boot without a BIOS. For discs without a BIOS you can opt in to Flycast's HLE BIOS under Settings → Emulation, but compatibility is lower.
+3. With a BIOS added, **Start console without a disc** boots to the Dreamcast system menu (memory-card manager, clock, language, CD player).
+4. Homebrew ELFs boot without a BIOS. For discs without a BIOS you can opt in to Flycast's HLE BIOS under Settings → Emulation, but compatibility is lower.
 
 ## Features
 
@@ -102,7 +103,7 @@ Dreamport contains no BIOS, no games and no copyrighted Sega code. Only use BIOS
 ## Limitations and honest notes
 
 - **Performance depends on your machine.** The CPU runs through Flycast's WebAssembly recompiler on one thread. Light and mid-weight games should be playable on a recent desktop; demanding titles may run below full speed, especially at high internal resolutions. Phones and tablets will struggle, and there are no on-screen touch controls.
-- **Tested with homebrew only.** Automated tests boot homebrew ELFs compiled for this project (in `tests/fixtures/`). They cover rendering, input, save states, filters, settings, achievements (against a mocked RetroAchievements API) and two-browser netplay. Commercial discs and real BIOS files could not be tested in the development environment.
+- **Tested with homebrew and a real BIOS, not yet with commercial discs.** Automated tests boot homebrew ELFs compiled for this project (in `tests/fixtures/`). A real BIOS was also checked by hand: it verifies, boots to the system menu, responds to the keyboard, plays menu sounds, saves and loads states, and its flash and VMU files persist. They cover rendering, input, save states, filters, settings, achievements (against a mocked RetroAchievements API) and two-browser netplay. Commercial discs could not be tested in the development environment.
 - **Browser storage:** a 1 GB GDI is loaded fully into memory while playing (CHD is much smaller). Browsers may evict stored data under storage pressure; use Settings → Storage → "Protect my data" and export VMU saves as a backup.
 - **Netplay** adds the stream's latency (typically a few frames on a good connection), and quality depends on the host's upload speed. Room codes need the bundled signaling server; invite codes work anywhere.
 - **Achievements** are local only (see above). CHD/CDI identification by title can pick the wrong revision of a game.

@@ -26,7 +26,7 @@ export default function App() {
     setRoute({ page: 'home' });
   };
 
-  if (route.page === 'play') return <Player key={route.launch.gameKey + route.launch.main.name} launch={route.launch} onExit={home} />;
+  if (route.page === 'play') return <Player key={route.launch.gameKey + (route.launch.main?.name ?? '')} launch={route.launch} onExit={home} />;
   if (route.page === 'join') return <Guest mode={{ kind: 'room', room: route.room }} onExit={home} />;
   if (route.page === 'invite') return <Guest mode={{ kind: 'invite' }} onExit={home} />;
   return (

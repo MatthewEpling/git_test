@@ -12,7 +12,8 @@ import { md5 } from '../content/md5';
 
 export interface LaunchRequest {
   files: File[];
-  main: File;
+  /** The file the core opens; null boots the console with no disc (BIOS menu). */
+  main: File | null;
   title: string;
   gameKey: string;
   libraryId?: string;
@@ -282,6 +283,15 @@ export function Home({ onPlay, onJoin, onJoinInvite, onSettings }: Props) {
                 e.target.value = '';
               }}
             />
+            {hasBoot && (
+              <button
+                type="button"
+                className="btn btn-ghost"
+                onClick={() => onPlay({ files: [], main: null, title: 'Dreamcast system menu', gameKey: 'system-menu' })}
+              >
+                <Icon.Play width={16} height={16} /> Start console without a disc
+              </button>
+            )}
             {!hasBoot && (
               <p className="tiny faint">
                 Homebrew (.elf) runs without a BIOS.{settings.emulation.allowHleBios ? ' HLE BIOS fallback is on, so discs will try to boot without one.' : ''}

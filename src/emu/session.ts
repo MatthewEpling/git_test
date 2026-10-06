@@ -45,7 +45,8 @@ export const RESTART_OPTIONS = new Set(['reicast_region', 'reicast_language', 'r
 
 export interface LaunchOptions {
   files: File[];
-  main: File;
+  /** null boots the console with no disc. */
+  main: File | null;
   /** Stable id for save states (library id, or a hash of the file name). */
   gameKey: string;
   title: string;
@@ -120,7 +121,7 @@ export class EmulatorSession {
         ...FORCED_OPTIONS,
         reicast_hle_bios: launch.useHleBios ? 'enabled' : 'disabled',
         // Homebrew that writes pixels straight to VRAM needs the framebuffer path.
-        ...(extOf(launch.main.name) === 'elf' ? { reicast_emulate_framebuffer: 'enabled' } : {}),
+        ...(launch.main && extOf(launch.main.name) === 'elf' ? { reicast_emulate_framebuffer: 'enabled' } : {}),
       },
       hooks: {
         onLog: (level, text) => events.onLog?.(level, text),
@@ -157,7 +158,7 @@ export class EmulatorSession {
       }
 
       progress('Booting…', 0.95);
-      if (!core.loadGame(`${dir}/${launch.main.name}`)) {
+      if (!core.loadGame(launch.main ? `${dir}/${launch.main.name}` : null)) {
         throw new Error('The emulator could not load this game. Check that the image is complete and in a supported format.');
       }
       session.applyPorts(input.ports);

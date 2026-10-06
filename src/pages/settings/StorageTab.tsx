@@ -110,7 +110,7 @@ export function StorageTab({ inGame }: { inGame: boolean }) {
             // Reuse the folder the core already writes VMUs to, if we've seen one.
             const same = saves.find((s) => s.path.split('/').pop() === f.name);
             const anyVmu = saves.find((s) => /vmu_save_|\.[A-D][1-2]\.bin$/i.test(s.path));
-            const dir = (same ?? anyVmu)?.path.replace(/\/[^/]+$/, '') ?? '/saves/dc';
+            const dir = (same ?? anyVmu)?.path.replace(/\/[^/]+$/, '') ?? '/system/dc'; // where Flycast keeps vmu_save_A1.bin etc.
             await storeSaveFile(`${dir}/${f.name}`, new Uint8Array(await f.arrayBuffer()));
             toast({ kind: 'success', text: `Imported ${f.name}.` });
             void refresh();
