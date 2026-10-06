@@ -1,0 +1,142 @@
+// libretro ABI constants used by the frontend (subset of libretro.h).
+
+export const ENV = {
+  SET_ROTATION: 1,
+  GET_OVERSCAN: 2,
+  GET_CAN_DUPE: 3,
+  SET_MESSAGE: 6,
+  SHUTDOWN: 7,
+  SET_PERFORMANCE_LEVEL: 8,
+  GET_SYSTEM_DIRECTORY: 9,
+  SET_PIXEL_FORMAT: 10,
+  SET_INPUT_DESCRIPTORS: 11,
+  SET_KEYBOARD_CALLBACK: 12,
+  SET_DISK_CONTROL_INTERFACE: 13,
+  SET_HW_RENDER: 14,
+  GET_VARIABLE: 15,
+  SET_VARIABLES: 16,
+  GET_VARIABLE_UPDATE: 17,
+  SET_SUPPORT_NO_GAME: 18,
+  GET_LIBRETRO_PATH: 19,
+  GET_RUMBLE_INTERFACE: 23,
+  GET_INPUT_DEVICE_CAPABILITIES: 24,
+  GET_LOG_INTERFACE: 27,
+  GET_CORE_ASSETS_DIRECTORY: 30,
+  GET_SAVE_DIRECTORY: 31,
+  SET_SYSTEM_AV_INFO: 32,
+  SET_SUBSYSTEM_INFO: 34,
+  SET_CONTROLLER_INFO: 35,
+  SET_MEMORY_MAPS: 36,
+  SET_GEOMETRY: 37,
+  GET_USERNAME: 38,
+  GET_LANGUAGE: 39,
+  SET_SERIALIZATION_QUIRKS: 44,
+  GET_CORE_OPTIONS_VERSION: 52,
+  SET_CORE_OPTIONS: 53,
+  SET_CORE_OPTIONS_INTL: 54,
+  SET_CORE_OPTIONS_DISPLAY: 55,
+  GET_PREFERRED_HW_RENDER: 56,
+  GET_DISK_CONTROL_INTERFACE_VERSION: 57,
+  SET_DISK_CONTROL_EXT_INTERFACE: 58,
+  GET_MESSAGE_INTERFACE_VERSION: 59,
+  SET_MESSAGE_EXT: 60,
+  GET_INPUT_MAX_USERS: 61,
+  SET_CONTENT_INFO_OVERRIDE: 65,
+  GET_GAME_INFO_EXT: 66,
+  SET_CORE_OPTIONS_V2: 67,
+  SET_CORE_OPTIONS_V2_INTL: 68,
+  SET_CORE_OPTIONS_UPDATE_DISPLAY_CALLBACK: 69,
+  SET_VARIABLE: 70,
+  // Experimental (| 0x10000)
+  GET_AUDIO_VIDEO_ENABLE: 47 | 0x10000,
+  GET_FASTFORWARDING: 49 | 0x10000,
+  GET_TARGET_REFRESH_RATE: 50 | 0x10000,
+  GET_INPUT_BITMASKS: 51 | 0x10000,
+} as const;
+
+export const ENV_EXPERIMENTAL = 0x10000;
+
+export const DEVICE = {
+  NONE: 0,
+  JOYPAD: 1,
+  MOUSE: 2,
+  KEYBOARD: 3,
+  LIGHTGUN: 4,
+  ANALOG: 5,
+  POINTER: 6,
+} as const;
+
+export const DEVICE_TYPE_SHIFT = 8;
+export const deviceBase = (device: number) => device & ((1 << DEVICE_TYPE_SHIFT) - 1);
+
+/** RETRO_DEVICE_ID_JOYPAD_* */
+export const JOY = {
+  B: 0,
+  Y: 1,
+  SELECT: 2,
+  START: 3,
+  UP: 4,
+  DOWN: 5,
+  LEFT: 6,
+  RIGHT: 7,
+  A: 8,
+  X: 9,
+  L: 10,
+  R: 11,
+  L2: 12,
+  R2: 13,
+  L3: 14,
+  R3: 15,
+  MASK: 256,
+} as const;
+
+export const ANALOG_INDEX = { LEFT: 0, RIGHT: 1, BUTTON: 2 } as const;
+export const ANALOG_ID = { X: 0, Y: 1 } as const;
+
+export const MOUSE_ID = {
+  X: 0,
+  Y: 1,
+  LEFT: 2,
+  RIGHT: 3,
+  WHEELUP: 4,
+  WHEELDOWN: 5,
+  MIDDLE: 6,
+  BUTTON_4: 9,
+  BUTTON_5: 10,
+} as const;
+
+export const LIGHTGUN_ID = {
+  TRIGGER: 2,
+  AUX_A: 3,
+  AUX_B: 4,
+  START: 6,
+  SELECT: 7,
+  AUX_C: 8,
+  DPAD_UP: 9,
+  DPAD_DOWN: 10,
+  DPAD_LEFT: 11,
+  DPAD_RIGHT: 12,
+  SCREEN_X: 13,
+  SCREEN_Y: 14,
+  IS_OFFSCREEN: 15,
+  RELOAD: 16,
+} as const;
+
+export const HW_CONTEXT = {
+  NONE: 0,
+  OPENGL: 1,
+  OPENGLES2: 2,
+  OPENGL_CORE: 3,
+  OPENGLES3: 4,
+  OPENGLES_VERSION: 5,
+  VULKAN: 6,
+} as const;
+
+export const PIXEL_FORMAT = { RGB1555: 0, XRGB8888: 1, RGB565: 2 } as const;
+
+export const MEMORY = { SAVE_RAM: 0, RTC: 1, SYSTEM_RAM: 2, VIDEO_RAM: 3 } as const;
+
+/** (void*)-1: the frame was rendered into the hardware framebuffer. */
+export const HW_FRAME_BUFFER_VALID = -1;
+
+export const LOG_LEVELS = ['debug', 'info', 'warn', 'error'] as const;

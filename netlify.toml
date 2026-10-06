@@ -1,7 +1,19 @@
-# Build the Vite app and publish the static output (without this, Netlify serves the raw source).
+# Build the app (the prebuild step copies and patches the emulator core) and publish dist/.
 [build]
   command = "npm run build"
   publish = "dist"
 
 [build.environment]
   NODE_VERSION = "22"
+
+# RetroAchievements API proxy (RA does not allow cross-origin browser requests).
+[[redirects]]
+  from = "/ra/dorequest.php"
+  to = "https://retroachievements.org/dorequest.php"
+  status = 200
+  force = true
+
+[[headers]]
+  for = "/core/*"
+  [headers.values]
+    Cache-Control = "public, max-age=86400"
