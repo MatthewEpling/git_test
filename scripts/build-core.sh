@@ -83,6 +83,19 @@ if ! grep -q "romdev_gpu_prof_ms" core/hw/pvr/Renderer_if.cpp; then
 fi
 grep -q "RomdevGpuTimer _rgt" core/hw/pvr/Renderer_if.cpp || { echo "FATAL: gpu prof patch failed"; exit 1; }
 
+# ── Patches for current Emscripten (not in romdev's script) ─────────────────
+# Newer LLVM rejects data placed in a ".text" section ("data symbols must live in a
+# data section"), which is what Flycast's generic-unix code cache declares. The WASM
+# JIT never executes from that buffer, so a plain array (as on Android) is enough.
+grep -q "romdev/dreamport: wasm code cache" core/oslib/virtmem.h || \
+  perl -0pi -e 's/(#elif defined\(__ANDROID__\)\n)/#elif defined(__EMSCRIPTEN__) \/\/ romdev\/dreamport: wasm code cache\n#define DECLARE_CODE_CACHE(Name, Size) alignas(4096) static u8 Name[Size];\n$1/' core/oslib/virtmem.h
+grep -q "romdev/dreamport: wasm code cache" core/oslib/virtmem.h || { echo "FATAL: virtmem patch failed"; exit 1; }
+# cvt_f2i_t has canonical (interpreter/SSA) versions only for x86 and ARM hosts. Add a
+# generic one matching the WASM JIT: saturate, and NaN gives 0x80000000 like the SH-4.
+grep -q "dreamport: generic cvt_f2i_t" core/hw/sh4/dyna/shil_canonical.h || \
+  perl -0pi -e 's/(\t\tif \(std::isnan\(f1\)\)\n\t\t\tres = 0x80000000;\n\t\}\n\treturn res;\n\)\n)(#endif)/$1#else \/\/ dreamport: generic cvt_f2i_t\nshil_canonical\n(\nu32,f1,(f32 f1),\n\ts32 res;\n\tif (std::isnan(f1))\n\t\tres = (s32)0x80000000;\n\telse if (f1 >= 2147483648.0f)\n\t\tres = 0x7fffffff;\n\telse if (f1 <= -2147483648.0f)\n\t\tres = (s32)0x80000000;\n\telse\n\t\tres = (s32)f1;\n\treturn res;\n)\n$2/' core/hw/sh4/dyna/shil_canonical.h
+grep -q "dreamport: generic cvt_f2i_t" core/hw/sh4/dyna/shil_canonical.h || { echo "FATAL: cvt_f2i_t patch failed"; exit 1; }
+
 mkdir -p core/rec-wasm
 cp "$PATCHES"/rec-wasm/* core/rec-wasm/
 
