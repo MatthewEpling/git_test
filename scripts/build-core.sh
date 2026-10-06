@@ -5,7 +5,7 @@
 #   scripts/build-core.sh            # → vendor/flycast/flycast_libretro.{js,wasm}
 #
 # Env: FLYCAST_REV (Flycast commit, default below), CORE_BUILD_DIR (work dir, default
-# .core-build), JOBS (parallel compile jobs, default nproc).
+# .core-build), JOBS (parallel compile jobs, default nproc), KEEP_BUILD=1 (incremental).
 # Adapted from romdev's build-flycast.sh (MIT); see scripts/core-patches/README.md.
 set -euo pipefail
 command -v emcc >/dev/null || { echo "emcc not found: source emsdk_env.sh first"; exit 1; }
@@ -96,6 +96,12 @@ grep -q "dreamport: generic cvt_f2i_t" core/hw/sh4/dyna/shil_canonical.h || \
   perl -0pi -e 's/(\t\tif \(std::isnan\(f1\)\)\n\t\t\tres = 0x80000000;\n\t\}\n\treturn res;\n\)\n)(#endif)/$1#else \/\/ dreamport: generic cvt_f2i_t\nshil_canonical\n(\nu32,f1,(f32 f1),\n\ts32 res;\n\tif (std::isnan(f1))\n\t\tres = (s32)0x80000000;\n\telse if (f1 >= 2147483648.0f)\n\t\tres = 0x7fffffff;\n\telse if (f1 <= -2147483648.0f)\n\t\tres = (s32)0x80000000;\n\telse\n\t\tres = (s32)f1;\n\treturn res;\n)\n$2/' core/hw/sh4/dyna/shil_canonical.h
 grep -q "dreamport: generic cvt_f2i_t" core/hw/sh4/dyna/shil_canonical.h || { echo "FATAL: cvt_f2i_t patch failed"; exit 1; }
 
+# Flycast's libretro target is a SHARED library, which Emscripten's linker refuses
+# (--no-undefined). We link the archive ourselves below, so build it STATIC.
+grep -q "dreamport: static on emscripten" CMakeLists.txt || \
+  perl -0pi -e 's/(elseif\(LIBRETRO\)\n)\tadd_library\(\$\{PROJECT_NAME\} SHARED core\/emulator\.cpp\)\n/$1\tif(EMSCRIPTEN) # dreamport: static on emscripten\n\t\tadd_library(\${PROJECT_NAME} STATIC core\/emulator.cpp)\n\telse()\n\t\tadd_library(\${PROJECT_NAME} SHARED core\/emulator.cpp)\n\tendif()\n/' CMakeLists.txt
+grep -q "dreamport: static on emscripten" CMakeLists.txt || { echo "FATAL: static library patch failed"; exit 1; }
+
 mkdir -p core/rec-wasm
 cp "$PATCHES"/rec-wasm/* core/rec-wasm/
 
@@ -104,7 +110,9 @@ cp "$PATCHES"/rec-wasm/* core/rec-wasm/
 # block-exit/MMU-fault path throws C++ exceptions).
 CXXFLAGS_EXTRA="-DJIT_PROD_BUILD -fwasm-exceptions"
 CFLAGS_EXTRA="-DJIT_PROD_BUILD -fwasm-exceptions"
-rm -rf build-em && mkdir build-em && cd build-em
+# KEEP_BUILD=1 reuses the previous build directory (incremental rebuild).
+[ "${KEEP_BUILD:-0}" = "1" ] || rm -rf build-em
+mkdir -p build-em && cd build-em
 # ZLIB_LIBRARY: Flycast only tells libzip where the bundled zlib headers are; newer
 # CMake also wants the library, so name the bundled zlib target.
 emcmake cmake .. -DLIBRETRO=ON -DUSE_VULKAN=OFF -DUSE_GLES=ON -DUSE_GLES2=OFF -DCMAKE_BUILD_TYPE=Release \
