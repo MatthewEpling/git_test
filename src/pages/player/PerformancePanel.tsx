@@ -98,6 +98,12 @@ export function PerformancePanel({ stats }: { stats: SessionStats }) {
           Emulation takes <strong>{stats.coreMs.toFixed(1)} ms</strong> per frame (worst {stats.coreMaxMs.toFixed(1)} ms). Full speed needs under{' '}
           {budget.toFixed(1)} ms. {over ? 'This scene is over budget, so try the settings below.' : 'You have headroom.'}
         </div>
+        {stats.soundMs !== null && stats.graphicsMs !== null && (
+          <div className="small" style={{ marginTop: 4 }}>
+            Split: CPU {Math.max(0, stats.coreMs - stats.soundMs - stats.graphicsMs).toFixed(1)} ms · sound chip {stats.soundMs.toFixed(1)} ms · graphics{' '}
+            {stats.graphicsMs.toFixed(1)} ms
+          </div>
+        )}
       </div>
       <p className="small muted">
         Changes apply live. Change one at a time and watch the emulation time; it updates every second. They're saved for all games.

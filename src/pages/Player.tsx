@@ -48,7 +48,7 @@ export function Player({ launch, onExit }: Props) {
   const [paused, setPaused] = useState(false);
   const [ff, setFf] = useState(false);
   const [idle, setIdle] = useState(false);
-  const [stats, setStats] = useState<SessionStats>({ fps: 0, speed: 0, audioMs: 0, coreMs: 0, coreMaxMs: 0, presentMs: 0, lateFrames: 0, underruns: 0, underrunsPerSec: 0, vsync: false, refreshesPerFrame: 0, refreshHz: 0 });
+  const [stats, setStats] = useState<SessionStats>({ fps: 0, speed: 0, audioMs: 0, coreMs: 0, coreMaxMs: 0, soundMs: null, graphicsMs: null, presentMs: 0, lateFrames: 0, underruns: 0, underrunsPerSec: 0, vsync: false, refreshesPerFrame: 0, refreshHz: 0 });
   const [panel, setPanel] = useState<Panel>(null);
   const [settingsTab, setSettingsTab] = useState<SettingsTab | null>(null);
   const [slot, setSlot] = useState(1);
@@ -633,6 +633,12 @@ export function Player({ launch, onExit }: Props) {
               <span className={stats.coreMaxMs > 16.7 ? 'warn' : ''}>
                 emulation {stats.coreMs.toFixed(1)} ms (worst {stats.coreMaxMs.toFixed(1)})
               </span>
+              {stats.soundMs !== null && stats.graphicsMs !== null && (
+                <span>
+                  ↳ CPU {Math.max(0, stats.coreMs - stats.soundMs - stats.graphicsMs).toFixed(1)} · sound {stats.soundMs.toFixed(1)} · graphics{' '}
+                  {stats.graphicsMs.toFixed(1)} ms
+                </span>
+              )}
               <span>display {stats.presentMs.toFixed(1)} ms</span>
               <span className={stats.lateFrames ? 'warn' : ''}>late frames {stats.lateFrames}/s</span>
               <span className={stats.audioMs < 20 || stats.underrunsPerSec ? 'warn' : ''}>

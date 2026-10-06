@@ -71,6 +71,10 @@ export interface SessionStats {
   /** Average and worst time spent inside the core per emulated frame. */
   coreMs: number;
   coreMaxMs: number;
+  /** Part of coreMs spent emulating the sound chip (ARM7 + DSP), if known. */
+  soundMs: number | null;
+  /** Part of coreMs spent on graphics (display lists + GL draw calls), if known. */
+  graphicsMs: number | null;
   /** Time to copy the frame and draw it with the filter. */
   presentMs: number;
   /** Display refreshes where we fell behind (visible stutter). */
@@ -286,7 +290,11 @@ export class EmulatorSession {
     const elapsed = now - a.since;
     if (elapsed >= 1000) {
       const fps = (a.frames * 1000) / elapsed;
+      const prof = this.core.takeProfile();
+      const per = (ms: number) => (a.steps ? ms / a.steps : 0);
       this.events.onStats?.({
+        soundMs: prof ? per(prof.aicaMs) : null,
+        graphicsMs: prof ? per(prof.gpuMs) : null,
         fps,
         speed: fps / this.core.timing.fps,
         audioMs: this.audio.buffered * 1000,

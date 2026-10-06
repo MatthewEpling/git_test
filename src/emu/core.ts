@@ -811,6 +811,16 @@ export class FlycastCore {
     return new Uint8Array(this.mod.HEAPU8.buffer, ptr, size);
   }
 
+  /**
+   * Time spent (ms, since the last call) in the sound chip (ARM7 + DSP) and in the
+   * graphics path (display-list parsing + GL drawing), if the core build reports it.
+   */
+  takeProfile(): { aicaMs: number; gpuMs: number } | null {
+    const m = this.mod;
+    if (typeof m._romdev_aica_prof_ms !== 'function' || typeof m._romdev_gpu_prof_ms !== 'function') return null;
+    return { aicaMs: m._romdev_aica_prof_ms(1), gpuMs: m._romdev_gpu_prof_ms(1) };
+  }
+
   setCheats(codes: string[]) {
     this.mod._retro_cheat_reset();
     codes.forEach((code, i) => this.mod._retro_cheat_set(i, 1, this.cString(code)));
