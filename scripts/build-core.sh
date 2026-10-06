@@ -83,6 +83,13 @@ if ! grep -q "romdev_gpu_prof_ms" core/hw/pvr/Renderer_if.cpp; then
 fi
 grep -q "RomdevGpuTimer _rgt" core/hw/pvr/Renderer_if.cpp || { echo "FATAL: gpu prof patch failed"; exit 1; }
 
+# HLE BIOS default ON, exactly as romdev ships it. Dreamport still picks real or HLE
+# BIOS per launch (reicast_hle_bios), but booting the real BIOS was only verified on a
+# core built with this default: without it the BIOS hangs before its logo.
+grep -q "romdev/WASM: we never ship" shell/libretro/option.cpp || \
+  perl -0pi -e 's/Option<bool> UseReios\(CORE_OPTION_NAME "_hle_bios"\);/#if defined(__EMSCRIPTEN__) \/* romdev\/WASM: we never ship a real dc_boot.bin *\/\nOption<bool> UseReios(CORE_OPTION_NAME "_hle_bios", true);\n#else\nOption<bool> UseReios(CORE_OPTION_NAME "_hle_bios");\n#endif/' shell/libretro/option.cpp
+grep -q "romdev/WASM: we never ship" shell/libretro/option.cpp || { echo "FATAL: hle_bios default patch failed"; exit 1; }
+
 # ── Patches for current Emscripten (not in romdev's script) ─────────────────
 # Newer LLVM rejects data placed in a ".text" section ("data symbols must live in a
 # data section"), which is what Flycast's generic-unix code cache declares. The WASM
