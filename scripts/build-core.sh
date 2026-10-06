@@ -26,7 +26,16 @@ cd "$SRC"
 git checkout -q "$FLYCAST_REV"
 # FreeType is only used by the standalone desktop UI (not the libretro build) and is
 # hosted off GitHub, so skip it.
-git -c submodule.core/deps/freetype.update=none submodule update --init --recursive --filter=blob:none
+git -c submodule.core/deps/freetype.update=none submodule update --init --recursive --depth 1
+# A partial or interrupted submodule checkout leaves an empty directory, which only
+# surfaces later as a confusing CMake error. Fail early instead.
+for d in core/deps/*/; do
+  case "$d" in core/deps/freetype/) continue ;; esac
+  if [ -z "$(ls -A "$d")" ]; then
+    echo "build-core: submodule $d is empty; run: git -C $SRC submodule update --init --force $d" >&2
+    exit 1
+  fi
+done
 FULL_REV="$(git rev-parse HEAD)"
 
 # ── Patches (idempotent; same as romdev's build-flycast.sh) ─────────────────
