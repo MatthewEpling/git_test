@@ -4,3 +4,4 @@ public/core
 *.log
 .DS_Store
 test-results
+.core-build

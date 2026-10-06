@@ -108,9 +108,19 @@ Dreamport contains no BIOS, no games and no copyrighted Sega code. Only use BIOS
 - **Netplay** adds the stream's latency (typically a few frames on a good connection), and quality depends on the host's upload speed. Room codes need the bundled signaling server; invite codes work anywhere.
 - **Achievements** are local only (see above). CHD/CDI identification by title can pick the wrong revision of a game.
 - **Not included:** NAOMI/Atomiswave arcade games, rewind, the Dreamcast's original online services (broadband adapter), custom texture packs.
-- **The core is a third-party WebAssembly build.** `scripts/prepare-core.mjs` patches its loader at build time so it uses the browser's in-memory file system instead of Node's. The patch is exact-match and fails the build if the core changes.
+- **The core is built from Flycast plus romdev's WebAssembly recompiler.** `scripts/build-core.sh` builds it with native WebAssembly exceptions into `vendor/flycast/`, which is used when present. If `vendor/flycast/` is missing, `scripts/prepare-core.mjs` falls back to the `romdev-core-flycast` npm build and patches its Node-only loader for the browser (exact-match; the build fails if the core changes).
 
 ## How it's built
+
+### Rebuilding the emulator core
+
+`scripts/build-core.sh` builds the core from Flycast (pinned revision) plus the patches in `scripts/core-patches/` (romdev's WebAssembly SH-4 recompiler, MIT). It uses native WebAssembly exceptions rather than Emscripten's JavaScript-emulated ones, which removes a large per-frame overhead. To rebuild (Linux/macOS, needs git, CMake and the [Emscripten SDK](https://emscripten.org/docs/getting_started/downloads.html)):
+
+```bash
+source /path/to/emsdk/emsdk_env.sh
+scripts/build-core.sh          # writes vendor/flycast/; takes 15–30 minutes
+```
+
 
 Vite + React + TypeScript, no UI libraries.
 
@@ -123,7 +133,8 @@ src/netplay/    WebRTC host/guest, input packet codec, invite codes, signaling c
 src/achievements/  RetroAchievements API client, trigger parser/evaluator, runtime
 src/pages/      Home, Player, Guest, Settings
 server/         production server, netplay signaling (WebSocket), RetroAchievements proxy
-scripts/        prepare-core.mjs (copies and patches the core into public/core)
+scripts/        prepare-core.mjs (copies the core into public/core), build-core.sh + core-patches/ (rebuilds the core)
+vendor/flycast/ the prebuilt core (flycast_libretro.js/.wasm + BUILD_INFO.json)
 tests/          unit tests, end-to-end tests, homebrew test ELFs
 ```
 
