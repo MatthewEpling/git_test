@@ -25,7 +25,7 @@ export interface AppSettings {
 
 export const DEFAULT_SETTINGS: AppSettings = {
   video: { ...DEFAULT_PRESENTER, showFps: false },
-  audio: { volume: 0.8, muted: false, latencyMs: 60 },
+  audio: { volume: 0.8, muted: false, latencyMs: 80 },
   input: DEFAULT_INPUT,
   ports: DEFAULT_PORTS,
   hotkeys: DEFAULT_HOTKEYS,

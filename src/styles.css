@@ -759,7 +759,7 @@ dialog::backdrop {
 }
 .fps-corner {
   position: absolute;
-  top: 10px;
+  top: 64px;
   right: 12px;
   z-index: 2;
 }
@@ -1081,4 +1081,15 @@ dialog.sheet[open] {
   .topbar .btn {
     padding: 8px 10px;
   }
+}
+
+.stats.perf {
+  display: flex;
+  flex-direction: column;
+  gap: 1px;
+  line-height: 1.35;
+  pointer-events: none;
+}
+.stats .warn {
+  color: var(--yellow);
 }

@@ -71,8 +71,8 @@ export function VideoTab() {
       <SettingRow label="Gamma" htmlFor="gm">
         <Slider id="gm" label="Gamma" min={0.6} max={1.6} step={0.05} value={v.gamma} format={(n) => n.toFixed(2)} onChange={(n) => set({ gamma: n })} />
       </SettingRow>
-      <SettingRow label="Show FPS">
-        <Switch label="Show FPS" checked={v.showFps} onChange={(b) => set({ showFps: b })} />
+      <SettingRow label="Show performance stats" hint="Frame rate, emulation and display time, late frames and audio dropouts. Useful when a game stutters.">
+        <Switch label="Show performance stats" checked={v.showFps} onChange={(b) => set({ showFps: b })} />
       </SettingRow>
       <p className="small faint" style={{ marginTop: 12 }}>
         Internal resolution, widescreen and other rendering options are under Emulation → Video.

@@ -10,13 +10,17 @@ class DreamportOutput extends AudioWorkletProcessor {
     this.buf = new Float32Array(this.capacity * 2);
     this.write = 0;                      // in frames (monotonic)
     this.read = 0;                       // fractional, in frames (monotonic)
-    this.target = 0.06 * sampleRate;     // frames
+    this.target = 0.08 * sampleRate;     // frames
+    this.fill = this.target;             // smoothed buffer level
+    this.starved = true;                 // waiting to (re)fill before playing
+    this.lastL = 0;
+    this.lastR = 0;
     this.underruns = 0;
     this.port.onmessage = (e) => {
       const d = e.data;
       if (d.type === 'samples') this.push(d.samples);
       else if (d.type === 'latency') this.target = Math.max(0.02, d.seconds) * sampleRate;
-      else if (d.type === 'clear') { this.read = this.write; }
+      else if (d.type === 'clear') { this.read = this.write; this.starved = true; }
     };
     this.reportCountdown = 0;
   }
@@ -36,17 +40,30 @@ class DreamportOutput extends AudioWorkletProcessor {
     const L = out[0], R = out[1] || out[0];
     const n = L.length;
     let avail = this.write - this.read;
-    const ratio = 1 + Math.max(-0.005, Math.min(0.005, (avail - this.target) / this.target * 0.01));
+    // After running dry, wait for half the target before playing again, so a
+    // slow stretch becomes one short gap instead of continuous crackle.
+    if (this.starved && avail >= this.target * 0.5) this.starved = false;
+    this.fill = this.fill * 0.95 + avail * 0.05;
+    // Dynamic rate control: play up to 3% faster/slower to hold the buffer near the
+    // target. Small enough to be inaudible, large enough to cover the console's
+    // 59.94 Hz vs the display's 60 Hz and brief slowdowns.
+    const err = (this.fill - this.target) / this.target;
+    const ratio = 1 + Math.max(-0.03, Math.min(0.03, err * 0.05));
     for (let i = 0; i < n; i++) {
       avail = this.write - this.read;
-      if (avail < 2) { L[i] = 0; R[i] = 0; continue; }
+      if (this.starved || avail < 2) {
+        if (!this.starved) { this.starved = true; this.underruns++; }
+        // Fade out instead of dropping to zero (avoids a click).
+        this.lastL *= 0.995; this.lastR *= 0.995;
+        L[i] = this.lastL; R[i] = this.lastR;
+        continue;
+      }
       const f = Math.floor(this.read), t = this.read - f;
       const a = (f % this.capacity) * 2, b = ((f + 1) % this.capacity) * 2;
-      L[i] = this.buf[a] + (this.buf[b] - this.buf[a]) * t;
-      R[i] = this.buf[a + 1] + (this.buf[b + 1] - this.buf[a + 1]) * t;
+      L[i] = this.lastL = this.buf[a] + (this.buf[b] - this.buf[a]) * t;
+      R[i] = this.lastR = this.buf[a + 1] + (this.buf[b + 1] - this.buf[a + 1]) * t;
       this.read += ratio;
     }
-    if (this.write - this.read < 2) this.underruns++;
     if (--this.reportCountdown <= 0) {
       this.reportCountdown = 20;
       this.port.postMessage({ buffered: (this.write - this.read) / sampleRate, underruns: this.underruns });
@@ -64,7 +81,7 @@ export class AudioOutput {
   private streamDest: MediaStreamAudioDestinationNode | null = null;
   private volume = 0.8;
   private muted = false;
-  private latency = 0.06;
+  private latency = 0.08;
   private ready: Promise<void> | null = null;
   /** Seconds of audio queued in the worklet (reported a few times a second). */
   buffered = 0;

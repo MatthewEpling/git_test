@@ -57,11 +57,30 @@ export interface LaunchOptions {
 export interface SessionEvents {
   onToast?: (text: string, kind?: 'info' | 'success' | 'error') => void;
   onLog?: (level: string, text: string) => void;
-  onStats?: (s: { fps: number; speed: number; audioMs: number }) => void;
+  onStats?: (s: SessionStats) => void;
   onLoadProgress?: (text: string, fraction: number) => void;
 }
 
 export type FrameHook = (core: FlycastCore, frame: number) => void;
+
+export interface SessionStats {
+  fps: number;
+  /** Emulation speed relative to the real console (1 = full speed). */
+  speed: number;
+  audioMs: number;
+  /** Average and worst time spent inside the core per emulated frame. */
+  coreMs: number;
+  coreMaxMs: number;
+  /** Time to copy the frame and draw it with the filter. */
+  presentMs: number;
+  /** Display refreshes where we fell behind (visible stutter). */
+  lateFrames: number;
+  /** Audio buffer underruns since the game started (heard as crackles). */
+  underruns: number;
+  /** True when frames are locked one-per-refresh to the display. */
+  vsync: boolean;
+  refreshHz: number;
+}
 
 const SAVE_SYNC_MS = 4000;
 
@@ -81,7 +100,12 @@ export class EmulatorSession {
   private stopped = false;
   private savedMtimes = new Map<string, number>();
   private saveTimer = 0;
-  private statsAcc = { frames: 0, since: performance.now() };
+  private statsAcc = { frames: 0, since: performance.now(), coreMs: 0, coreMax: 0, steps: 0, presentMs: 0, presents: 0, late: 0 };
+  /** Audio produced during the current frame; flushed to the worklet once per frame. */
+  readonly pendingAudio: Int16Array[] = [];
+  /** Smoothed time between display refreshes. */
+  private refreshMs = 0;
+  private vsync = false;
   paused = false;
   fastForward = false;
   fastForwardSpeed = 3;
@@ -126,7 +150,7 @@ export class EmulatorSession {
       hooks: {
         onLog: (level, text) => events.onLog?.(level, text),
         onMessage: (text) => events.onToast?.(text),
-        onAudio: (s) => session && !session.fastForward && session.audio.push(s),
+        onAudio: (s) => session && !session.fastForward && session.pendingAudio.push(s),
         onInputPoll: () => undefined,
         inputState: (port, device, index, id) => input.state(port, device, index, id),
         onRumble: (port, effect, strength) => input.rumble(port, effect, strength),
@@ -188,33 +212,58 @@ export class EmulatorSession {
       this.raf = requestAnimationFrame(tick);
       const dt = Math.min(now - this.last, 250);
       this.last = now;
+      // Learn the display's refresh interval (ignore hitches and tab switches).
+      if (dt > 4 && dt < 40) this.refreshMs = this.refreshMs ? this.refreshMs * 0.97 + dt * 0.03 : dt;
       if (this.paused) {
         this.presenter.resize();
         if (this.presenter.needsRedraw()) this.presenter.draw();
         return;
       }
-      this.acc += dt * (this.fastForward ? this.fastForwardSpeed : 1);
-      let ran = 0;
-      let frame: VideoFrame | null = null;
-      const maxFrames = this.fastForward ? this.fastForwardSpeed + 1 : 3;
-      while (this.acc >= this.frameMs && ran < maxFrames) {
-        frame = this.step() ?? frame;
-        this.acc -= this.frameMs;
-        ran++;
+
+      // On a display that refreshes at (almost) the console's rate, run exactly one
+      // frame per refresh for perfectly even motion; the audio resampler absorbs the
+      // tiny rate difference. Otherwise (120/144 Hz, fast forward) use an accumulator.
+      this.vsync = !this.fastForward && this.refreshMs > 0 && Math.abs(this.refreshMs - this.frameMs) / this.frameMs < 0.02;
+      let toRun: number;
+      if (this.vsync) {
+        // After a hitch, catch up (at most 3 frames) so game time and audio stay whole.
+        toRun = dt > this.frameMs * 1.6 ? Math.min(3, Math.round(dt / this.frameMs)) : 1;
+        if (toRun > 1) this.statsAcc.late++;
+        this.acc = 0;
+      } else {
+        this.acc += dt * (this.fastForward ? this.fastForwardSpeed : 1);
+        const maxFrames = this.fastForward ? this.fastForwardSpeed + 1 : 3;
+        toRun = Math.min(maxFrames, Math.floor(this.acc / this.frameMs));
+        this.acc -= toRun * this.frameMs;
+        if (toRun === maxFrames && this.acc > this.frameMs) {
+          this.acc = 0; // too slow to keep up: drop the backlog instead of spiralling
+          this.statsAcc.late++;
+        }
       }
-      if (ran === maxFrames) this.acc = 0; // too slow to keep up: drop the backlog instead of spiralling
-      if (frame && frame.kind !== 'dupe') this.presenter.upload(frame, this.coreCanvas);
+
+      let frame: VideoFrame | null = null;
+      for (let i = 0; i < toRun; i++) frame = this.step() ?? frame;
+      const t0 = performance.now();
+      if (frame) this.presenter.upload(frame, this.coreCanvas);
       this.presenter.resize();
       this.presenter.draw();
-      if (ran) for (const h of this.presentHooks) h();
-      this.reportStats(ran, now);
+      this.statsAcc.presentMs += performance.now() - t0;
+      this.statsAcc.presents++;
+      if (toRun) for (const h of this.presentHooks) h();
+      this.reportStats(toRun, now);
     };
     this.raf = requestAnimationFrame(tick);
   }
 
   private step(): VideoFrame | null {
     this.input.poll();
+    const t0 = performance.now();
     const frame = this.core.runFrame();
+    const ms = performance.now() - t0;
+    this.statsAcc.coreMs += ms;
+    this.statsAcc.coreMax = Math.max(this.statsAcc.coreMax, ms);
+    this.statsAcc.steps++;
+    this.flushAudio();
     this.frameCount++;
     for (const hook of this.frameHooks) {
       try {
@@ -226,13 +275,42 @@ export class EmulatorSession {
     return frame.kind === 'dupe' ? null : frame;
   }
 
+  /** Sends this frame's audio to the worklet in one message. */
+  private flushAudio() {
+    const chunks = this.pendingAudio;
+    if (!chunks.length) return;
+    if (chunks.length === 1) this.audio.push(chunks[0]);
+    else {
+      const out = new Int16Array(chunks.reduce((n, c) => n + c.length, 0));
+      let o = 0;
+      for (const c of chunks) {
+        out.set(c, o);
+        o += c.length;
+      }
+      this.audio.push(out);
+    }
+    chunks.length = 0;
+  }
+
   private reportStats(ran: number, now: number) {
-    this.statsAcc.frames += ran;
-    const elapsed = now - this.statsAcc.since;
+    const a = this.statsAcc;
+    a.frames += ran;
+    const elapsed = now - a.since;
     if (elapsed >= 1000) {
-      const fps = (this.statsAcc.frames * 1000) / elapsed;
-      this.events.onStats?.({ fps, speed: fps / this.core.timing.fps, audioMs: this.audio.buffered * 1000 });
-      this.statsAcc = { frames: 0, since: now };
+      const fps = (a.frames * 1000) / elapsed;
+      this.events.onStats?.({
+        fps,
+        speed: fps / this.core.timing.fps,
+        audioMs: this.audio.buffered * 1000,
+        coreMs: a.steps ? a.coreMs / a.steps : 0,
+        coreMaxMs: a.coreMax,
+        presentMs: a.presents ? a.presentMs / a.presents : 0,
+        lateFrames: a.late,
+        underruns: this.audio.underruns,
+        vsync: this.vsync,
+        refreshHz: this.refreshMs ? 1000 / this.refreshMs : 0,
+      });
+      this.statsAcc = { frames: 0, since: now, coreMs: 0, coreMax: 0, steps: 0, presentMs: 0, presents: 0, late: 0 };
     }
   }
 

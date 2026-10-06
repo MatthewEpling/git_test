@@ -1,5 +1,5 @@
 import { useCallback, useEffect, useRef, useState, type ReactElement } from 'react';
-import { EmulatorSession } from '../emu/session';
+import { EmulatorSession, type SessionStats } from '../emu/session';
 import { DEVICE } from '../emu/libretro';
 import { extOf } from '../content/files';
 import { loadBiosData } from '../storage/bios';
@@ -47,7 +47,7 @@ export function Player({ launch, onExit }: Props) {
   const [paused, setPaused] = useState(false);
   const [ff, setFf] = useState(false);
   const [idle, setIdle] = useState(false);
-  const [stats, setStats] = useState({ fps: 0, speed: 0, audioMs: 0 });
+  const [stats, setStats] = useState<SessionStats>({ fps: 0, speed: 0, audioMs: 0, coreMs: 0, coreMaxMs: 0, presentMs: 0, lateFrames: 0, underruns: 0, vsync: false, refreshHz: 0 });
   const [panel, setPanel] = useState<Panel>(null);
   const [settingsTab, setSettingsTab] = useState<SettingsTab | null>(null);
   const [slot, setSlot] = useState(1);
@@ -615,9 +615,22 @@ export function Player({ launch, onExit }: Props) {
             </span>
             {session?.usesPointerLock && <span className="stats">Click the game to use the mouse · Esc to release</span>}
           </div>
-          {settings.video.showFps && idle && (
-            <span className="stats fps-corner">
-              {stats.fps.toFixed(0)} fps · {Math.round(stats.speed * 100)}%
+          {settings.video.showFps && (
+            <span className="stats fps-corner perf" aria-live="off">
+              <span>
+                {stats.fps.toFixed(0)} fps · {Math.round(stats.speed * 100)}% speed
+              </span>
+              <span className={stats.coreMaxMs > 16.7 ? 'warn' : ''}>
+                emulation {stats.coreMs.toFixed(1)} ms (worst {stats.coreMaxMs.toFixed(1)})
+              </span>
+              <span>display {stats.presentMs.toFixed(1)} ms</span>
+              <span className={stats.lateFrames ? 'warn' : ''}>late frames {stats.lateFrames}/s</span>
+              <span className={stats.audioMs < 20 ? 'warn' : ''}>
+                audio buffer {stats.audioMs.toFixed(0)} ms · dropouts {stats.underruns}
+              </span>
+              <span>
+                {stats.vsync ? 'synced to display' : 'timer paced'} · {stats.refreshHz.toFixed(0)} Hz
+              </span>
             </span>
           )}
           {paused && !menuOpen && (
