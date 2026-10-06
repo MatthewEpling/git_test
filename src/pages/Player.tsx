@@ -15,6 +15,7 @@ import { SettingsDialog, type SettingsTab } from './Settings';
 import { StatesPanel } from './player/StatesPanel';
 import { AchievementsPanel, type AchievementStatus } from './player/AchievementsPanel';
 import { NetplayPanel } from './player/NetplayPanel';
+import { PerformancePanel } from './player/PerformancePanel';
 import { NetplayHost } from '../netplay/host';
 import { parseIceServers } from '../netplay/codec';
 import { defaultSignalUrl } from '../netplay/signaling';
@@ -23,7 +24,7 @@ import { ra, badgeUrl } from '../achievements/ra';
 import { AchievementRunner, findGameByTitle, headerFromRam } from '../achievements/runtime';
 import { titleCase, type LaunchRequest } from './Home';
 
-type Panel = 'menu' | 'states' | 'netplay' | 'achievements' | null;
+type Panel = 'menu' | 'states' | 'netplay' | 'achievements' | 'performance' | null;
 
 interface Props {
   launch: LaunchRequest;
@@ -523,6 +524,15 @@ export function Player({ launch, onExit }: Props) {
     { label: 'All save states…', icon: <Icon.Save />, onClick: () => setPanel('states') },
     { label: 'Online play…', icon: <Icon.Users />, onClick: () => setPanel('netplay') },
     { label: 'Achievements…', icon: <Icon.Trophy />, onClick: () => setPanel('achievements') },
+    {
+      label: 'Performance…',
+      icon: <Icon.Forward />,
+      onClick: () => {
+        // Keep the game running so the numbers stay live.
+        setPanel('performance');
+        togglePause(false);
+      },
+    },
     { label: 'Settings…', icon: <Icon.Settings />, onClick: () => setSettingsTab('video') },
     { label: 'Controls…', icon: <Icon.Gamepad />, onClick: () => setSettingsTab('controls') },
     {
@@ -705,6 +715,10 @@ export function Player({ launch, onExit }: Props) {
             setChatLog((l) => [...l.slice(-50), { from: 'You', text }]);
           }}
         />
+      </Modal>
+
+      <Modal open={panel === 'performance'} onClose={closePanels} title="Performance" variant="sheet">
+        <PerformancePanel stats={stats} />
       </Modal>
 
       <Modal open={panel === 'achievements'} onClose={closePanels} title="Achievements" variant="sheet">

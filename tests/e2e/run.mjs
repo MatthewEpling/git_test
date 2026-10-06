@@ -137,8 +137,12 @@ await check('menu, save state and load state', async () => {
   await page.screenshot({ path: `${shots}/menu.png` });
   await page.getByRole('button', { name: /^Save state \(slot 1\)/ }).click();
   await page.getByText('Saved to slot 1.').waitFor({ timeout: 20000 });
-  await toolbar(page, 'Save states');
+  await page.keyboard.press('Escape');
+  await page.getByRole('navigation', { name: 'Game menu' }).waitFor();
+  await page.getByRole('button', { name: 'All save states…' }).click();
   await page.getByRole('button', { name: 'Load slot 1' }).waitFor();
+  await page.waitForTimeout(500);
+  assert(await page.getByRole('button', { name: 'Load slot 1' }).isVisible(), 'save states panel closed itself after opening from the menu');
   await page.screenshot({ path: `${shots}/states.png` });
   await page.getByRole('button', { name: 'Load slot 1' }).click();
   await page.getByText('Loaded slot 1.').waitFor({ timeout: 20000 });

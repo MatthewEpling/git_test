@@ -79,3 +79,14 @@ describe('frame pacing', () => {
     expect(total / 600).toBeGreaterThan(3.8);
   });
 });
+
+describe('frame pacing under load', () => {
+  it('keeps the real refresh rate when its own frames stretch the intervals', () => {
+    const pacer = new FramePacer(FRAME);
+    for (let i = 0; i < 400; i++) pacer.next(1000 / 180, false, 1, 1);
+    // Overloaded: each callback takes ~18 ms, so refreshes arrive every ~22 ms.
+    for (let i = 0; i < 400; i++) pacer.next(22.2, false, 1, 18);
+    expect(1000 / pacer.refreshMs).toBeGreaterThan(170);
+    expect(pacer.refreshesPerFrame).toBe(3);
+  });
+});

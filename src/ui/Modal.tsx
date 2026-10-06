@@ -17,18 +17,27 @@ interface Props {
 export function Modal({ open, onClose, title, children, variant = 'modal', narrow, header, bodyClass = 'modal-body' }: Props) {
   const ref = useRef<HTMLDialogElement>(null);
   const titleId = useId();
+  // Closing the dialog from code (because `open` became false) also fires the native
+  // close event; only closes the user started (Esc, backdrop, button) should call onClose.
+  const closingFromCode = useRef(false);
   useEffect(() => {
     const d = ref.current;
     if (!d) return;
     if (open && !d.open) d.showModal();
-    if (!open && d.open) d.close();
+    if (!open && d.open) {
+      closingFromCode.current = true;
+      d.close();
+    }
   }, [open]);
   return (
     <dialog
       ref={ref}
       className={`${variant}${narrow ? ' narrow' : ''}`}
       aria-labelledby={titleId}
-      onClose={onClose}
+      onClose={() => {
+        if (closingFromCode.current) closingFromCode.current = false;
+        else onClose();
+      }}
       onCancel={(e) => {
         e.preventDefault();
         onClose();

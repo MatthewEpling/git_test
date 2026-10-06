@@ -44,9 +44,14 @@ export class FramePacer {
     }
   }
 
-  next(dt: number, fastForward = false, fastForwardSpeed = 1): PaceResult {
+  /**
+   * @param dt time since the previous refresh callback
+   * @param busyMs how long the previous callback took; intervals it stretched are not
+   *               used to learn the refresh rate (they measure us, not the display)
+   */
+  next(dt: number, fastForward = false, fastForwardSpeed = 1, busyMs = 0): PaceResult {
     dt = Math.min(dt, 250);
-    this.learn(dt);
+    if (busyMs < dt * 0.5) this.learn(dt);
 
     const ratio = this.refreshMs > 0 ? this.frameMs / this.refreshMs : 0;
     const n = Math.max(1, Math.round(ratio));

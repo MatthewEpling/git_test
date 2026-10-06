@@ -125,6 +125,10 @@ export class FlycastCore {
   libraryVersion = '';
   validExtensions: string[] = [];
   gameLoaded = false;
+  /** When false, the core is asked not to render the next frames (frame skip). */
+  renderVideo = true;
+  /** Whether the core asks GET_AUDIO_VIDEO_ENABLE (i.e. can skip rendering). */
+  avQueried = false;
   /** Unhandled environment commands, for diagnostics. */
   readonly unhandledEnv = new Set<number>();
 
@@ -178,7 +182,9 @@ export class FlycastCore {
       depth: true,
       stencil: true,
       antialias: false,
-      preserveDrawingBuffer: true,
+      // Frames are copied to the display in the same task they're drawn, so the
+      // browser needn't keep the image around (saves a copy per frame on some GPUs).
+      preserveDrawingBuffer: false,
       powerPreference: 'high-performance',
     });
     if (!handle) throw new Error('WebGL2 is not available in this browser.');
@@ -427,7 +433,10 @@ export class FlycastCore {
         return true;
       }
       case ENV.GET_AUDIO_VIDEO_ENABLE:
-        mod.setValue(data, 3, 'i32');
+        // bit 0: render video, bit 1: produce audio. Clearing bit 0 asks the core to skip
+        // drawing this frame (used for frame skipping when emulation runs behind).
+        mod.setValue(data, this.renderVideo ? 3 : 2, 'i32');
+        this.avQueried = true;
         return true;
       case ENV.GET_FASTFORWARDING:
         mod.setValue(data, 0, 'i8');

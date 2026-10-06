@@ -16,7 +16,6 @@ export const CORE_URL = `${import.meta.env.BASE_URL}core/flycast_libretro.js`;
 /** Core options the app always controls (the browser build can't support other values). */
 export const FORCED_OPTIONS: Record<string, string> = {
   reicast_threaded_rendering: 'disabled',
-  reicast_alpha_sorting: 'per-triangle (normal)',
   reicast_emulate_bba: 'disabled',
   reicast_custom_textures: 'disabled',
   reicast_dump_textures: 'disabled',
@@ -108,6 +107,8 @@ export class EmulatorSession {
   /** Audio produced during the current frame; flushed to the worklet once per frame. */
   readonly pendingAudio: Int16Array[] = [];
   private pacer = new FramePacer(1000 / 59.94);
+  /** How long the previous refresh callback took (for the pacer). */
+  private lastBusyMs = 0;
   private lastUnderruns = 0;
   paused = false;
   fastForward = false;
@@ -221,7 +222,8 @@ export class EmulatorSession {
         if (this.presenter.needsRedraw()) this.presenter.draw();
         return;
       }
-      const pace = this.pacer.next(dt, this.fastForward, this.fastForwardSpeed);
+      const busyStart = performance.now();
+      const pace = this.pacer.next(dt, this.fastForward, this.fastForwardSpeed, this.lastBusyMs);
       const toRun = pace.frames;
       if (pace.late) this.statsAcc.late++;
 
@@ -236,6 +238,7 @@ export class EmulatorSession {
       this.statsAcc.presents++;
       if (toRun) for (const h of this.presentHooks) h();
       this.reportStats(toRun, now);
+      this.lastBusyMs = performance.now() - busyStart;
     };
     this.raf = requestAnimationFrame(tick);
   }
