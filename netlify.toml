@@ -1,5 +1,7 @@
-# Netlify deploy previews for this PR. Netlify runs Next.js through its built-in
-# Next.js runtime; Vercel (see README) ignores this file.
+# Netlify deploy previews for this PR. The Next.js plugin runs the app through
+# Netlify's Next.js runtime (server-rendered pages and the /api routes); without
+# it Netlify would serve .next as static files and every page would 404.
+# Vercel (see README) ignores this file.
 [build]
   command = "npm run build"
   publish = ".next"
@@ -7,3 +9,6 @@
 [build.environment]
   NODE_VERSION = "22"
   NEXT_TELEMETRY_DISABLED = "1"
+
+[[plugins]]
+  package = "@netlify/plugin-nextjs"
