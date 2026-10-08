@@ -1,0 +1,29 @@
+{
+  "_notes": "Short Ironman training suggestions used when the guide inserts a 'Train X' step. Each entry applies from its level until the next entry. Keep these generic; link out to the wiki for detail.",
+  "methods": {
+    "Attack": [[1, "Waterfall Quest XP, then sand crabs / ammonite crabs"], [60, "Slayer tasks"]],
+    "Strength": [[1, "Waterfall Quest XP, then sand crabs / ammonite crabs"], [60, "Slayer tasks"]],
+    "Defence": [[1, "Crabs on defensive style"], [60, "Slayer tasks"]],
+    "Hitpoints": [[1, "Trains with combat — no separate grind"]],
+    "Ranged": [[1, "Crabs with the best arrows/darts you can make"], [50, "Chinchompas or Slayer tasks"]],
+    "Magic": [[1, "Strike/bolt spells on crabs; splashing for AFK"], [55, "High alchemy and Slayer bursting"]],
+    "Prayer": [[1, "Bury bones from Slayer; Ectofuntus with dragon bones"], [43, "Wyrm/dragon bones at the Ectofuntus or a gilded altar"]],
+    "Runecraft": [[1, "Lumbridge/Varrock altars, then the Guardians of the Rift minigame"], [27, "Guardians of the Rift"]],
+    "Construction": [[1, "Crates and chairs from planks; Mahogany Homes"], [33, "Mahogany Homes contracts"]],
+    "Agility": [[1, "Rooftop courses (Draynor → Al Kharid → Varrock)"], [30, "Canifis rooftop"], [60, "Seers' Village rooftop"], [70, "Pollnivneach → Rellekka"]],
+    "Herblore": [[1, "Potions from farmed herbs and Slayer drops; Miscellania herbs"], [38, "Prayer potions"], [63, "Super restores"]],
+    "Thieving": [[1, "Men → cake stalls"], [25, "Fruit stalls in Hosidius"], [45, "Blackjacking or Ardougne knights (55)"]],
+    "Crafting": [[1, "Leather, then glassblowing with self-made molten glass"], [54, "Battlestaves from the Varrock diary shop"]],
+    "Fletching": [[1, "Arrow shafts, then unstrung bows from your own logs"], [52, "Darts from Smithing/Slayer bars"]],
+    "Slayer": [[1, "Turael/Spria → Vannaka → Konar/Nieve"], [70, "Duradel / Nieve with ancients for burst tasks"]],
+    "Hunter": [[1, "Birdhouse runs plus bird snares"], [21, "Red crabs (Sailing 1, Construction 10)"], [39, "Birdhouses + salamanders"], [63, "Red chinchompas or herbiboar"]],
+    "Mining": [[1, "Copper/tin → iron in the Mining Guild"], [30, "Motherlode Mine for AFK XP"], [72, "Volcanic Mine or Motherlode"]],
+    "Smithing": [[1, "Quest XP (Knight's Sword) then smithing your own bars"], [40, "Giants' Foundry"], [65, "Giants' Foundry or Blast Furnace"]],
+    "Fishing": [[1, "Shrimp → trout/salmon at Barbarian Village"], [48, "Barbarian fishing (Agility/Strength XP too)"], [65, "Karambwans or Tempoross"]],
+    "Cooking": [[1, "Cook everything you fish and the Wintertodt/Tempoross catches"], [30, "Karambwans once unlocked"]],
+    "Firemaking": [[1, "Burn logs from Woodcutting"], [50, "Wintertodt (supplies and seeds)"]],
+    "Woodcutting": [[1, "Trees → oaks → willows"], [35, "Teaks (Fossil Island or Ape Atoll)"], [66, "Camphor (needs Sailing 45)"]],
+    "Farming": [[1, "Tree and fruit tree runs; herb runs from Farming 9"], [34, "Tithe Farm for the herb sack and seed box"]],
+    "Sailing": [[1, "Courier tasks and sea charting"], [15, "Salvaging with a skiff"], [30, "Barracuda Trials (fastest XP)"]]
+  }
+}

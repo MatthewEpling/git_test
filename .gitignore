@@ -1,8 +1,7 @@
 node_modules
-dist
-public/core
-public/core-native
-*.log
-.DS_Store
-test-results
-.core-build
+.next
+out
+.env*.local
+.env
+*.tsbuildinfo
+.vercel

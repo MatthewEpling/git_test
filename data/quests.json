@@ -1,0 +1,2541 @@
+{
+ "_source": "Generated from the Old School RuneScape Wiki (CC BY-NC-SA 3.0) by scripts/fetch-wiki.mjs",
+ "_generated": "2026-10-08",
+ "quests": {
+  "The Ides of Milk": {
+   "qp": 1,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Learning the Ropes": {
+   "qp": 1,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Below Ice Mountain": {
+   "qp": 1,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": 16
+  },
+  "X Marks the Spot": {
+   "qp": 1,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "The Corsair Curse": {
+   "qp": 2,
+   "members": false,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Misthalin Mystery": {
+   "qp": 1,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Rune Mysteries": {
+   "qp": 1,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Dragon Slayer I": {
+   "qp": 2,
+   "members": false,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [],
+   "skills": {},
+   "qpReq": 32
+  },
+  "Pirate's Treasure": {
+   "qp": 2,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Goblin Diplomacy": {
+   "qp": 5,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "The Knight's Sword": {
+   "qp": 1,
+   "members": false,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Mining": 10
+   },
+   "qpReq": null
+  },
+  "Witch's Potion": {
+   "qp": 1,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Black Knights' Fortress": {
+   "qp": 3,
+   "members": false,
+   "difficulty": "Intermediate",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": 12
+  },
+  "Doric's Quest": {
+   "qp": 1,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Prince Ali Rescue": {
+   "qp": 3,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Imp Catcher": {
+   "qp": 1,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Vampyre Slayer": {
+   "qp": 3,
+   "members": false,
+   "difficulty": "Intermediate",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Ernest the Chicken": {
+   "qp": 4,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "The Restless Ghost": {
+   "qp": 1,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Sheep Shearer": {
+   "qp": 1,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Shield of Arrav": {
+   "qp": 1,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Demon Slayer": {
+   "qp": 3,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Romeo & Juliet": {
+   "qp": 5,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Cook's Assistant": {
+   "qp": 1,
+   "members": false,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Druidic Ritual": {
+   "qp": 4,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Lost City": {
+   "qp": 3,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Crafting": 31,
+    "Woodcutting": 36
+   },
+   "qpReq": null
+  },
+  "Witch's House": {
+   "qp": 4,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Merlin's Crystal": {
+   "qp": 6,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Heroes' Quest": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [
+    "Shield of Arrav",
+    "Lost City",
+    "Merlin's Crystal",
+    "Dragon Slayer I"
+   ],
+   "skills": {
+    "Cooking": 53,
+    "Fishing": 53,
+    "Herblore": 25,
+    "Mining": 50
+   },
+   "qpReq": 55
+  },
+  "Scorpion Catcher": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Prayer": 31
+   },
+   "qpReq": null
+  },
+  "Family Crest": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [],
+   "skills": {
+    "Mining": 40,
+    "Smithing": 40,
+    "Magic": 59,
+    "Crafting": 40
+   },
+   "qpReq": null
+  },
+  "Fishing Contest": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {
+    "Fishing": 10
+   },
+   "qpReq": null
+  },
+  "Tribal Totem": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {
+    "Thieving": 21
+   },
+   "qpReq": null
+  },
+  "Monk's Friend": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Temple of Ikov": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [],
+   "skills": {
+    "Thieving": 42,
+    "Ranged": 40
+   },
+   "qpReq": null
+  },
+  "Clock Tower": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Holy Grail": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "Merlin's Crystal"
+   ],
+   "skills": {
+    "Attack": 20
+   },
+   "qpReq": null
+  },
+  "Tree Gnome Village": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Fight Arena": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Hazeel Cult": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Sheep Herder": {
+   "qp": 4,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Plague City": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Sea Slug": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Firemaking": 30
+   },
+   "qpReq": null
+  },
+  "Waterfall Quest": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Jungle Potion": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Herblore": 3
+   },
+   "qpReq": null
+  },
+  "The Grand Tree": {
+   "qp": 5,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [],
+   "skills": {
+    "Agility": 25
+   },
+   "qpReq": null
+  },
+  "Underground Pass": {
+   "qp": 5,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Long",
+   "quests": [
+    "Biohazard"
+   ],
+   "skills": {
+    "Ranged": 25
+   },
+   "qpReq": null
+  },
+  "Observatory Quest": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "The Tourist Trap": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [],
+   "skills": {
+    "Fletching": 10,
+    "Smithing": 20
+   },
+   "qpReq": null
+  },
+  "Watchtower": {
+   "qp": 4,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [],
+   "skills": {
+    "Magic": 14,
+    "Thieving": 15,
+    "Agility": 25,
+    "Herblore": 14,
+    "Mining": 40
+   },
+   "qpReq": null
+  },
+  "Dwarf Cannon": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Murder Mystery": {
+   "qp": 3,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "The Dig Site": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [],
+   "skills": {
+    "Agility": 10,
+    "Herblore": 10,
+    "Thieving": 25
+   },
+   "qpReq": null
+  },
+  "Gertrude's Cat": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Legends' Quest": {
+   "qp": 4,
+   "members": true,
+   "difficulty": "Master",
+   "length": "Long",
+   "quests": [
+    "Family Crest",
+    "Heroes' Quest",
+    "Shilo Village",
+    "Underground Pass",
+    "Waterfall Quest"
+   ],
+   "skills": {
+    "Agility": 50,
+    "Crafting": 50,
+    "Herblore": 45,
+    "Magic": 56,
+    "Mining": 52,
+    "Prayer": 42,
+    "Smithing": 50,
+    "Strength": 50,
+    "Thieving": 50,
+    "Woodcutting": 50
+   },
+   "qpReq": 107
+  },
+  "Death Plateau": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Eadgar's Ruse": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [
+    "Druidic Ritual",
+    "Troll Stronghold"
+   ],
+   "skills": {
+    "Herblore": 31
+   },
+   "qpReq": null
+  },
+  "Big Chompy Bird Hunting": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Fletching": 5,
+    "Cooking": 30,
+    "Ranged": 30
+   },
+   "qpReq": null
+  },
+  "Elemental Workshop I": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {
+    "Mining": 20,
+    "Smithing": 20,
+    "Crafting": 20
+   },
+   "qpReq": null
+  },
+  "Nature Spirit": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Priest in Peril": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Regicide": {
+   "qp": 3,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Long",
+   "quests": [
+    "Underground Pass"
+   ],
+   "skills": {
+    "Crafting": 10,
+    "Agility": 56
+   },
+   "qpReq": null
+  },
+  "Tai Bwo Wannai Trio": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [
+    "Jungle Potion"
+   ],
+   "skills": {
+    "Agility": 15,
+    "Cooking": 30,
+    "Fishing": 5
+   },
+   "qpReq": null
+  },
+  "Troll Stronghold": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Agility": 15
+   },
+   "qpReq": null
+  },
+  "Shades of Mort'ton": {
+   "qp": 3,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "Priest in Peril"
+   ],
+   "skills": {
+    "Crafting": 20,
+    "Herblore": 15,
+    "Firemaking": 5
+   },
+   "qpReq": null
+  },
+  "The Fremennik Trials": {
+   "qp": 3,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Horror from the Deep": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Agility": 35
+   },
+   "qpReq": null
+  },
+  "Throne of Miscellania": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [
+    "Heroes' Quest",
+    "The Fremennik Trials"
+   ],
+   "skills": {},
+   "qpReq": null
+  },
+  "Monkey Madness I": {
+   "qp": 3,
+   "members": true,
+   "difficulty": "Master",
+   "length": "Long",
+   "quests": [
+    "The Grand Tree",
+    "Tree Gnome Village"
+   ],
+   "skills": {},
+   "qpReq": null
+  },
+  "Haunted Mine": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Short",
+   "quests": [
+    "Priest in Peril"
+   ],
+   "skills": {
+    "Crafting": 35
+   },
+   "qpReq": null
+  },
+  "Troll Romance": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "Troll Stronghold"
+   ],
+   "skills": {
+    "Agility": 28
+   },
+   "qpReq": null
+  },
+  "In Search of the Myreque": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "Nature Spirit"
+   ],
+   "skills": {
+    "Agility": 25
+   },
+   "qpReq": null
+  },
+  "Creature of Fenkenstrain": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [],
+   "skills": {
+    "Crafting": 20,
+    "Thieving": 25
+   },
+   "qpReq": null
+  },
+  "Roving Elves": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Short",
+   "quests": [
+    "Regicide",
+    "Waterfall Quest"
+   ],
+   "skills": {
+    "Agility": 56
+   },
+   "qpReq": null
+  },
+  "Ghosts Ahoy": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [],
+   "skills": {
+    "Agility": 25,
+    "Cooking": 20
+   },
+   "qpReq": null
+  },
+  "One Small Favour": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Long",
+   "quests": [
+    "Rune Mysteries",
+    "Shilo Village"
+   ],
+   "skills": {
+    "Agility": 36,
+    "Crafting": 25,
+    "Herblore": 18,
+    "Smithing": 30
+   },
+   "qpReq": null
+  },
+  "Mountain Daughter": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [],
+   "skills": {
+    "Agility": 20
+   },
+   "qpReq": null
+  },
+  "Between a Rock...": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [
+    "Dwarf Cannon",
+    "Fishing Contest"
+   ],
+   "skills": {
+    "Defence": 30,
+    "Mining": 40,
+    "Smithing": 50
+   },
+   "qpReq": null
+  },
+  "The Feud": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [],
+   "skills": {
+    "Thieving": 30
+   },
+   "qpReq": null
+  },
+  "The Golem": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Crafting": 20,
+    "Thieving": 25
+   },
+   "qpReq": null
+  },
+  "Desert Treasure I": {
+   "qp": 3,
+   "members": true,
+   "difficulty": "Master",
+   "length": "Long",
+   "quests": [
+    "The Dig Site",
+    "Temple of Ikov",
+    "The Tourist Trap",
+    "Troll Stronghold",
+    "Priest in Peril",
+    "Waterfall Quest"
+   ],
+   "skills": {
+    "Thieving": 53,
+    "Magic": 50,
+    "Firemaking": 50,
+    "Slayer": 10
+   },
+   "qpReq": null
+  },
+  "Icthlarin's Little Helper": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Tears of Guthix": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {
+    "Firemaking": 49,
+    "Crafting": 20,
+    "Mining": 20
+   },
+   "qpReq": 43
+  },
+  "The Lost Tribe": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "Goblin Diplomacy",
+    "Rune Mysteries"
+   ],
+   "skills": {
+    "Agility": 13,
+    "Thieving": 13,
+    "Mining": 17
+   },
+   "qpReq": null
+  },
+  "The Giant Dwarf": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [],
+   "skills": {
+    "Crafting": 12,
+    "Firemaking": 16,
+    "Magic": 33,
+    "Thieving": 14
+   },
+   "qpReq": null
+  },
+  "Recruitment Drive": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [
+    "Black Knights' Fortress",
+    "Druidic Ritual"
+   ],
+   "skills": {},
+   "qpReq": null
+  },
+  "Mourning's End Part I": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Master",
+   "length": "Medium",
+   "quests": [
+    "Roving Elves",
+    "Big Chompy Bird Hunting",
+    "Sheep Herder"
+   ],
+   "skills": {
+    "Ranged": 60,
+    "Thieving": 50
+   },
+   "qpReq": null
+  },
+  "Forgettable Tale...": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Long",
+   "quests": [
+    "The Giant Dwarf",
+    "Fishing Contest"
+   ],
+   "skills": {
+    "Cooking": 22,
+    "Farming": 17
+   },
+   "qpReq": null
+  },
+  "Garden of Tranquillity": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Long",
+   "quests": [
+    "Creature of Fenkenstrain"
+   ],
+   "skills": {
+    "Farming": 25
+   },
+   "qpReq": null
+  },
+  "A Tail of Two Cats": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [
+    "Icthlarin's Little Helper"
+   ],
+   "skills": {},
+   "qpReq": null
+  },
+  "Wanted!": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [
+    "Recruitment Drive",
+    "The Lost Tribe",
+    "Priest in Peril",
+    "Enter the Abyss"
+   ],
+   "skills": {},
+   "qpReq": 32
+  },
+  "Mourning's End Part II": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Master",
+   "length": "Long",
+   "quests": [
+    "Mourning's End Part I"
+   ],
+   "skills": {},
+   "qpReq": null
+  },
+  "Rum Deal": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [
+    "Zogre Flesh Eaters",
+    "Priest in Peril"
+   ],
+   "skills": {
+    "Crafting": 42,
+    "Farming": 40,
+    "Prayer": 47,
+    "Slayer": 42,
+    "Fishing": 50
+   },
+   "qpReq": null
+  },
+  "Shadow of the Storm": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [
+    "The Golem",
+    "Demon Slayer"
+   ],
+   "skills": {
+    "Crafting": 30
+   },
+   "qpReq": null
+  },
+  "Making History": {
+   "qp": 3,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "Priest in Peril",
+    "The Restless Ghost"
+   ],
+   "skills": {},
+   "qpReq": null
+  },
+  "Ratcatchers": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [
+    "Icthlarin's Little Helper",
+    "The Giant Dwarf"
+   ],
+   "skills": {},
+   "qpReq": null
+  },
+  "Spirits of the Elid": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Magic": 33,
+    "Ranged": 37,
+    "Mining": 37,
+    "Thieving": 37
+   },
+   "qpReq": null
+  },
+  "Devious Minds": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Short",
+   "quests": [
+    "Wanted!",
+    "Troll Stronghold",
+    "Doric's Quest"
+   ],
+   "skills": {
+    "Smithing": 65,
+    "Runecraft": 50,
+    "Fletching": 50
+   },
+   "qpReq": null
+  },
+  "The Hand in the Sand": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Thieving": 17,
+    "Crafting": 49
+   },
+   "qpReq": null
+  },
+  "Enakhra's Lament": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [],
+   "skills": {
+    "Crafting": 50,
+    "Firemaking": 45,
+    "Prayer": 43,
+    "Magic": 39
+   },
+   "qpReq": null
+  },
+  "Cabin Fever": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Short",
+   "quests": [
+    "Pirate's Treasure",
+    "Rum Deal"
+   ],
+   "skills": {
+    "Agility": 42,
+    "Crafting": 45,
+    "Smithing": 50,
+    "Ranged": 40
+   },
+   "qpReq": null
+  },
+  "Fairytale I - Growing Pains": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [
+    "Lost City",
+    "Nature Spirit"
+   ],
+   "skills": {},
+   "qpReq": null
+  },
+  "Recipe for Disaster": {
+   "qp": 10,
+   "members": true,
+   "difficulty": "Special",
+   "length": "Very Long",
+   "quests": [
+    "Fishing Contest",
+    "Goblin Diplomacy",
+    "Big Chompy Bird Hunting",
+    "Murder Mystery",
+    "Nature Spirit",
+    "Witch's House",
+    "Gertrude's Cat",
+    "Shadow of the Storm",
+    "Legends' Quest",
+    "Monkey Madness I",
+    "Desert Treasure I",
+    "Horror from the Deep"
+   ],
+   "skills": {
+    "Cooking": 70,
+    "Agility": 48,
+    "Mining": 50,
+    "Fishing": 53,
+    "Thieving": 53,
+    "Herblore": 25,
+    "Magic": 59,
+    "Smithing": 40,
+    "Firemaking": 50,
+    "Ranged": 40,
+    "Crafting": 40,
+    "Fletching": 10,
+    "Woodcutting": 36
+   },
+   "qpReq": 175
+  },
+  "In Aid of the Myreque": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [
+    "In Search of the Myreque"
+   ],
+   "skills": {
+    "Agility": 25,
+    "Crafting": 25,
+    "Mining": 15,
+    "Magic": 7
+   },
+   "qpReq": null
+  },
+  "A Soul's Bane": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Rag and Bone Man I": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Swan Song": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Master",
+   "length": "Medium",
+   "quests": [
+    "One Small Favour",
+    "Garden of Tranquillity"
+   ],
+   "skills": {
+    "Magic": 66,
+    "Cooking": 62,
+    "Fishing": 62,
+    "Smithing": 45,
+    "Firemaking": 42,
+    "Crafting": 40
+   },
+   "qpReq": 100
+  },
+  "Royal Trouble": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [
+    "Throne of Miscellania"
+   ],
+   "skills": {
+    "Agility": 40,
+    "Slayer": 40
+   },
+   "qpReq": null
+  },
+  "Death to the Dorgeshuun": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [
+    "The Lost Tribe"
+   ],
+   "skills": {
+    "Agility": 23,
+    "Thieving": 23
+   },
+   "qpReq": null
+  },
+  "Fairytale II - Cure a Queen": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [
+    "Fairytale I - Growing Pains"
+   ],
+   "skills": {
+    "Thieving": 40,
+    "Farming": 49,
+    "Herblore": 57
+   },
+   "qpReq": null
+  },
+  "Lunar Diplomacy": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Long",
+   "quests": [
+    "The Fremennik Trials",
+    "Lost City",
+    "Rune Mysteries",
+    "Shilo Village"
+   ],
+   "skills": {
+    "Herblore": 5,
+    "Crafting": 61,
+    "Defence": 40,
+    "Firemaking": 49,
+    "Magic": 65,
+    "Mining": 60,
+    "Woodcutting": 55
+   },
+   "qpReq": null
+  },
+  "The Eyes of Glouphrie": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [],
+   "skills": {
+    "Construction": 5,
+    "Magic": 46
+   },
+   "qpReq": null
+  },
+  "Darkness of Hallowvale": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Long",
+   "quests": [
+    "In Aid of the Myreque"
+   ],
+   "skills": {
+    "Construction": 5,
+    "Mining": 20,
+    "Thieving": 22,
+    "Agility": 26,
+    "Crafting": 32,
+    "Magic": 33,
+    "Strength": 40
+   },
+   "qpReq": null
+  },
+  "The Slug Menace": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [
+    "Wanted!",
+    "Sea Slug"
+   ],
+   "skills": {
+    "Crafting": 30,
+    "Runecraft": 30,
+    "Slayer": 30,
+    "Thieving": 30
+   },
+   "qpReq": null
+  },
+  "Elemental Workshop II": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Magic": 20,
+    "Smithing": 30
+   },
+   "qpReq": null
+  },
+  "My Arm's Big Adventure": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [
+    "Eadgar's Ruse",
+    "The Feud",
+    "Jungle Potion"
+   ],
+   "skills": {
+    "Farming": 29,
+    "Woodcutting": 10
+   },
+   "qpReq": null
+  },
+  "Enlightened Journey": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Firemaking": 20,
+    "Farming": 30,
+    "Crafting": 36
+   },
+   "qpReq": 20
+  },
+  "Eagles' Peak": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Hunter": 27
+   },
+   "qpReq": null
+  },
+  "Animal Magnetism": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [
+    "The Restless Ghost",
+    "Ernest the Chicken",
+    "Priest in Peril"
+   ],
+   "skills": {
+    "Slayer": 18,
+    "Crafting": 19,
+    "Ranged": 30,
+    "Woodcutting": 35
+   },
+   "qpReq": null
+  },
+  "Contact!": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Short",
+   "quests": [
+    "Prince Ali Rescue",
+    "Icthlarin's Little Helper"
+   ],
+   "skills": {},
+   "qpReq": null
+  },
+  "Cold War": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [],
+   "skills": {
+    "Hunter": 10,
+    "Agility": 30,
+    "Crafting": 30,
+    "Construction": 34,
+    "Thieving": 15
+   },
+   "qpReq": null
+  },
+  "The Fremennik Isles": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [],
+   "skills": {
+    "Construction": 20
+   },
+   "qpReq": null
+  },
+  "The Great Brain Robbery": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [
+    "Creature of Fenkenstrain",
+    "Cabin Fever",
+    "Recipe for Disaster/Freeing Pirate Pete"
+   ],
+   "skills": {
+    "Crafting": 16,
+    "Construction": 30,
+    "Prayer": 50
+   },
+   "qpReq": null
+  },
+  "What Lies Below": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "Rune Mysteries"
+   ],
+   "skills": {
+    "Runecraft": 35
+   },
+   "qpReq": null
+  },
+  "Olaf's Quest": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Firemaking": 40,
+    "Woodcutting": 50
+   },
+   "qpReq": null
+  },
+  "Another Slice of H.A.M.": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "Death to the Dorgeshuun",
+    "The Giant Dwarf",
+    "The Dig Site"
+   ],
+   "skills": {
+    "Attack": 15,
+    "Prayer": 25
+   },
+   "qpReq": null
+  },
+  "Dream Mentor": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Master",
+   "length": "Medium",
+   "quests": [
+    "Lunar Diplomacy",
+    "Eadgar's Ruse"
+   ],
+   "skills": {
+    "Combat": 85
+   },
+   "qpReq": null
+  },
+  "Grim Tales": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Master",
+   "length": "Medium",
+   "quests": [
+    "Witch's House"
+   ],
+   "skills": {
+    "Farming": 45,
+    "Herblore": 52,
+    "Thieving": 58,
+    "Agility": 59,
+    "Woodcutting": 71
+   },
+   "qpReq": null
+  },
+  "King's Ransom": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [
+    "Black Knights' Fortress",
+    "Holy Grail",
+    "Murder Mystery",
+    "One Small Favour"
+   ],
+   "skills": {
+    "Magic": 45,
+    "Defence": 65
+   },
+   "qpReq": null
+  },
+  "Shilo Village": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [
+    "Jungle Potion"
+   ],
+   "skills": {
+    "Crafting": 20,
+    "Agility": 32
+   },
+   "qpReq": null
+  },
+  "Biohazard": {
+   "qp": 3,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Tower of Life": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Medium",
+   "quests": [],
+   "skills": {
+    "Construction": 10
+   },
+   "qpReq": null
+  },
+  "Rag and Bone Man II": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [],
+   "skills": {
+    "Slayer": 40,
+    "Defence": 20
+   },
+   "qpReq": null
+  },
+  "Land of the Goblins": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [
+    "Another Slice of H.A.M.",
+    "Fishing Contest"
+   ],
+   "skills": {
+    "Agility": 38,
+    "Fishing": 40,
+    "Thieving": 45,
+    "Herblore": 48
+   },
+   "qpReq": null
+  },
+  "While Guthix Sleeps": {
+   "qp": 5,
+   "members": true,
+   "difficulty": "Grandmaster",
+   "length": "Very Long",
+   "quests": [
+    "Defender of Varrock",
+    "The Path of Glouphrie",
+    "Fight Arena",
+    "Dream Mentor",
+    "The Hand in the Sand",
+    "Wanted!",
+    "Temple of the Eye",
+    "Tears of Guthix",
+    "Nature Spirit",
+    "A Tail of Two Cats"
+   ],
+   "skills": {
+    "Thieving": 72,
+    "Magic": 67,
+    "Agility": 66,
+    "Farming": 65,
+    "Herblore": 65,
+    "Hunter": 62,
+    "Firemaking": 49,
+    "Attack": 99,
+    "Strength": 99
+   },
+   "qpReq": 180
+  },
+  "Zogre Flesh Eaters": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "Big Chompy Bird Hunting",
+    "Jungle Potion"
+   ],
+   "skills": {
+    "Smithing": 4,
+    "Herblore": 8,
+    "Ranged": 30
+   },
+   "qpReq": null
+  },
+  "Monkey Madness II": {
+   "qp": 4,
+   "members": true,
+   "difficulty": "Grandmaster",
+   "length": "Very Long",
+   "quests": [
+    "Enlightened Journey",
+    "The Eyes of Glouphrie",
+    "Recipe for Disaster/Freeing_King_Awowogei",
+    "Troll Stronghold",
+    "Watchtower"
+   ],
+   "skills": {
+    "Slayer": 69,
+    "Crafting": 70,
+    "Hunter": 60,
+    "Agility": 55,
+    "Thieving": 55,
+    "Firemaking": 60
+   },
+   "qpReq": null
+  },
+  "Client of Kourend": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [
+    "X Marks the Spot"
+   ],
+   "skills": {},
+   "qpReq": null
+  },
+  "The Queen of Thieves": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Very Short",
+   "quests": [
+    "Client of Kourend"
+   ],
+   "skills": {
+    "Thieving": 20
+   },
+   "qpReq": null
+  },
+  "Bone Voyage": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "The Dig Site"
+   ],
+   "skills": {},
+   "qpReq": null
+  },
+  "Dragon Slayer II": {
+   "qp": 5,
+   "members": true,
+   "difficulty": "Grandmaster",
+   "length": "Very Long",
+   "quests": [
+    "Legends' Quest",
+    "Dream Mentor",
+    "A Tail of Two Cats",
+    "Animal Magnetism",
+    "Ghosts Ahoy",
+    "Bone Voyage",
+    "Client of Kourend"
+   ],
+   "skills": {
+    "Magic": 75,
+    "Smithing": 70,
+    "Mining": 68,
+    "Crafting": 62,
+    "Agility": 60,
+    "Thieving": 60,
+    "Construction": 50,
+    "Hitpoints": 50
+   },
+   "qpReq": 200
+  },
+  "The Depths of Despair": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "Client of Kourend"
+   ],
+   "skills": {
+    "Agility": 18
+   },
+   "qpReq": null
+  },
+  "Recipe for Disaster/Another Cook's Quest": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Special",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Recipe for Disaster/Freeing the Goblin generals": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Special",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Recipe for Disaster/Freeing the Mountain Dwarf": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Special",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Recipe for Disaster/Freeing Evil Dave": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Special",
+   "length": "Medium",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Recipe for Disaster/Freeing Pirate Pete": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Special",
+   "length": "Medium",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Recipe for Disaster/Freeing the Lumbridge Guide": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Special",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Recipe for Disaster/Freeing Sir Amik Varze": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Special",
+   "length": "Medium",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Recipe for Disaster/Freeing King Awowogei": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Special",
+   "length": "Long",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Recipe for Disaster/Freeing Skrach Uglogwee": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Special",
+   "length": "Medium",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "A Taste of Hope": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [
+    "Darkness of Hallowvale"
+   ],
+   "skills": {
+    "Crafting": 48,
+    "Agility": 45,
+    "Attack": 40,
+    "Herblore": 40,
+    "Slayer": 38
+   },
+   "qpReq": null
+  },
+  "Tale of the Righteous": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "Client of Kourend"
+   ],
+   "skills": {
+    "Strength": 16,
+    "Mining": 10
+   },
+   "qpReq": null
+  },
+  "Making Friends with My Arm": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Master",
+   "length": "Medium",
+   "quests": [
+    "My Arm's Big Adventure",
+    "Swan Song",
+    "Cold War",
+    "Romeo & Juliet"
+   ],
+   "skills": {
+    "Firemaking": 66,
+    "Mining": 72,
+    "Construction": 35,
+    "Agility": 68
+   },
+   "qpReq": null
+  },
+  "Recipe for Disaster/Defeating the Culinaromancer": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Special",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Song of the Elves": {
+   "qp": 4,
+   "members": true,
+   "difficulty": "Grandmaster",
+   "length": "Very Long",
+   "quests": [
+    "Mourning's End Part II",
+    "Making History",
+    "Druidic Ritual"
+   ],
+   "skills": {
+    "Agility": 70,
+    "Construction": 70,
+    "Farming": 70,
+    "Herblore": 70,
+    "Hunter": 70,
+    "Mining": 70,
+    "Smithing": 70,
+    "Woodcutting": 70
+   },
+   "qpReq": null
+  },
+  "The Ascent of Arceuus": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "Client of Kourend"
+   ],
+   "skills": {
+    "Hunter": 12
+   },
+   "qpReq": null
+  },
+  "The Forsaken Tower": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "Client of Kourend"
+   ],
+   "skills": {},
+   "qpReq": null
+  },
+  "The Fremennik Exiles": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Master",
+   "length": "Medium",
+   "quests": [
+    "The Fremennik Isles",
+    "Lunar Diplomacy",
+    "Mountain Daughter",
+    "Heroes' Quest"
+   ],
+   "skills": {
+    "Crafting": 65,
+    "Slayer": 60,
+    "Smithing": 60,
+    "Fishing": 60,
+    "Runecraft": 55,
+    "Mining": 60
+   },
+   "qpReq": null
+  },
+  "The Curse of Arrav": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Master",
+   "length": "Medium",
+   "quests": [
+    "Defender of Varrock",
+    "Troll Romance"
+   ],
+   "skills": {
+    "Mining": 64,
+    "Ranged": 62,
+    "Thieving": 62,
+    "Agility": 61,
+    "Strength": 58,
+    "Slayer": 37
+   },
+   "qpReq": null
+  },
+  "Defender of Varrock": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [
+    "Shield of Arrav",
+    "Temple of Ikov",
+    "Below Ice Mountain",
+    "Family Crest",
+    "Garden of Tranquillity",
+    "What Lies Below",
+    "Romeo & Juliet",
+    "Demon Slayer"
+   ],
+   "skills": {
+    "Smithing": 55,
+    "Hunter": 52
+   },
+   "qpReq": null
+  },
+  "Sins of the Father": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Master",
+   "length": "Long",
+   "quests": [
+    "Vampyre Slayer",
+    "A Taste of Hope"
+   ],
+   "skills": {
+    "Woodcutting": 62,
+    "Fletching": 60,
+    "Crafting": 56,
+    "Agility": 52,
+    "Attack": 50,
+    "Slayer": 50,
+    "Magic": 49
+   },
+   "qpReq": null
+  },
+  "A Kingdom Divided": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Long",
+   "quests": [
+    "The Depths of Despair",
+    "The Queen of Thieves",
+    "The Ascent of Arceuus",
+    "The Forsaken Tower",
+    "Tale of the Righteous"
+   ],
+   "skills": {
+    "Agility": 54,
+    "Thieving": 52,
+    "Woodcutting": 52,
+    "Herblore": 50,
+    "Mining": 42,
+    "Crafting": 38,
+    "Magic": 35
+   },
+   "qpReq": null
+  },
+  "A Porcine of Interest": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Getting Ahead": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Crafting": 30,
+    "Construction": 26
+   },
+   "qpReq": null
+  },
+  "A Night at the Theatre": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Master",
+   "length": "Medium",
+   "quests": [
+    "A Taste of Hope"
+   ],
+   "skills": {},
+   "qpReq": null
+  },
+  "Beneath Cursed Sands": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Master",
+   "length": "Medium",
+   "quests": [
+    "Contact!"
+   ],
+   "skills": {
+    "Agility": 62,
+    "Crafting": 55,
+    "Firemaking": 55
+   },
+   "qpReq": null
+  },
+  "Temple of the Eye": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "Enter the Abyss"
+   ],
+   "skills": {
+    "Runecraft": 10
+   },
+   "qpReq": null
+  },
+  "The Path of Glouphrie": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [
+    "The Eyes of Glouphrie",
+    "Waterfall Quest",
+    "Tree Gnome Village"
+   ],
+   "skills": {
+    "Strength": 60,
+    "Slayer": 56,
+    "Thieving": 56,
+    "Ranged": 47,
+    "Agility": 45
+   },
+   "qpReq": null
+  },
+  "Sleeping Giants": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {
+    "Smithing": 15
+   },
+   "qpReq": null
+  },
+  "The Garden of Death": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Farming": 20
+   },
+   "qpReq": null
+  },
+  "Desert Treasure II - The Fallen Empire": {
+   "qp": 5,
+   "members": true,
+   "difficulty": "Grandmaster",
+   "length": "Very Long",
+   "quests": [
+    "Desert Treasure I",
+    "Secrets of the North",
+    "Enakhra's Lament",
+    "Temple of the Eye",
+    "The Garden of Death",
+    "Below Ice Mountain",
+    "His Faithful Servants"
+   ],
+   "skills": {
+    "Firemaking": 75,
+    "Magic": 75,
+    "Thieving": 70,
+    "Herblore": 62,
+    "Runecraft": 60,
+    "Construction": 60
+   },
+   "qpReq": null
+  },
+  "Secrets of the North": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Master",
+   "length": "Medium",
+   "quests": [
+    "Making Friends with My Arm",
+    "The General's Shadow",
+    "Devious Minds",
+    "Hazeel Cult"
+   ],
+   "skills": {
+    "Agility": 69,
+    "Thieving": 64,
+    "Hunter": 56
+   },
+   "qpReq": null
+  },
+  "Children of the Sun": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Perilous Moons": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Master",
+   "length": "Medium",
+   "quests": [
+    "Twilight's Promise"
+   ],
+   "skills": {
+    "Slayer": 48,
+    "Hunter": 20,
+    "Fishing": 20,
+    "Runecraft": 20,
+    "Construction": 10
+   },
+   "qpReq": null
+  },
+  "The Ribbiting Tale of a Lily Pad Labour Dispute": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Very Short",
+   "quests": [
+    "Children of the Sun"
+   ],
+   "skills": {
+    "Woodcutting": 15
+   },
+   "qpReq": null
+  },
+  "Twilight's Promise": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "Children of the Sun"
+   ],
+   "skills": {},
+   "qpReq": null
+  },
+  "At First Light": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "Children of the Sun",
+    "Eagles' Peak"
+   ],
+   "skills": {
+    "Hunter": 46,
+    "Herblore": 30,
+    "Construction": 27
+   },
+   "qpReq": null
+  },
+  "The Heart of Darkness": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [
+    "Twilight's Promise"
+   ],
+   "skills": {
+    "Mining": 55,
+    "Thieving": 48,
+    "Slayer": 48,
+    "Agility": 46
+   },
+   "qpReq": null
+  },
+  "Death on the Isle": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Medium",
+   "quests": [
+    "Children of the Sun"
+   ],
+   "skills": {
+    "Thieving": 34,
+    "Agility": 32
+   },
+   "qpReq": null
+  },
+  "Meat and Greet": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Short",
+   "quests": [
+    "Children of the Sun"
+   ],
+   "skills": {},
+   "qpReq": null
+  },
+  "Ethically Acquired Antiquities": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [
+    "Children of the Sun",
+    "Shield of Arrav"
+   ],
+   "skills": {
+    "Thieving": 25
+   },
+   "qpReq": null
+  },
+  "The Blood Moon Rises": {
+   "qp": 4,
+   "members": true,
+   "difficulty": "Grandmaster",
+   "length": "Very Long",
+   "quests": [
+    "A Night at the Theatre",
+    "Sins of the Father"
+   ],
+   "skills": {
+    "Slayer": 74,
+    "Woodcutting": 74,
+    "Smithing": 72,
+    "Cooking": 72,
+    "Fletching": 70,
+    "Mining": 66,
+    "Hunter": 65,
+    "Crafting": 64,
+    "Herblore": 64,
+    "Magic": 57
+   },
+   "qpReq": null
+  },
+  "The Final Dawn": {
+   "qp": 3,
+   "members": true,
+   "difficulty": "Master",
+   "length": "Long",
+   "quests": [
+    "The Heart of Darkness",
+    "Perilous Moons"
+   ],
+   "skills": {
+    "Thieving": 66,
+    "Runecraft": 52,
+    "Fletching": 52
+   },
+   "qpReq": null
+  },
+  "Pandemonium": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {},
+   "qpReq": null
+  },
+  "Prying Times": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "Pandemonium",
+    "The Knight's Sword"
+   ],
+   "skills": {
+    "Smithing": 30,
+    "Sailing": 12
+   },
+   "qpReq": null
+  },
+  "Current Affairs": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Sailing": 22,
+    "Fishing": 10
+   },
+   "qpReq": null
+  },
+  "Troubled Tortugans": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [],
+   "skills": {
+    "Slayer": 51,
+    "Construction": 48,
+    "Sailing": 45,
+    "Hunter": 45,
+    "Woodcutting": 40,
+    "Crafting": 34
+   },
+   "qpReq": null
+  },
+  "The Red Reef": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Medium",
+   "quests": [
+    "Troubled Tortugans"
+   ],
+   "skills": {
+    "Sailing": 52,
+    "Smithing": 48
+   },
+   "qpReq": null
+  },
+  "Shadows of Custodia": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Short",
+   "quests": [
+    "Children of the Sun"
+   ],
+   "skills": {
+    "Slayer": 54,
+    "Fishing": 45,
+    "Construction": 41,
+    "Hunter": 36
+   },
+   "qpReq": null
+  },
+  "Scrambled!": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [
+    "Children of the Sun"
+   ],
+   "skills": {
+    "Construction": 38,
+    "Cooking": 36,
+    "Smithing": 35
+   },
+   "qpReq": null
+  },
+  "Fallen From Grace": {
+   "qp": 2,
+   "members": true,
+   "difficulty": "Experienced",
+   "length": "Short",
+   "quests": [
+    "Pandemonium"
+   ],
+   "skills": {
+    "Sailing": 62,
+    "Crafting": 60,
+    "Runecraft": 47,
+    "Mining": 53
+   },
+   "qpReq": null
+  },
+  "A Ruff Situation": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Novice",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Crafting": 15
+   },
+   "qpReq": null
+  },
+  "Crab Quest": {
+   "qp": 1,
+   "members": true,
+   "difficulty": "Intermediate",
+   "length": "Short",
+   "quests": [],
+   "skills": {
+    "Sailing": 40,
+    "Fishing": 30
+   },
+   "qpReq": null
+  }
+ }
+}

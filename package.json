@@ -1,34 +1,30 @@
 {
-  "name": "dreamport",
-  "private": true,
+  "name": "iron-navigator",
   "version": "0.1.0",
-  "type": "module",
+  "description": "",
   "scripts": {
-    "predev": "node scripts/prepare-core.mjs",
-    "dev": "vite",
-    "prebuild": "node scripts/prepare-core.mjs",
-    "build": "tsc --noEmit && vite build",
-    "start": "node server/index.mjs",
-    "preview": "vite preview",
-    "test": "vitest run tests/unit",
-    "test:e2e": "node tests/e2e/run.mjs"
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "typecheck": "tsc --noEmit",
+    "wiki:sync": "node scripts/fetch-wiki.mjs"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
+    "next": "^15.5.27",
     "react": "^19.3.0",
-    "react-dom": "^19.3.0",
-    "romdev-core-flycast": "0.4.1",
-    "ws": "^8.22.0"
+    "react-dom": "^19.3.0"
   },
   "devDependencies": {
-    "@playwright/test": "^1.56.1",
+    "@types/node": "^26.6.4",
     "@types/react": "^19.3.0",
     "@types/react-dom": "^19.3.0",
-    "@types/ws": "^8.18.2",
-    "@vitejs/plugin-react": "^6.1.1",
-    "typescript": "^5.9.3",
-    "vite": "^8.3.1",
-    "vitest": "^5.0.3"
+    "autoprefixer": "^10.6.1",
+    "postcss": "^8.5.29",
+    "tailwindcss": "^3.4.19",
+    "typescript": "^5.9.3"
   },
-  "description": "A Dreamcast emulator in the browser (Flycast core). Bring your own BIOS and games.",
-  "license": "GPL-3.0-or-later"
+  "private": true
 }

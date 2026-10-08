@@ -1,0 +1,1454 @@
+{
+  "_notes": "Master step list. Quest and diary requirements are merged in automatically from data/quests.json and data/diaries.json (generated from the OSRS Wiki) via completesWhen, so only list extra requirements here. Steps are members content unless marked f2p.",
+  "chapters": [
+    {
+      "id": 1,
+      "title": "Foundations",
+      "blurb": "Travel and utility quests, early Sailing, birdhouses and your first farming loop."
+    },
+    {
+      "id": 2,
+      "title": "Midgame Engine",
+      "blurb": "Barrows gloves, medium diaries, Slayer and bossing setup, Sailing to mid-tier ships and salvaging income."
+    },
+    {
+      "id": 3,
+      "title": "Late Game Readiness",
+      "blurb": "Grandmaster quests, hard diaries, potion sustain, endgame gear and combat achievements."
+    },
+    {
+      "id": 4,
+      "title": "Endgame",
+      "blurb": "Optional: raids, elite diaries, high-level Sailing, 99s and max."
+    }
+  ],
+  "steps": [
+    {
+      "id": "1.01",
+      "chapter": 1,
+      "f2p": true,
+      "title": "Starter quests in Lumbridge & Draynor",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Cook's Assistant",
+          "Sheep Shearer",
+          "X Marks the Spot",
+          "The Restless Ghost",
+          "Rune Mysteries",
+          "Ernest the Chicken"
+        ]
+      },
+      "instructions": "Knock out the short Lumbridge/Draynor quests back to back. Keep the antique lamp from X Marks the Spot for later and talk to Veos afterwards.",
+      "whyNow": "Fast quest points, early XP, and prerequisites for Animal Magnetism and Priest in Peril.",
+      "estMinutes": 60,
+      "wikiUrl": "https://oldschool.runescape.wiki/w/Optimal_quest_guide/Ironman"
+    },
+    {
+      "id": "1.02",
+      "chapter": 1,
+      "title": "Priest in Peril → Nature Spirit",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Priest in Peril",
+          "Nature Spirit"
+        ]
+      },
+      "bring": [
+        "50 rune or pure essence (Priest in Peril)",
+        "Silver sickle (Nature Spirit)"
+      ],
+      "instructions": "Unlock Morytania with Priest in Peril, then do Nature Spirit for the blessed silver sickle.",
+      "whyNow": "Opens Morytania — needed for Ghosts Ahoy, Bone Voyage chain, fairy rings and most midgame content.",
+      "unlocks": [
+        "Morytania",
+        "Blessed sickle (fungi)"
+      ],
+      "estMinutes": 50,
+      "notes": {
+        "hardcore": "Temple guardian and ghasts are low risk, but keep food for the Priest in Peril dog."
+      }
+    },
+    {
+      "id": "1.03",
+      "chapter": 1,
+      "title": "Waterfall Quest",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Waterfall Quest"
+        ]
+      },
+      "bring": [
+        "6 air, 6 water, 6 earth runes",
+        "Rope",
+        "Food"
+      ],
+      "instructions": "Do it at level 3 combat-ish stats — the quest gives a large chunk of Attack and Strength XP.",
+      "whyNow": "Instantly skips the slowest early melee levels.",
+      "estMinutes": 30,
+      "notes": {
+        "hardcore": "Skeletons and moss giants inside the dungeon can hit low-level accounts hard. Bring food and don't AFK."
+      }
+    },
+    {
+      "id": "1.04",
+      "chapter": 1,
+      "title": "Pandemonium — unlock Sailing",
+      "category": "sailing",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Pandemonium"
+        ]
+      },
+      "instructions": "Complete Pandemonium to unlock the Sailing skill, a raft, and courier and bounty tasks.",
+      "whyNow": "Sailing gates red crabs, salvaging income and more travel — the sooner it starts, the more it pays back.",
+      "unlocks": [
+        "Sailing",
+        "Raft",
+        "Courier tasks",
+        "Bounty tasks"
+      ],
+      "saves": "Opens sea travel and passive charting XP from your very first trips.",
+      "estMinutes": 20,
+      "wikiUrl": "https://oldschool.runescape.wiki/w/Pandemonium"
+    },
+    {
+      "id": "1.05",
+      "chapter": 1,
+      "title": "Courier tasks to Sailing 12 (chart as you go)",
+      "category": "sailing",
+      "requirements": {
+        "quests": [
+          "Pandemonium"
+        ]
+      },
+      "completesWhen": {
+        "skills": {
+          "Sailing": 12
+        }
+      },
+      "instructions": "From Sailing 4, run courier tasks between Port Sarim and The Pandemonium. At 5 add Land's End; at 7 hold two tasks at once and pair deliveries to the same port. At 10 Musa Point opens. Trim sails and do ocean encounters for bonus XP. Complete every sea charting spot you pass.",
+      "whyNow": "Sea charting is one-time XP — doing it while leveling is free XP you'd otherwise grind.",
+      "saves": "Charting spots give one-time XP, so you skip grinding those levels later.",
+      "estMinutes": 90,
+      "wikiUrl": "https://oldschool.runescape.wiki/w/Ironman_Guide/Sailing"
+    },
+    {
+      "id": "1.06",
+      "chapter": 1,
+      "f2p": true,
+      "title": "The Knight's Sword",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "The Knight's Sword"
+        ]
+      },
+      "bring": [
+        "Redberry pie",
+        "2 iron bars",
+        "Pickaxe"
+      ],
+      "instructions": "Mine blurite in the Asgarnian Ice Dungeon and finish the quest.",
+      "whyNow": "Big early Smithing XP and a prerequisite for Prying Times.",
+      "estMinutes": 25,
+      "notes": {
+        "hardcore": "Ice warriors and ice giants in the dungeon are aggressive to low levels — run past, don't fight."
+      }
+    },
+    {
+      "id": "1.07",
+      "chapter": 1,
+      "title": "Prying Times → crowbar",
+      "category": "sailing",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Prying Times"
+        ]
+      },
+      "instructions": "At Sailing 12, complete Prying Times. The crowbar unlocks additional sea charting spots.",
+      "whyNow": "More charting spots means more one-time XP while you sail anyway.",
+      "unlocks": [
+        "Crowbar",
+        "More sea charting"
+      ],
+      "saves": "Opens more one-time charting XP along routes you already sail.",
+      "estMinutes": 30,
+      "wikiUrl": "https://oldschool.runescape.wiki/w/Prying_Times"
+    },
+    {
+      "id": "1.08",
+      "chapter": 1,
+      "title": "Buy a skiff at Sailing 15 + salvaging hook & cargo hold",
+      "category": "sailing",
+      "requirements": {
+        "skills": {
+          "Sailing": 15
+        },
+        "quests": [
+          "Pandemonium"
+        ]
+      },
+      "instructions": "Buy a skiff for 15,000 coins. Fit a cargo hold and a bronze salvaging hook (all parts from a shop) to unlock shipwreck salvaging. Sort small salvage when you can — it has sawmill coupons and a rare museum find.",
+      "whyNow": "Salvaging is AFK Sailing XP that also feeds you low-level resources and coupons.",
+      "unlocks": [
+        "Skiff",
+        "Shipwreck salvaging"
+      ],
+      "saves": "Sawmill coupons cut early plank costs; all salvage tiers can roll the Sailors' amulet for island teleports.",
+      "estMinutes": 20,
+      "notes": {
+        "ultimate": "Sort salvage on the go and keep only what you'll use — you have no bank to dump it in."
+      }
+    },
+    {
+      "id": "1.09",
+      "chapter": 1,
+      "title": "Tree Gnome Village + The Grand Tree",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Tree Gnome Village",
+          "The Grand Tree"
+        ]
+      },
+      "instructions": "Unlock spirit trees and gnome gliders.",
+      "whyNow": "Spirit trees and gliders are core travel for farming runs and Kandarin.",
+      "unlocks": [
+        "Spirit trees",
+        "Gnome gliders"
+      ],
+      "estMinutes": 60,
+      "notes": {
+        "hardcore": "Khazard warlord and Black demon (Grand Tree) can be dangerous — safespot the demon."
+      }
+    },
+    {
+      "id": "1.10",
+      "chapter": 1,
+      "title": "Druidic Ritual + Plague City",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Druidic Ritual",
+          "Plague City"
+        ]
+      },
+      "instructions": "Unlock Herblore, then Plague City for the Ardougne teleport.",
+      "whyNow": "Herblore gates many later quests; Ardougne teleport helps diaries and Thieving.",
+      "unlocks": [
+        "Herblore",
+        "Ardougne teleport"
+      ],
+      "estMinutes": 35
+    },
+    {
+      "id": "1.11",
+      "chapter": 1,
+      "title": "Lost City → Fairytale I",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Lost City",
+          "Fairytale I - Growing Pains"
+        ]
+      },
+      "instructions": "Lost City unlocks Zanaris and the dramen staff. Then do Fairytale I.",
+      "whyNow": "These are the gate to fairy rings, the single best travel unlock in the game.",
+      "unlocks": [
+        "Zanaris",
+        "Dramen staff"
+      ],
+      "estMinutes": 70
+    },
+    {
+      "id": "1.12",
+      "chapter": 1,
+      "title": "Start Fairytale II → fairy rings",
+      "category": "quest",
+      "requirements": {
+        "quests": [
+          "Fairytale I - Growing Pains"
+        ]
+      },
+      "completesWhen": {
+        "questsStarted": [
+          "Fairytale II - Cure a Queen"
+        ]
+      },
+      "instructions": "Start Fairytale II and progress until fairy rings are usable. You don't need the full skill requirements yet.",
+      "whyNow": "Fairy rings save time on almost every run, diary and quest from here on.",
+      "unlocks": [
+        "Fairy rings"
+      ],
+      "estMinutes": 15
+    },
+    {
+      "id": "1.13",
+      "chapter": 1,
+      "title": "Red crabs: Hunter 21 → 39",
+      "category": "skill",
+      "requirements": {
+        "skills": {
+          "Sailing": 1,
+          "Construction": 10,
+          "Hunter": 21
+        },
+        "quests": [
+          "Pandemonium"
+        ]
+      },
+      "completesWhen": {
+        "skills": {
+          "Hunter": 39
+        }
+      },
+      "instructions": "Hunt red crabs for early Hunter training.",
+      "whyNow": "A Sailing-era shortcut through the awkward early Hunter levels.",
+      "saves": "Replaces slow early bird-snaring/butterfly levels.",
+      "skipNote": "Stop at 39 and move to the next Hunter method.",
+      "estMinutes": 90
+    },
+    {
+      "id": "1.14",
+      "chapter": 1,
+      "title": "The Dig Site → Bone Voyage",
+      "category": "quest",
+      "requirements": {
+        "items": [
+          "100 museum kudos (needed to start Bone Voyage)"
+        ]
+      },
+      "completesWhen": {
+        "quests": [
+          "The Dig Site",
+          "Bone Voyage"
+        ]
+      },
+      "instructions": "Get 100 kudos at the Varrock Museum (quizzes, cleaning finds, and museum salvage finds from Sailing all count), then do Bone Voyage.",
+      "whyNow": "Fossil Island unlocks birdhouses — passive Hunter XP and bird nests for life.",
+      "unlocks": [
+        "Fossil Island",
+        "Birdhouse runs"
+      ],
+      "estMinutes": 90
+    },
+    {
+      "id": "1.15",
+      "chapter": 1,
+      "title": "Start birdhouse runs",
+      "category": "runs",
+      "requirements": {
+        "quests": [
+          "Bone Voyage"
+        ],
+        "skills": {
+          "Hunter": 5
+        }
+      },
+      "instructions": "Set four birdhouses on Fossil Island every ~50 minutes of play. Use the best logs you can craft into birdhouses.",
+      "whyNow": "Passive Hunter XP plus seed nests — start the clock as early as possible.",
+      "estMinutes": 5,
+      "notes": {
+        "group": "One member can own birdhouse runs while others farm herbs.",
+        "ultimate": "Carry only seeds and logs for the run; drop-trade nothing."
+      }
+    },
+    {
+      "id": "1.16",
+      "chapter": 1,
+      "title": "Animal Magnetism → Ava's device",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Animal Magnetism"
+        ]
+      },
+      "instructions": "Complete Animal Magnetism and claim Ava's attractor/accumulator.",
+      "whyNow": "Saves arrows and gives a ranged boost for the whole early-mid game.",
+      "unlocks": [
+        "Ava's device"
+      ],
+      "estMinutes": 45
+    },
+    {
+      "id": "1.17",
+      "chapter": 1,
+      "title": "Ghosts Ahoy → Ectophial",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Ghosts Ahoy"
+        ]
+      },
+      "instructions": "Complete Ghosts Ahoy for the reusable Ectophial teleport.",
+      "whyNow": "Unlimited Morytania teleport for herb runs and Slayer.",
+      "unlocks": [
+        "Ectophial"
+      ],
+      "estMinutes": 45
+    },
+    {
+      "id": "1.18",
+      "chapter": 1,
+      "title": "First farming loop (herbs + trees)",
+      "category": "runs",
+      "requirements": {
+        "skills": {
+          "Farming": 9
+        }
+      },
+      "instructions": "Start herb runs (Falador, Catherby, Ardougne, Morytania) every ~80 minutes and fruit/regular trees once a day. Compost every patch.",
+      "whyNow": "Farming is passive XP and the only sustainable herb supply on an Ironman.",
+      "estMinutes": 8,
+      "notes": {
+        "group": "Split patches between members; trade herbs within the group."
+      }
+    },
+    {
+      "id": "1.19",
+      "chapter": 1,
+      "title": "Current Affairs → current duck",
+      "category": "sailing",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Current Affairs"
+        ]
+      },
+      "instructions": "At Sailing 22, complete Current Affairs for the current duck, which unlocks more sea charting.",
+      "whyNow": "More one-time charting XP on routes you sail anyway.",
+      "saves": "Another batch of one-time XP without extra grinding.",
+      "estMinutes": 25
+    },
+    {
+      "id": "1.20",
+      "chapter": 1,
+      "title": "Sailing 30 → The Tempor Tantrum (Barracuda Trial)",
+      "category": "sailing",
+      "requirements": {
+        "skills": {
+          "Sailing": 30,
+          "Construction": 14,
+          "Crafting": 12
+        },
+        "items": [
+          "Iron helm (S17, Con 14, 4 oak planks)",
+          "Oak mast & linen sails (S24, Con 11, Cra 12, 15 oak planks)"
+        ]
+      },
+      "completesWhen": {
+        "skills": {
+          "Sailing": 30
+        }
+      },
+      "instructions": "Build the iron helm and oak mast on your skiff, then run The Tempor Tantrum. Each attempt gives flat XP plus a one-time bonus for beating the time limit.",
+      "whyNow": "Barracuda Trials are the fastest Sailing XP available as soon as they unlock.",
+      "saves": "Iron helm also gives gentle-rapid resistance and a speed boost for everyday travel.",
+      "estMinutes": 60,
+      "wikiUrl": "https://oldschool.runescape.wiki/w/Barracuda_Trials"
+    },
+    {
+      "id": "1.21",
+      "chapter": 1,
+      "title": "Check-in: skip or continue?",
+      "category": "runs",
+      "requirements": {},
+      "instructions": "Do a birdhouse + herb run. If Sailing is fun, keep salvaging to 35 for barracuda shipwrecks (raw swordfish/sharks, medium clue boxes). Otherwise move on — Chapter 2 sends you back to Sailing at better levels.",
+      "whyNow": "Natural break point before the midgame quest chains.",
+      "skipNote": "Skippable — this is a reminder, not a requirement."
+    },
+    {
+      "id": "2.01",
+      "chapter": 2,
+      "title": "The Fremennik Trials",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "The Fremennik Trials"
+        ]
+      },
+      "instructions": "Complete the trials to become a Fremennik.",
+      "whyNow": "Needed for Miscellania, Lunar Diplomacy and the Fremennik Isles (Neitiznot faceguard).",
+      "estMinutes": 60,
+      "notes": {
+        "hardcore": "The Draugen and Koschei fights are dangerous at low levels — bring plenty of food."
+      }
+    },
+    {
+      "id": "2.02",
+      "chapter": 2,
+      "title": "Heroes' Quest",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Heroes' Quest"
+        ]
+      },
+      "instructions": "Work through Shield of Arrav (needs a partner on Ironman — Group members can pair), Merlin's Crystal, Dragon Slayer I, then Heroes' Quest.",
+      "whyNow": "Gates Miscellania, the Heroes' Guild and Legends' Quest.",
+      "estMinutes": 120,
+      "notes": {
+        "hardcore": "Elvarg (Dragon Slayer I) and the Entrana firebird area: bring antifire shield and food.",
+        "group": "Do Shield of Arrav with a groupmate."
+      }
+    },
+    {
+      "id": "2.03",
+      "chapter": 2,
+      "title": "Throne of Miscellania → Kingdom",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Throne of Miscellania"
+        ]
+      },
+      "instructions": "Complete the quest, then fill your coffer and set workers on herbs/teak/mahogany depending on need.",
+      "whyNow": "Passive herbs and planks — the wiki notes Managing Miscellania is a strong teak/mahogany source for ship upgrades.",
+      "unlocks": [
+        "Kingdom of Miscellania"
+      ],
+      "saves": "Feeds Sailing ship and facility upgrades with planks.",
+      "estMinutes": 60
+    },
+    {
+      "id": "2.04",
+      "chapter": 2,
+      "title": "Kingdom + birdhouse + herb run",
+      "category": "runs",
+      "requirements": {
+        "quests": [
+          "Throne of Miscellania"
+        ]
+      },
+      "instructions": "Top up the Kingdom coffer to keep approval high, then do a birdhouse and herb run.",
+      "whyNow": "Keep passive income ticking.",
+      "estMinutes": 10
+    },
+    {
+      "id": "2.05",
+      "chapter": 2,
+      "title": "Shades of Mort'ton",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Shades of Mort'ton"
+        ]
+      },
+      "instructions": "Complete the quest to unlock Razmire Builders Merchants.",
+      "whyNow": "The wiki recommends it for Sailing: a steady supply of planks and nails for ship upgrades.",
+      "saves": "Buy-able planks and nails for hull and facility upgrades.",
+      "estMinutes": 45
+    },
+    {
+      "id": "2.06",
+      "chapter": 2,
+      "title": "Easy diaries sweep",
+      "category": "diary",
+      "requirements": {},
+      "completesWhen": {
+        "diaries": [
+          "Ardougne Easy",
+          "Lumbridge & Draynor Easy",
+          "Varrock Easy",
+          "Falador Easy",
+          "Morytania Easy",
+          "Kandarin Easy"
+        ]
+      },
+      "instructions": "Clear the easy diaries you qualify for. The Ardougne cloak (Ardougne Easy) gives Monastery teleports immediately.",
+      "whyNow": "Cheap QoL unlocks and lamps you'll want on stubborn skills.",
+      "estMinutes": 180
+    },
+    {
+      "id": "2.07",
+      "chapter": 2,
+      "title": "Sailing 42 → salvaging station",
+      "category": "sailing",
+      "requirements": {
+        "skills": {
+          "Sailing": 42,
+          "Construction": 34
+        }
+      },
+      "completesWhen": {
+        "skills": {
+          "Sailing": 42
+        }
+      },
+      "instructions": "Use the small key found on The Pandemonium to open the lockbox on Chinchompa Island, read the salvaging station schematic, then build the station on your boat.",
+      "whyNow": "Sort salvage at sea instead of sailing back to port.",
+      "saves": "Cuts round trips from every salvaging session.",
+      "estMinutes": 30
+    },
+    {
+      "id": "2.08",
+      "chapter": 2,
+      "title": "Branch: pick your midgame money method",
+      "category": "resources",
+      "requirements": {},
+      "instructions": "Ironmen need gold for kingdom, diaries and ship parts. Pick one — you can come back and change it.",
+      "whyNow": "Several upcoming quests and boat upgrades need cash.",
+      "branch": {
+        "prompt": "How do you want to make money?",
+        "options": [
+          {
+            "label": "Ardougne knight thieving",
+            "style": "efficient",
+            "stepIds": [
+              "2.08a"
+            ]
+          },
+          {
+            "label": "Salvaging + alching (AFK)",
+            "style": "chill",
+            "stepIds": [
+              "2.08b"
+            ]
+          },
+          {
+            "label": "Port Roberts stalls",
+            "style": "goal",
+            "stepIds": [
+              "2.08c"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "id": "2.08a",
+      "chapter": 2,
+      "branchOnly": true,
+      "title": "Thieve Ardougne knights",
+      "category": "resources",
+      "requirements": {
+        "skills": {
+          "Thieving": 55
+        }
+      },
+      "instructions": "Pickpocket knights of Ardougne with dodgy necklaces and a full coin pouch habit. Splash/stack with others in a busy world.",
+      "whyNow": "Fast, click-intensive gold plus Thieving XP for diaries.",
+      "estMinutes": 120,
+      "notes": {
+        "hardcore": "Low risk, but watch HP from stuns."
+      }
+    },
+    {
+      "id": "2.08b",
+      "chapter": 2,
+      "branchOnly": true,
+      "title": "Salvage and alch",
+      "category": "sailing",
+      "requirements": {
+        "skills": {
+          "Sailing": 53,
+          "Magic": 55
+        }
+      },
+      "instructions": "Salvage at the highest shipwreck tier you can and high-alch the alchable salvage. The wiki notes alch profit starts at Sailing 53 and doubles at 73.",
+      "whyNow": "AFK income that also trains Sailing and Magic.",
+      "saves": "Trains Sailing and Magic at the same time as making gold.",
+      "estMinutes": 120
+    },
+    {
+      "id": "2.08c",
+      "chapter": 2,
+      "branchOnly": true,
+      "title": "Port Roberts stall thieving",
+      "category": "resources",
+      "requirements": {
+        "skills": {
+          "Sailing": 50,
+          "Thieving": 20
+        }
+      },
+      "instructions": "Thieve the Port Roberts stalls. Higher Thieving opens stalls with gems, ores and cannonballs.",
+      "whyNow": "Thieving XP plus Sailing-relevant supplies like cannonballs.",
+      "saves": "Cannonballs and ores you'd otherwise smelt yourself.",
+      "estMinutes": 120
+    },
+    {
+      "id": "2.09",
+      "chapter": 2,
+      "title": "Monkey Madness I",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Monkey Madness I"
+        ]
+      },
+      "instructions": "Complete the quest and claim the Attack/Defence or Strength/Hitpoints XP reward.",
+      "whyNow": "Big combat XP, dragon scimitar access and part of the Barrows gloves chain.",
+      "estMinutes": 120,
+      "notes": {
+        "hardcore": "The Jungle Demon is dangerous. Safespot it with magic and bring prayer potions."
+      }
+    },
+    {
+      "id": "2.10",
+      "chapter": 2,
+      "title": "Horror from the Deep",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Horror from the Deep"
+        ]
+      },
+      "instructions": "Complete the quest; get a god book from the Dagannoth Mother rewards.",
+      "whyNow": "Part of the Barrows gloves chain.",
+      "estMinutes": 45,
+      "notes": {
+        "hardcore": "Bring all combat styles' runes/arrows for the Mother and plenty of food."
+      }
+    },
+    {
+      "id": "2.11",
+      "chapter": 2,
+      "title": "Desert Treasure I → Ancient Magicks",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Desert Treasure I"
+        ]
+      },
+      "instructions": "Complete all four diamonds and unlock Ancient Magicks.",
+      "whyNow": "Ancients for Slayer and bursting; required for Barrows gloves and DT2.",
+      "unlocks": [
+        "Ancient Magicks"
+      ],
+      "estMinutes": 180,
+      "notes": {
+        "hardcore": "One of the deadliest quests for Hardcores. Fareed, Kamil, Dessous and Damis can all kill you — read the wiki strategies first."
+      }
+    },
+    {
+      "id": "2.12",
+      "chapter": 2,
+      "title": "Legends' Quest",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Legends' Quest"
+        ]
+      },
+      "instructions": "Complete Legends' Quest (Underground Pass, Shilo Village and Family Crest first).",
+      "whyNow": "Last major gate before Recipe for Disaster and Dragon Slayer II.",
+      "estMinutes": 180,
+      "notes": {
+        "hardcore": "Nezikchened and the Underground Pass are high-risk. Use protection prayers and bring prayer potions."
+      }
+    },
+    {
+      "id": "2.13",
+      "chapter": 2,
+      "title": "Recipe for Disaster → Barrows gloves",
+      "category": "gear",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Recipe for Disaster"
+        ]
+      },
+      "instructions": "Free every subquest and beat the Culinaromancer. Buy Barrows gloves from the chest.",
+      "whyNow": "Best-in-slot gloves for most of the game.",
+      "unlocks": [
+        "Barrows gloves"
+      ],
+      "estMinutes": 360,
+      "notes": {
+        "hardcore": "The final fight is a safe death; other subquest bosses are not."
+      }
+    },
+    {
+      "id": "2.14",
+      "chapter": 2,
+      "title": "Tithe Farm → herb sack + seed box",
+      "category": "resources",
+      "requirements": {
+        "skills": {
+          "Farming": 34
+        }
+      },
+      "instructions": "Play Tithe Farm for the herb sack and seed box.",
+      "whyNow": "Saves inventory space on every herb run and slayer task.",
+      "estMinutes": 120,
+      "notes": {
+        "ultimate": "The seed box and herb sack are essential storage without a bank."
+      }
+    },
+    {
+      "id": "2.15",
+      "chapter": 2,
+      "title": "Barbarian Assault → fighter torso",
+      "category": "gear",
+      "requirements": {},
+      "instructions": "Play Barbarian Assault until you can buy the fighter torso.",
+      "whyNow": "Free strength bonus body until much later; a safe minigame.",
+      "estMinutes": 240,
+      "notes": {
+        "group": "BA needs a team — perfect for a group session."
+      }
+    },
+    {
+      "id": "2.16",
+      "chapter": 2,
+      "title": "Warriors' Guild → dragon defender",
+      "category": "gear",
+      "requirements": {
+        "skills": {
+          "Defence": 60
+        },
+        "items": [
+          "130 combined Attack + Strength (or 99 in one) to enter the guild"
+        ]
+      },
+      "instructions": "Collect tokens on the animated armours, then kill cyclopes on the top floor and in the basement for the rune and dragon defenders.",
+      "whyNow": "Best early-midgame melee offhand.",
+      "estMinutes": 180
+    },
+    {
+      "id": "2.17",
+      "chapter": 2,
+      "title": "Slayer to the midgame unlocks",
+      "category": "combat",
+      "requirements": {
+        "skills": {
+          "Crafting": 55
+        }
+      },
+      "completesWhen": {
+        "skills": {
+          "Slayer": 72
+        }
+      },
+      "instructions": "Do tasks from Konar/Nieve/Duradel. Unlock Malevolent masquerade (needs Crafting 55) and craft a Slayer helm. Turn on Bigger and Badder later.",
+      "whyNow": "Slayer is your main source of combat XP, runes, herbs and seeds as an Ironman.",
+      "unlocks": [
+        "Slayer helm"
+      ],
+      "skipNote": "Keep tasks running alongside everything else — this step is 'done' at 72 Slayer.",
+      "estMinutes": 600
+    },
+    {
+      "id": "2.18",
+      "chapter": 2,
+      "title": "Fire cape",
+      "category": "gear",
+      "requirements": {
+        "items": [
+          "Recommended: 70+ Ranged and 43 Prayer (protect from missiles)"
+        ]
+      },
+      "instructions": "Clear the Fight Caves and kill TzTok-Jad.",
+      "whyNow": "Best melee cape until infernal; Jad is a safe death.",
+      "estMinutes": 90,
+      "notes": {
+        "hardcore": "Fight Caves deaths are safe for Hardcores — good practice."
+      }
+    },
+    {
+      "id": "2.19",
+      "chapter": 2,
+      "title": "Lunar Diplomacy → Dream Mentor",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Lunar Diplomacy",
+          "Dream Mentor"
+        ]
+      },
+      "instructions": "Unlock the Lunar spellbook, then Dream Mentor.",
+      "whyNow": "Lunars (NPC contact, Humidify, Plank Make) are huge QoL; Dream Mentor is needed for DS2.",
+      "unlocks": [
+        "Lunar spellbook"
+      ],
+      "estMinutes": 180,
+      "notes": {
+        "hardcore": "Dream Mentor's Inadequacy fight is dangerous — no ranged allowed, bring food you've stored on the trip."
+      }
+    },
+    {
+      "id": "2.20",
+      "chapter": 2,
+      "title": "The Fremennik Isles → Neitiznot faceguard path",
+      "category": "gear",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "The Fremennik Isles"
+        ]
+      },
+      "instructions": "Complete The Fremennik Isles. Later, at 60 Slayer, start the Basilisk Knights grind for the Neitiznot faceguard.",
+      "whyNow": "Helm of Neitiznot now; faceguard upgrade later.",
+      "estMinutes": 90
+    },
+    {
+      "id": "2.21",
+      "chapter": 2,
+      "title": "Complete Fairytale II",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Fairytale II - Cure a Queen"
+        ]
+      },
+      "instructions": "Finish the quest once you meet the Thieving, Farming and Herblore requirements.",
+      "whyNow": "Needed for quest points, several diaries and later quest chains.",
+      "estMinutes": 45
+    },
+    {
+      "id": "2.22",
+      "chapter": 2,
+      "title": "Medium diaries sweep",
+      "category": "diary",
+      "requirements": {},
+      "completesWhen": {
+        "diaries": [
+          "Ardougne Medium",
+          "Varrock Medium",
+          "Lumbridge & Draynor Medium",
+          "Falador Medium",
+          "Morytania Medium",
+          "Kandarin Medium",
+          "Fremennik Medium",
+          "Desert Medium"
+        ]
+      },
+      "instructions": "Clear medium diaries as you qualify. Priorities: Ardougne (cloak teleports), Varrock (more battlestaves), Morytania (Ectophial to Slime pit/Burgh shortcuts), Kandarin (Catherby herb patch bonus).",
+      "whyNow": "Most medium rewards are permanent time savers.",
+      "estMinutes": 360
+    },
+    {
+      "id": "2.23",
+      "chapter": 2,
+      "title": "Sailing 45 → camphor, gryphons, Sailing 50 sloop",
+      "category": "sailing",
+      "requirements": {
+        "skills": {
+          "Sailing": 45
+        }
+      },
+      "completesWhen": {
+        "skills": {
+          "Sailing": 50
+        }
+      },
+      "instructions": "At 45 with Woodcutting 66, Slayer 51 and Construction 48, chop camphor trees. At 50 unlock the sloop: two facility slots for salvaging hooks, so a crewmate can salvage alongside you.",
+      "whyNow": "The sloop roughly doubles salvaging hooks; camphor is the next hull material.",
+      "saves": "Camphor gives Woodcutting/Firemaking XP while gathering ship materials.",
+      "estMinutes": 300
+    },
+    {
+      "id": "2.24",
+      "chapter": 2,
+      "title": "Sailing 55 → The Jubbly Jive",
+      "category": "sailing",
+      "requirements": {
+        "skills": {
+          "Sailing": 55,
+          "Construction": 47
+        },
+        "items": [
+          "Mithril helm (8 mithril bars)",
+          "Innoculation station (S40, Con 37, partial Zogre Flesh Eaters for Relicym's balm)"
+        ]
+      },
+      "completesWhen": {
+        "skills": {
+          "Sailing": 55
+        }
+      },
+      "instructions": "Build the innoculation station (Sailing 40, Construction 37) and mithril helm (Sailing 55, Construction 47), then run the Jubbly Jive trial. Shark rank in under 3:00 unlocks the wind catcher.",
+      "whyNow": "Next tier of fastest Sailing XP; also opens the fetid waters near Gu'Tanoth.",
+      "saves": "Mithril helm adds strong-rapid resistance and a speed boost to normal sailing.",
+      "estMinutes": 120
+    },
+    {
+      "id": "2.25",
+      "chapter": 2,
+      "title": "Extra Sailing farming & slayer spots",
+      "category": "runs",
+      "requirements": {
+        "quests": [
+          "Pandemonium"
+        ]
+      },
+      "instructions": "Add the Sailing-reachable patches (calquat, coral, trees) to your daily runs as you reach them, and use the new cannonable multi-combat slayer areas.",
+      "whyNow": "More patches = more passive Farming XP and supplies.",
+      "saves": "Extra patches without new quests; better slayer XP for burst/cannon tasks."
+    },
+    {
+      "id": "3.01",
+      "chapter": 3,
+      "title": "Mourning's End Part I & II",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Mourning's End Part I",
+          "Mourning's End Part II"
+        ]
+      },
+      "instructions": "Complete both parts (Roving Elves, Big Chompy Bird Hunting and Sheep Herder first).",
+      "whyNow": "Required for Song of the Elves.",
+      "estMinutes": 240,
+      "notes": {
+        "hardcore": "Part II's Temple of Light has dangerous shadows; keep protection prayers up."
+      }
+    },
+    {
+      "id": "3.02",
+      "chapter": 3,
+      "title": "Making History + Regicide",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Making History",
+          "Regicide"
+        ]
+      },
+      "instructions": "Complete both. Regicide also unlocks Tirannwn and the Gwenith Glide Barracuda Trial later.",
+      "whyNow": "Clears the remaining gates for Song of the Elves.",
+      "estMinutes": 150
+    },
+    {
+      "id": "3.03",
+      "chapter": 3,
+      "title": "Song of the Elves → Prifddinas",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Song of the Elves"
+        ]
+      },
+      "instructions": "Complete Song of the Elves.",
+      "whyNow": "Prifddinas: Gauntlet, Zalcano, crystal tools and armour, best bank/teleport hub.",
+      "unlocks": [
+        "Prifddinas",
+        "The Gauntlet",
+        "Zalcano"
+      ],
+      "estMinutes": 300,
+      "notes": {
+        "hardcore": "Fragment of Seren is a dangerous final fight. Read the wiki strategy."
+      }
+    },
+    {
+      "id": "3.04",
+      "chapter": 3,
+      "title": "Corrupted Gauntlet → Bow of faerdhinen + crystal armour",
+      "category": "gear",
+      "requirements": {
+        "quests": [
+          "Song of the Elves"
+        ],
+        "skills": {
+          "Ranged": 80,
+          "Agility": 70
+        }
+      },
+      "instructions": "Learn the Gauntlet, then grind the Corrupted Gauntlet for an enhanced crystal weapon seed and crystal armour seeds.",
+      "whyNow": "The Ironman midgame ranged setup; Gauntlet deaths are safe.",
+      "estMinutes": 1200,
+      "notes": {
+        "hardcore": "The Gauntlet is a safe death — great practice."
+      }
+    },
+    {
+      "id": "3.05",
+      "chapter": 3,
+      "title": "Dragon Slayer II",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Dragon Slayer II"
+        ]
+      },
+      "instructions": "Complete Dragon Slayer II.",
+      "whyNow": "Vorkath access — the classic Ironman money/supply boss.",
+      "unlocks": [
+        "Vorkath",
+        "Myths' Guild"
+      ],
+      "estMinutes": 300,
+      "notes": {
+        "hardcore": "Galvek is a dangerous non-safe fight. Over-prepare."
+      }
+    },
+    {
+      "id": "3.06",
+      "chapter": 3,
+      "title": "Monkey Madness II",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Monkey Madness II"
+        ]
+      },
+      "instructions": "Complete Monkey Madness II.",
+      "whyNow": "Demonic gorillas (zenyte) and maniacal monkey chinchompas.",
+      "estMinutes": 240,
+      "notes": {
+        "hardcore": "Glough's demonic gorilla fight is not safe."
+      }
+    },
+    {
+      "id": "3.07",
+      "chapter": 3,
+      "title": "Desert Treasure II",
+      "category": "quest",
+      "requirements": {},
+      "completesWhen": {
+        "quests": [
+          "Desert Treasure II - The Fallen Empire"
+        ]
+      },
+      "instructions": "Complete DT2.",
+      "whyNow": "Unlocks the DT2 bosses and their awakened versions.",
+      "estMinutes": 360,
+      "notes": {
+        "hardcore": "Quest boss fights are dangerous — the post-quest bosses have their own risks."
+      }
+    },
+    {
+      "id": "3.08",
+      "chapter": 3,
+      "title": "Potion sustain: Farming 62 + Herblore 81",
+      "category": "skill",
+      "requirements": {},
+      "completesWhen": {
+        "skills": {
+          "Farming": 62,
+          "Herblore": 81
+        }
+      },
+      "instructions": "Get to Farming 62 (snapdragons) and Herblore 81 (Saradomin brews). Use birdhouse/Slayer seeds and Miscellania herbs.",
+      "whyNow": "Restores and brews are what keep you alive at endgame bosses.",
+      "estMinutes": 1200
+    },
+    {
+      "id": "3.09",
+      "chapter": 3,
+      "title": "Hard diaries: Ardougne, Varrock, Falador, Lumbridge",
+      "category": "diary",
+      "requirements": {},
+      "completesWhen": {
+        "diaries": [
+          "Ardougne Hard",
+          "Varrock Hard",
+          "Falador Hard",
+          "Lumbridge & Draynor Hard"
+        ]
+      },
+      "instructions": "Clear these hard diaries.",
+      "whyNow": "Ardougne cloak 3 unlimited teleports, Falador shield 3, more battlestaves.",
+      "estMinutes": 480
+    },
+    {
+      "id": "3.10",
+      "chapter": 3,
+      "title": "Hard diaries: Morytania, Kandarin, Western, Desert, Fremennik, Karamja, Kourend, Wilderness",
+      "category": "diary",
+      "requirements": {},
+      "completesWhen": {
+        "diaries": [
+          "Morytania Hard",
+          "Kandarin Hard",
+          "Western Provinces Hard",
+          "Desert Hard",
+          "Fremennik Hard",
+          "Karamja Hard",
+          "Kourend & Kebos Hard",
+          "Wilderness Hard"
+        ]
+      },
+      "instructions": "Clear the remaining hard diaries. Morytania Hard (Barrows bonus, bonecrusher upgrades) and Western Hard are the strongest.",
+      "whyNow": "Big permanent buffs — and the 'All hard diaries' goal.",
+      "estMinutes": 900,
+      "notes": {
+        "hardcore": "Wilderness Hard has PvP risk."
+      }
+    },
+    {
+      "id": "3.11",
+      "chapter": 3,
+      "title": "Sailing 62 → golemcrafting, Mortimer, rubium",
+      "category": "sailing",
+      "requirements": {
+        "skills": {
+          "Sailing": 62
+        }
+      },
+      "completesWhen": {
+        "skills": {
+          "Sailing": 62
+        }
+      },
+      "instructions": "At 62: Golemcrafting (Crafting 60, Hunter 60, Mining 53) for Crafting XP; Mortimer slayer master (Combat 100, Slayer 70); rubium mining (Mining 48) for incendiary cannonballs; four runite rocks on Charred Island (Mining 85).",
+      "whyNow": "Several skills get their best Ironman method from Sailing here.",
+      "saves": "Golemcrafting is the wiki's pick for midgame Ironman Crafting XP.",
+      "estMinutes": 600
+    },
+    {
+      "id": "3.12",
+      "chapter": 3,
+      "title": "Sailing 64–67: rainbow crabs, trawling, Deepfin Point, camphor hull",
+      "category": "sailing",
+      "requirements": {
+        "skills": {
+          "Sailing": 64
+        }
+      },
+      "completesWhen": {
+        "skills": {
+          "Sailing": 67
+        }
+      },
+      "instructions": "64: rainbow crabs (Hunter 77 / Cooking 77). 65: trawling (Fishing 83 / Cooking 83, Construction 61) for halibut. 66: adamant keel (Construction 62, Smithing 74). 67: Deepfin Point amulet teleport and the camphor hull (Construction 59, Woodcutting 66).",
+      "whyNow": "Better food, a cheap bank teleport, and a faster boat.",
+      "saves": "Halibut is a better combo food than karambwans; Deepfin teleports save law runes.",
+      "estMinutes": 600
+    },
+    {
+      "id": "3.13",
+      "chapter": 3,
+      "title": "Sailing 72–73: Gwenith Glide, ironwood, crystal extractor, Aquanites",
+      "category": "sailing",
+      "requirements": {
+        "skills": {
+          "Sailing": 72
+        },
+        "quests": [
+          "Regicide"
+        ]
+      },
+      "completesWhen": {
+        "skills": {
+          "Sailing": 73
+        }
+      },
+      "instructions": "72: Gwenith Glide trial (Regicide + adamant keel); ironwood trees (Woodcutting 80, Construction 70). 73: crystal extractor (Con 67, WC 80, Smithing 74, Mining 74, Shark rank Gwenith Glide under 3:42, 2 magic stones); Aquanites (Slayer 78) for seed drops.",
+      "whyNow": "Crystal shards and seed drops feed your endgame gear and farming.",
+      "saves": "Crystal extractor supplies crystal shards; Aquanite seeds feed Farming.",
+      "estMinutes": 900
+    },
+    {
+      "id": "3.14",
+      "chapter": 3,
+      "title": "Armadyl brews",
+      "category": "skill",
+      "requirements": {
+        "skills": {
+          "Sailing": 45,
+          "Herblore": 89,
+          "Hunter": 77,
+          "Farming": 77
+        }
+      },
+      "instructions": "Unlock and make Armadyl brews.",
+      "whyNow": "Herblore XP and a ranged-boosting brew.",
+      "saves": "A Sailing-era potion that replaces some ranging potion use.",
+      "estMinutes": 120
+    },
+    {
+      "id": "3.15",
+      "chapter": 3,
+      "title": "Combat achievements: Easy → Hard",
+      "category": "combat",
+      "requirements": {},
+      "instructions": "Work through Easy, Medium and Hard combat achievement tiers as you meet the bosses.",
+      "whyNow": "Ghommal's hilt teleports and rewards; good boss practice.",
+      "estMinutes": 900
+    },
+    {
+      "id": "3.16",
+      "chapter": 3,
+      "title": "Quest cape",
+      "category": "quest",
+      "requirements": {},
+      "instructions": "Finish every remaining quest. The Snapshot page lists what's left if you've synced.",
+      "whyNow": "All quest rewards unlocked and a teleport cape.",
+      "estMinutes": 1200
+    },
+    {
+      "id": "4.01",
+      "chapter": 4,
+      "title": "Chambers of Xeric",
+      "category": "combat",
+      "requirements": {},
+      "instructions": "Learn CoX (solo or with your group). Dexterous/arcane prayer scrolls, twisted bow chance.",
+      "whyNow": "Endgame prayers and gear.",
+      "estMinutes": 1200,
+      "notes": {
+        "hardcore": "Check the wiki before raiding — not every raid death is safe for Hardcores."
+      }
+    },
+    {
+      "id": "4.02",
+      "chapter": 4,
+      "title": "Tombs of Amascut",
+      "category": "combat",
+      "requirements": {},
+      "instructions": "Scale raid level as you learn. Lightbearer and Osmumten's fang are strong Ironman drops.",
+      "whyNow": "Flexible difficulty and strong uniques.",
+      "estMinutes": 1200,
+      "notes": {
+        "hardcore": "Check the wiki before raiding — not every raid death is safe for Hardcores."
+      }
+    },
+    {
+      "id": "4.03",
+      "chapter": 4,
+      "title": "Theatre of Blood",
+      "category": "combat",
+      "requirements": {},
+      "instructions": "Learn ToB with a team.",
+      "whyNow": "Scythe and endgame melee upgrades.",
+      "estMinutes": 1200,
+      "notes": {
+        "group": "ToB is team content — schedule with your group.",
+        "hardcore": "Check the wiki before raiding — not every raid death is safe for Hardcores."
+      }
+    },
+    {
+      "id": "4.04",
+      "chapter": 4,
+      "title": "Elite diaries",
+      "category": "diary",
+      "requirements": {},
+      "completesWhen": {
+        "diaries": [
+          "Ardougne Elite",
+          "Varrock Elite",
+          "Falador Elite",
+          "Lumbridge & Draynor Elite",
+          "Morytania Elite",
+          "Kandarin Elite",
+          "Western Provinces Elite",
+          "Desert Elite",
+          "Fremennik Elite",
+          "Karamja Elite",
+          "Kourend & Kebos Elite",
+          "Wilderness Elite"
+        ]
+      },
+      "instructions": "Pick off elite diaries as your stats allow. Lumbridge Elite needs Sailing 62 among many others.",
+      "whyNow": "Achievement diary cape and the strongest diary perks.",
+      "estMinutes": 2400
+    },
+    {
+      "id": "4.05",
+      "chapter": 4,
+      "title": "High-level Sailing: marlins, eternal brazier, Grimstone",
+      "category": "sailing",
+      "requirements": {
+        "skills": {
+          "Sailing": 78
+        }
+      },
+      "completesWhen": {
+        "skills": {
+          "Sailing": 87
+        }
+      },
+      "instructions": "78: marlins (Fishing 91), eternal brazier for the Northern Ocean (Con 72, WC 80, Smithing 74, Mining 74, Making Friends with My Arm). 86: dragon salvaging hook (Con 78). 87: Grimstone Island — double-speed cannonball smelting and frost dragons; merchant shipwrecks.",
+      "whyNow": "Best single-bite food and the last big Sailing unlocks.",
+      "saves": "Marlins replace your food grind; Grimstone halves cannonball smelting time.",
+      "estMinutes": 2400
+    },
+    {
+      "id": "4.06",
+      "chapter": 4,
+      "title": "99 Sailing",
+      "category": "sailing",
+      "requirements": {},
+      "completesWhen": {
+        "skills": {
+          "Sailing": 99
+        }
+      },
+      "instructions": "Keep running the highest Barracuda Trial you can at Marlin rank, or salvage at merchant shipwrecks for AFK XP.",
+      "whyNow": "Goal step.",
+      "skipNote": "Only if 99 Sailing or max cape is your goal."
+    },
+    {
+      "id": "4.07",
+      "chapter": 4,
+      "title": "Inferno",
+      "category": "gear",
+      "requirements": {},
+      "instructions": "Attempt the Inferno for the infernal cape.",
+      "whyNow": "Best melee cape; Inferno deaths are safe.",
+      "estMinutes": 600,
+      "notes": {
+        "hardcore": "Inferno deaths are safe for Hardcores."
+      }
+    },
+    {
+      "id": "4.08",
+      "chapter": 4,
+      "title": "Max cape",
+      "category": "skill",
+      "requirements": {},
+      "completesWhen": {
+        "skills": {
+          "Attack": 99,
+          "Hitpoints": 99,
+          "Mining": 99,
+          "Strength": 99,
+          "Agility": 99,
+          "Smithing": 99,
+          "Defence": 99,
+          "Herblore": 99,
+          "Fishing": 99,
+          "Ranged": 99,
+          "Thieving": 99,
+          "Cooking": 99,
+          "Prayer": 99,
+          "Crafting": 99,
+          "Firemaking": 99,
+          "Magic": 99,
+          "Fletching": 99,
+          "Woodcutting": 99,
+          "Runecraft": 99,
+          "Slayer": 99,
+          "Farming": 99,
+          "Construction": 99,
+          "Hunter": 99,
+          "Sailing": 99
+        }
+      },
+      "instructions": "Finish every skill to 99.",
+      "whyNow": "Goal step.",
+      "skipNote": "Only if max cape is your goal."
+    }
+  ]
+}

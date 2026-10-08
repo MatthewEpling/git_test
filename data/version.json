@@ -1,0 +1,5 @@
+{
+  "guideCheckedOn": "2026-10-08",
+  "checkedAgainst": "OSRS Wiki Ironman Guide/Sailing, revision 15356382 (last edited 26 September 2026)",
+  "notes": "Quest and diary requirements are regenerated from the wiki with `npm run wiki:sync`. Update guideCheckedOn whenever you re-verify guide.json against a game update."
+}
