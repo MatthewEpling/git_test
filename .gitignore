@@ -1,7 +1,7 @@
 node_modules
-.next
-out
-.env*.local
-.env
-*.tsbuildinfo
-.vercel
+dist
+test-results
+*.log
+.DS_Store
+# Local content packs made from your own copy of the game never belong in the repo.
+local-content/
