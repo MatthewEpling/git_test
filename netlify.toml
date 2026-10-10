@@ -1,0 +1,7 @@
+# Static Vite build for this PR's Netlify deploy previews. No server is needed.
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"

@@ -1,0 +1,1421 @@
+{
+ "meta": {
+  "id": "ashen-proving",
+  "name": "Ashen Proving (original stand-in content)",
+  "version": "0.1.0",
+  "source": "original-standin",
+  "notes": "Original placeholder content written for Lantern Table so the full campaign loop can be played and tested. None of it is official Kingdom Death: Monster content. Replace or extend it with your own content pack built from the game you own."
+ },
+ "rules": {
+  "board": {
+   "width": 22,
+   "height": 16
+  },
+  "survivorBase": {
+   "movement": 5,
+   "accuracy": 0,
+   "strength": 0,
+   "evasion": 0,
+   "luck": 0,
+   "speed": 0,
+   "survival": 1,
+   "insanity": 0
+  },
+  "survivalLimitStart": 1,
+  "hitLocationDie": [
+   "head",
+   "arms",
+   "body",
+   "body",
+   "waist",
+   "legs"
+  ],
+  "noLightInjury": [
+   "head"
+  ],
+  "lanternAlwaysSucceeds": true,
+  "oneAlwaysFails": true,
+  "woundCompare": "greaterThan",
+  "criticalOn": 10,
+  "monsterLanternAlwaysHits": false,
+  "maxDeparting": 4,
+  "huntBoardLength": 12,
+  "endeavorsPerReturningSurvivor": 1,
+  "unarmedWeapon": "bare-hands",
+  "verification": {
+   "board": {
+    "status": "unverified",
+    "note": "Showdown board size recalled as 22×16 squares; confirm against your board."
+   },
+   "survivorBase.movement": {
+    "status": "unverified",
+    "note": "Recalled as 5 for a new survivor."
+   },
+   "survivorBase.otherStats": {
+    "status": "unverified",
+    "note": "Accuracy, strength, evasion, luck and speed recalled as starting at 0."
+   },
+   "survivorBase.survival": {
+    "status": "unverified",
+    "note": "Starting survival for new survivors not confirmed; set to 1 here."
+   },
+   "survivalLimitStart": {
+    "status": "unverified",
+    "note": "Recalled as 1 for a new settlement."
+   },
+   "hitLocationDie": {
+    "status": "unverified",
+    "note": "Recalled as a six-sided die: head, arms, body, body, waist, legs."
+   },
+   "noLightInjury": {
+    "status": "unverified",
+    "note": "Recalled that the head has only a heavy injury box."
+   },
+   "lanternAlwaysSucceeds": {
+    "status": "unverified",
+    "note": "Recalled that a natural 10 always hits and always wounds for survivors."
+   },
+   "oneAlwaysFails": {
+    "status": "unverified",
+    "note": "Recalled that a natural 1 always misses and always fails to wound."
+   },
+   "woundCompare": {
+    "status": "unverified",
+    "note": "Whether the to-wound total must exceed or only equal toughness is not confirmed."
+   },
+   "criticalOn": {
+    "status": "unverified",
+    "note": "Critical wounds recalled as a natural 10, with luck lowering the threshold."
+   },
+   "monsterLanternAlwaysHits": {
+    "status": "unverified",
+    "note": "Whether a monster's natural 10 always hits is not confirmed; off here."
+   },
+   "maxDeparting": {
+    "status": "unverified",
+    "note": "Recalled as 4 departing survivors."
+   },
+   "huntBoardLength": {
+    "status": "unverified",
+    "note": "Hunt board length recalled as 12 spaces after the starting space."
+   },
+   "endeavorsPerReturningSurvivor": {
+    "status": "unverified",
+    "note": "Endeavor income is simplified to 1 per returning survivor."
+   },
+   "unarmedWeapon": {
+    "status": "standin",
+    "note": "Original stand-in unarmed attack (speed 2, accuracy 8+, strength 0)."
+   },
+   "diagonalMovement": {
+    "status": "unverified",
+    "note": "Recalled that movement and adjacency are orthogonal only (no diagonals)."
+   },
+   "injuryPerHit": {
+    "status": "unverified",
+    "note": "Recalled that a hit whose damage gets past armor raises the injury at that location by one level (light, then heavy, then a severe injury roll), however much damage is left over."
+   },
+   "dodge": {
+    "status": "unverified",
+    "note": "Recalled that survivors start able to spend 1 survival to dodge one hit, once per round."
+   },
+   "monsterActsFirst": {
+    "status": "unverified",
+    "note": "Recalled that each showdown round starts with the monster turn, then the survivors’ turn."
+   },
+   "knockdown": {
+    "status": "unverified",
+    "note": "Knocked-down survivors here skip their next activation and stand at the end of the survivors’ turn. Confirm the official timing."
+   },
+   "monsterDeath": {
+    "status": "unverified",
+    "note": "Here a wound takes the top AI card; an empty AI deck is refilled from the discard; a wound with no AI cards left anywhere slays the monster."
+   },
+   "monsterMovement": {
+    "status": "unverified",
+    "note": "The monster moves orthogonally toward its target, around survivors, and stops when adjacent; collision and knockback-into-monster rules are not implemented."
+   },
+   "huntBoard": {
+    "status": "standin",
+    "note": "The hunt is simplified: survivors advance one space per hunt turn and resolve one event; reaching the quarry starts the showdown."
+   }
+  },
+  "diagonalMovement": false,
+  "injuryPerHit": "oneLevel",
+  "dodge": {
+   "enabled": true,
+   "cost": 1
+  },
+  "monsterActsFirst": true
+ },
+ "resources": [
+  {
+   "id": "bone-scrap",
+   "name": "Bone Scrap",
+   "kind": "basic",
+   "keywords": [
+    "bone"
+   ]
+  },
+  {
+   "id": "rough-hide",
+   "name": "Rough Hide",
+   "kind": "basic",
+   "keywords": [
+    "hide"
+   ]
+  },
+  {
+   "id": "strange-organ",
+   "name": "Strange Organ",
+   "kind": "basic",
+   "keywords": [
+    "organ"
+   ]
+  },
+  {
+   "id": "flint",
+   "name": "Flint",
+   "kind": "basic",
+   "keywords": [
+    "stone"
+   ]
+  },
+  {
+   "id": "gloam-hide",
+   "name": "Gloam Hide",
+   "kind": "monster",
+   "keywords": [
+    "hide"
+   ]
+  },
+  {
+   "id": "antler-shard",
+   "name": "Antler Shard",
+   "kind": "monster",
+   "keywords": [
+    "bone"
+   ]
+  },
+  {
+   "id": "stag-sinew",
+   "name": "Stag Sinew",
+   "kind": "monster",
+   "keywords": [
+    "organ"
+   ]
+  },
+  {
+   "id": "glow-eye",
+   "name": "Glow Eye",
+   "kind": "monster",
+   "keywords": [
+    "organ",
+    "strange"
+   ]
+  },
+  {
+   "id": "marrow-bone",
+   "name": "Marrow Bone",
+   "kind": "monster",
+   "keywords": [
+    "bone"
+   ]
+  }
+ ],
+ "gear": [
+  {
+   "id": "bare-hands",
+   "name": "Bare Hands",
+   "keywords": [
+    "unarmed"
+   ],
+   "text": "Every survivor can always attack bare-handed.",
+   "weapon": {
+    "speed": 2,
+    "accuracy": 8,
+    "strength": 0,
+    "range": 1
+   }
+  },
+  {
+   "id": "flint-knife",
+   "name": "Flint Knife",
+   "keywords": [
+    "weapon",
+    "blade",
+    "stone"
+   ],
+   "text": "A chipped edge bound to a bone grip.",
+   "weapon": {
+    "speed": 2,
+    "accuracy": 7,
+    "strength": 1,
+    "range": 1
+   },
+   "cost": {
+    "flint": 1
+   },
+   "craftedAt": "ember-pit"
+  },
+  {
+   "id": "bone-club",
+   "name": "Bone Club",
+   "keywords": [
+    "weapon",
+    "club",
+    "bone"
+   ],
+   "text": "Heavy and slow.",
+   "weapon": {
+    "speed": 1,
+    "accuracy": 6,
+    "strength": 3,
+    "range": 1
+   },
+   "cost": {
+    "keyword:bone": 2
+   },
+   "craftedAt": "bonecarvers-bench"
+  },
+  {
+   "id": "antler-spear",
+   "name": "Antler Spear",
+   "keywords": [
+    "weapon",
+    "spear",
+    "bone"
+   ],
+   "text": "Reach 2: attacks from two squares away.",
+   "weapon": {
+    "speed": 2,
+    "accuracy": 6,
+    "strength": 2,
+    "range": 2
+   },
+   "cost": {
+    "antler-shard": 1,
+    "keyword:bone": 1
+   },
+   "craftedAt": "bonecarvers-bench"
+  },
+  {
+   "id": "hide-cap",
+   "name": "Hide Cap",
+   "keywords": [
+    "armor",
+    "hide"
+   ],
+   "armor": {
+    "locations": [
+     "head"
+    ],
+    "value": 1
+   },
+   "cost": {
+    "keyword:hide": 1
+   },
+   "craftedAt": "hide-workshop"
+  },
+  {
+   "id": "hide-vest",
+   "name": "Hide Vest",
+   "keywords": [
+    "armor",
+    "hide"
+   ],
+   "armor": {
+    "locations": [
+     "body"
+    ],
+    "value": 2
+   },
+   "cost": {
+    "keyword:hide": 2
+   },
+   "craftedAt": "hide-workshop"
+  },
+  {
+   "id": "hide-wraps",
+   "name": "Hide Wraps",
+   "keywords": [
+    "armor",
+    "hide"
+   ],
+   "armor": {
+    "locations": [
+     "arms",
+     "legs"
+    ],
+    "value": 1
+   },
+   "cost": {
+    "keyword:hide": 1,
+    "keyword:organ": 1
+   },
+   "craftedAt": "hide-workshop"
+  },
+  {
+   "id": "stag-cloak",
+   "name": "Stag Cloak",
+   "keywords": [
+    "armor",
+    "hide"
+   ],
+   "text": "+1 evasion while worn.",
+   "armor": {
+    "locations": [
+     "body",
+     "waist"
+    ],
+    "value": 2
+   },
+   "bonuses": {
+    "evasion": 1
+   },
+   "cost": {
+    "gloam-hide": 2,
+    "stag-sinew": 1
+   },
+   "craftedAt": "hide-workshop"
+  },
+  {
+   "id": "glow-charm",
+   "name": "Glow Charm",
+   "keywords": [
+    "item",
+    "jewelry"
+   ],
+   "text": "+1 luck while carried.",
+   "bonuses": {
+    "luck": 1
+   },
+   "cost": {
+    "glow-eye": 1
+   },
+   "craftedAt": "ember-pit"
+  }
+ ],
+ "locations": [
+  {
+   "id": "ember-pit",
+   "name": "Ember Pit",
+   "text": "The settlement's fire. Simple tools are made here.",
+   "buildCost": {
+    "endeavors": 0
+   },
+   "startsBuilt": true
+  },
+  {
+   "id": "hide-workshop",
+   "name": "Hide Workshop",
+   "text": "Scraping frames and drying racks for armor.",
+   "buildCost": {
+    "endeavors": 1,
+    "resources": {
+     "keyword:hide": 1,
+     "keyword:bone": 1
+    }
+   }
+  },
+  {
+   "id": "bonecarvers-bench",
+   "name": "Bonecarver's Bench",
+   "text": "A flat stone for shaping bone weapons.",
+   "buildCost": {
+    "endeavors": 1,
+    "resources": {
+     "keyword:bone": 2
+    }
+   }
+  }
+ ],
+ "innovations": [
+  {
+   "id": "fire-talk",
+   "name": "Fire-Talk",
+   "text": "Stories told around the fire. Survival limit +1.",
+   "endeavors": 1,
+   "grants": {
+    "survivalLimit": 1
+   }
+  },
+  {
+   "id": "counting-stones",
+   "name": "Counting Stones",
+   "text": "Tallies scratched in stone. +1 endeavor each settlement phase.",
+   "endeavors": 1,
+   "grants": {
+    "endeavorsPerYear": 1
+   }
+  },
+  {
+   "id": "war-paint",
+   "name": "War Paint",
+   "text": "Ash and marrow smeared on skin. Survival limit +1.",
+   "endeavors": 1,
+   "grants": {
+    "survivalLimit": 1
+   },
+   "requires": [
+    "fire-talk"
+   ]
+  }
+ ],
+ "monsters": [
+  {
+   "id": "gloam-stag",
+   "name": "Gloam Stag",
+   "kind": "quarry",
+   "text": "Original stand-in quarry written for Lantern Table: a towering, ash-grey stag whose antlers hold a faint inner light. Not an official monster.",
+   "size": {
+    "w": 2,
+    "h": 2
+   },
+   "levels": [
+    {
+     "level": 1,
+     "movement": 5,
+     "toughness": 7,
+     "accuracyMod": 0,
+     "damageMod": 0,
+     "evasion": 0,
+     "luck": 0,
+     "aiDeck": {
+      "basic": 5,
+      "advanced": 1,
+      "legendary": 0
+     },
+     "huntPosition": 7,
+     "rewards": {
+      "basic": 3,
+      "monster": 3
+     }
+    },
+    {
+     "level": 2,
+     "movement": 6,
+     "toughness": 9,
+     "accuracyMod": 1,
+     "damageMod": 1,
+     "evasion": 1,
+     "luck": 0,
+     "aiDeck": {
+      "basic": 7,
+      "advanced": 4,
+      "legendary": 1
+     },
+     "huntPosition": 10,
+     "rewards": {
+      "basic": 4,
+      "monster": 5
+     }
+    }
+   ],
+   "aiCards": [
+    {
+     "id": "gore-rush",
+     "name": "Gore Rush",
+     "tier": "basic",
+     "text": "Target the closest survivor. Move toward them and gore: speed 1, 2+, 2 damage.",
+     "targeting": "closest",
+     "attack": {
+      "speed": 1,
+      "accuracy": 2,
+      "damage": 2
+     }
+    },
+    {
+     "id": "antler-sweep",
+     "name": "Antler Sweep",
+     "tier": "basic",
+     "text": "Target the closest survivor in front. Move and sweep: speed 2, 3+, 1 damage.",
+     "targeting": "closestInFront",
+     "attack": {
+      "speed": 2,
+      "accuracy": 3,
+      "damage": 1
+     }
+    },
+    {
+     "id": "trample",
+     "name": "Trample",
+     "tier": "basic",
+     "text": "Target a random survivor. Move and trample: speed 1, 2+, 3 damage. On a hit the target is knocked down.",
+     "targeting": "random",
+     "attack": {
+      "speed": 1,
+      "accuracy": 2,
+      "damage": 3
+     },
+     "onHit": [
+      {
+       "op": "knockdown",
+       "who": "target"
+      }
+     ]
+    },
+    {
+     "id": "bellow",
+     "name": "Bellow",
+     "tier": "basic",
+     "text": "The stag bellows instead of moving. Every survivor loses 1 insanity.",
+     "targeting": "closest",
+     "move": false,
+     "before": [
+      {
+       "op": "insanity",
+       "who": "all",
+       "amount": -1
+      }
+     ]
+    },
+    {
+     "id": "stalk",
+     "name": "Stalk",
+     "tier": "basic",
+     "text": "Target the last survivor who attacked (else the closest). Move and strike: speed 1, 3+, 2 damage.",
+     "targeting": "lastAttacker",
+     "attack": {
+      "speed": 1,
+      "accuracy": 3,
+      "damage": 2
+     }
+    },
+    {
+     "id": "hoof-kick",
+     "name": "Hoof Kick",
+     "tier": "basic",
+     "text": "Does not move. Kicks the closest survivor within 1 square: speed 2, 4+, 1 damage.",
+     "targeting": "closest",
+     "move": false,
+     "reach": 1,
+     "attack": {
+      "speed": 2,
+      "accuracy": 4,
+      "damage": 1
+     },
+     "noTarget": [
+      {
+       "op": "log",
+       "text": "No survivor is within reach; the stag paws the ground."
+      }
+     ]
+    },
+    {
+     "id": "circle",
+     "name": "Circle",
+     "tier": "basic",
+     "text": "Target the most injured survivor. Move and bite: speed 1, 2+, 2 damage.",
+     "targeting": "mostInjured",
+     "attack": {
+      "speed": 1,
+      "accuracy": 2,
+      "damage": 2
+     }
+    },
+    {
+     "id": "frenzied-charge",
+     "name": "Frenzied Charge",
+     "tier": "advanced",
+     "text": "Target the closest survivor. Move and charge: speed 3, 3+, 2 damage. On a hit, knock the target back 3 squares.",
+     "targeting": "closest",
+     "attack": {
+      "speed": 3,
+      "accuracy": 3,
+      "damage": 2
+     },
+     "onHit": [
+      {
+       "op": "knockback",
+       "who": "target",
+       "spaces": 3
+      }
+     ]
+    },
+    {
+     "id": "hunting-cry",
+     "name": "Hunting Cry",
+     "tier": "advanced",
+     "text": "Every survivor loses 1 survival. Then target a random survivor: speed 2, 3+, 2 damage.",
+     "targeting": "random",
+     "before": [
+      {
+       "op": "survival",
+       "who": "all",
+       "amount": -1
+      }
+     ],
+     "attack": {
+      "speed": 2,
+      "accuracy": 3,
+      "damage": 2
+     }
+    },
+    {
+     "id": "antler-crush",
+     "name": "Antler Crush",
+     "tier": "advanced",
+     "text": "Target the most injured survivor. Crush: speed 1, 1+, 4 damage, and they are knocked down.",
+     "targeting": "mostInjured",
+     "attack": {
+      "speed": 1,
+      "accuracy": 1,
+      "damage": 4
+     },
+     "onHit": [
+      {
+       "op": "knockdown",
+       "who": "target"
+      }
+     ]
+    },
+    {
+     "id": "shadow-step",
+     "name": "Shadow Step",
+     "tier": "advanced",
+     "text": "Target the closest survivor in front. Move and strike twice: speed 2, 2+, 1 damage.",
+     "targeting": "closestInFront",
+     "attack": {
+      "speed": 2,
+      "accuracy": 2,
+      "damage": 1
+     }
+    },
+    {
+     "id": "crown-of-light",
+     "name": "Crown of Light",
+     "tier": "legendary",
+     "text": "The antlers flare. Every survivor loses 1 insanity, then the stag strikes the closest: speed 2, 2+, 3 damage.",
+     "targeting": "closest",
+     "before": [
+      {
+       "op": "insanity",
+       "who": "all",
+       "amount": -1
+      }
+     ],
+     "attack": {
+      "speed": 2,
+      "accuracy": 2,
+      "damage": 3
+     }
+    }
+   ],
+   "hitLocations": [
+    {
+     "id": "antler-crown",
+     "name": "Antler Crown",
+     "text": "Impervious: can't be wounded, but a critical still triggers. Failure: the attacker takes 1 damage to a random location.",
+     "impervious": true,
+     "failure": [
+      {
+       "op": "damage",
+       "who": "attacker",
+       "amount": 1,
+       "location": "random"
+      }
+     ],
+     "critical": [
+      {
+       "op": "survival",
+       "who": "attacker",
+       "amount": 1
+      }
+     ]
+    },
+    {
+     "id": "gloam-eyes",
+     "name": "Gloam Eyes",
+     "text": "Critical: the attacker gains 1 survival.",
+     "critical": [
+      {
+       "op": "survival",
+       "who": "attacker",
+       "amount": 1
+      }
+     ]
+    },
+    {
+     "id": "throat",
+     "name": "Throat",
+     "text": "Wound: the attacker gains 1 insanity from the spray of ash-blood.",
+     "wound": [
+      {
+       "op": "insanity",
+       "who": "attacker",
+       "amount": 1
+      }
+     ]
+    },
+    {
+     "id": "flank",
+     "name": "Flank"
+    },
+    {
+     "id": "belly",
+     "name": "Belly"
+    },
+    {
+     "id": "spine-ridge",
+     "name": "Spine Ridge",
+     "text": "Failure: the stag twists; the attacker is knocked down.",
+     "failure": [
+      {
+       "op": "knockdown",
+       "who": "attacker"
+      }
+     ]
+    },
+    {
+     "id": "foreleg",
+     "name": "Foreleg",
+     "text": "Reflex (before the wound roll): the stag stamps; the attacker is knocked back 1 square.",
+     "reflex": [
+      {
+       "op": "knockback",
+       "who": "attacker",
+       "spaces": 1
+      }
+     ]
+    },
+    {
+     "id": "hind-leg",
+     "name": "Hind Leg",
+     "text": "Failure: a kick; the attacker takes 1 damage to the body.",
+     "failure": [
+      {
+       "op": "damage",
+       "who": "attacker",
+       "amount": 1,
+       "location": "body"
+      }
+     ]
+    },
+    {
+     "id": "shoulder",
+     "name": "Shoulder"
+    },
+    {
+     "id": "tail",
+     "name": "Tail",
+     "text": "Critical: the attacker gains 1 survival.",
+     "critical": [
+      {
+       "op": "survival",
+       "who": "attacker",
+       "amount": 1
+      }
+     ]
+    },
+    {
+     "id": "hoof",
+     "name": "Hoof",
+     "text": "Reflex: the attacker takes 1 damage to the legs.",
+     "reflex": [
+      {
+       "op": "damage",
+       "who": "attacker",
+       "amount": 1,
+       "location": "legs"
+      }
+     ]
+    },
+    {
+     "id": "rearing-ambush",
+     "name": "Rearing Ambush (trap)",
+     "text": "Trap: the attack ends. The stag strikes the attacker for 2 damage to a random location. Shuffle the hit location deck.",
+     "trap": true,
+     "reflex": [
+      {
+       "op": "damage",
+       "who": "attacker",
+       "amount": 2,
+       "location": "random"
+      }
+     ]
+    }
+   ],
+   "resourceDeck": {
+    "gloam-hide": 3,
+    "antler-shard": 2,
+    "stag-sinew": 2,
+    "glow-eye": 1,
+    "marrow-bone": 2
+   },
+   "huntSpaces": {
+    "4": "stag-sign"
+   }
+  }
+ ],
+ "huntEvents": [
+  {
+   "id": "sinkhole",
+   "name": "Sinkhole",
+   "text": "The ground gives way. A random survivor takes 1 damage to the legs.",
+   "effects": [
+    {
+     "op": "damage",
+     "who": "random",
+     "amount": 1,
+     "location": "legs"
+    }
+   ]
+  },
+  {
+   "id": "old-bones",
+   "name": "Old Bones",
+   "text": "A picked-clean carcass. Gain 1 Bone Scrap.",
+   "effects": [
+    {
+     "op": "resource",
+     "id": "bone-scrap",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "whispers",
+   "name": "Whispers in the Dark",
+   "text": "Voices call from the dark.",
+   "effects": [
+    {
+     "op": "choice",
+     "prompt": "Voices call from the dark. Do you follow them?",
+     "options": [
+      {
+       "label": "Follow the whispers",
+       "detail": "Roll 1d10: 1–5 a random survivor loses 2 insanity; 6–10 gain a Strange Organ.",
+       "effects": [
+        {
+         "op": "roll",
+         "label": "Following the whispers",
+         "die": 10,
+         "table": [
+          {
+           "min": 1,
+           "max": 5,
+           "label": "Madness",
+           "effects": [
+            {
+             "op": "insanity",
+             "who": "random",
+             "amount": -2
+            }
+           ]
+          },
+          {
+           "min": 6,
+           "max": 10,
+           "label": "A strange find",
+           "effects": [
+            {
+             "op": "resource",
+             "id": "strange-organ",
+             "count": 1
+            }
+           ]
+          }
+         ]
+        }
+       ]
+      },
+      {
+       "label": "Cover your ears",
+       "detail": "Nothing happens.",
+       "effects": [
+        {
+         "op": "log",
+         "text": "The survivors press on and the whispers fade."
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "easy-ground",
+   "name": "Easy Ground",
+   "text": "Firm footing. Move 1 space closer to the quarry.",
+   "effects": [
+    {
+     "op": "huntMove",
+     "spaces": 1
+    }
+   ]
+  },
+  {
+   "id": "lost-trail",
+   "name": "Lost Trail",
+   "text": "The tracks vanish. Move 1 space back.",
+   "effects": [
+    {
+     "op": "huntMove",
+     "spaces": -1
+    }
+   ]
+  },
+  {
+   "id": "shelter-stone",
+   "name": "Shelter Stone",
+   "text": "A warm stone to rest against. Every survivor gains 1 survival.",
+   "effects": [
+    {
+     "op": "survival",
+     "who": "all",
+     "amount": 1
+    }
+   ]
+  },
+  {
+   "id": "thorn-thicket",
+   "name": "Thorn Thicket",
+   "text": "A random survivor takes 1 damage to a random location.",
+   "effects": [
+    {
+     "op": "damage",
+     "who": "random",
+     "amount": 1,
+     "location": "random"
+    }
+   ]
+  },
+  {
+   "id": "flint-outcrop",
+   "name": "Flint Outcrop",
+   "text": "Gain 1 Flint.",
+   "effects": [
+    {
+     "op": "resource",
+     "id": "flint",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "id": "fallen-lantern",
+   "name": "Fallen Lantern",
+   "text": "A cold lantern lies in the dust.",
+   "effects": [
+    {
+     "op": "roll",
+     "label": "Examining the lantern",
+     "die": 10,
+     "table": [
+      {
+       "min": 1,
+       "max": 3,
+       "label": "It cracks apart",
+       "effects": [
+        {
+         "op": "insanity",
+         "who": "choose",
+         "amount": -1
+        }
+       ]
+      },
+      {
+       "min": 4,
+       "max": 7,
+       "label": "Useful parts",
+       "effects": [
+        {
+         "op": "resource",
+         "id": "bone-scrap",
+         "count": 1
+        }
+       ]
+      },
+      {
+       "min": 8,
+       "max": 10,
+       "label": "It flickers on",
+       "effects": [
+        {
+         "op": "survival",
+         "who": "all",
+         "amount": 1
+        }
+       ]
+      }
+     ]
+    }
+   ]
+  },
+  {
+   "id": "silent-dark",
+   "name": "Silent Dark",
+   "text": "Nothing stirs. The survivors trudge on.",
+   "effects": [
+    {
+     "op": "log",
+     "text": "Nothing happens."
+    }
+   ]
+  },
+  {
+   "id": "stag-sign",
+   "name": "Stag Sign",
+   "text": "Fresh antler scrapes on the stones. Every survivor gains 1 insanity from the thrill of the chase.",
+   "effects": [
+    {
+     "op": "insanity",
+     "who": "all",
+     "amount": 1
+    }
+   ]
+  }
+ ],
+ "huntEventTable": {
+  "die": 10,
+  "entries": [
+   {
+    "min": 1,
+    "max": 1,
+    "event": "sinkhole"
+   },
+   {
+    "min": 2,
+    "max": 2,
+    "event": "old-bones"
+   },
+   {
+    "min": 3,
+    "max": 3,
+    "event": "whispers"
+   },
+   {
+    "min": 4,
+    "max": 4,
+    "event": "easy-ground"
+   },
+   {
+    "min": 5,
+    "max": 5,
+    "event": "lost-trail"
+   },
+   {
+    "min": 6,
+    "max": 6,
+    "event": "shelter-stone"
+   },
+   {
+    "min": 7,
+    "max": 7,
+    "event": "thorn-thicket"
+   },
+   {
+    "min": 8,
+    "max": 8,
+    "event": "flint-outcrop"
+   },
+   {
+    "min": 9,
+    "max": 9,
+    "event": "fallen-lantern"
+   },
+   {
+    "min": 10,
+    "max": 10,
+    "event": "silent-dark"
+   }
+  ]
+ },
+ "basicResourceDeck": {
+  "bone-scrap": 4,
+  "rough-hide": 4,
+  "strange-organ": 2,
+  "flint": 2
+ },
+ "severeInjuries": {
+  "head": {
+   "die": 10,
+   "entries": [
+    {
+     "min": 1,
+     "max": 1,
+     "name": "Skull Split",
+     "text": "The survivor dies.",
+     "effects": [
+      {
+       "op": "death",
+       "who": "target",
+       "cause": "a split skull"
+      }
+     ],
+     "record": true
+    },
+    {
+     "min": 2,
+     "max": 4,
+     "name": "Concussion",
+     "text": "-1 accuracy permanently.",
+     "effects": [
+      {
+       "op": "stat",
+       "who": "target",
+       "stat": "accuracy",
+       "amount": -1,
+       "duration": "permanent"
+      }
+     ],
+     "record": true
+    },
+    {
+     "min": 5,
+     "max": 10,
+     "name": "Ringing Ears",
+     "text": "Knocked down.",
+     "effects": [
+      {
+       "op": "knockdown",
+       "who": "target"
+      }
+     ],
+     "record": false
+    }
+   ]
+  },
+  "arms": {
+   "die": 10,
+   "entries": [
+    {
+     "min": 1,
+     "max": 2,
+     "name": "Broken Arm",
+     "text": "-1 strength permanently.",
+     "effects": [
+      {
+       "op": "stat",
+       "who": "target",
+       "stat": "strength",
+       "amount": -1,
+       "duration": "permanent"
+      }
+     ],
+     "record": true
+    },
+    {
+     "min": 3,
+     "max": 10,
+     "name": "Numb Hands",
+     "text": "-1 accuracy for the rest of the showdown.",
+     "effects": [
+      {
+       "op": "stat",
+       "who": "target",
+       "stat": "accuracy",
+       "amount": -1,
+       "duration": "showdown"
+      }
+     ],
+     "record": false
+    }
+   ]
+  },
+  "body": {
+   "die": 10,
+   "entries": [
+    {
+     "min": 1,
+     "max": 1,
+     "name": "Gutted",
+     "text": "The survivor dies.",
+     "effects": [
+      {
+       "op": "death",
+       "who": "target",
+       "cause": "being gutted"
+      }
+     ],
+     "record": true
+    },
+    {
+     "min": 2,
+     "max": 4,
+     "name": "Cracked Ribs",
+     "text": "-1 speed for the rest of the showdown.",
+     "effects": [
+      {
+       "op": "stat",
+       "who": "target",
+       "stat": "speed",
+       "amount": -1,
+       "duration": "showdown"
+      }
+     ],
+     "record": false
+    },
+    {
+     "min": 5,
+     "max": 10,
+     "name": "Winded",
+     "text": "Knocked down.",
+     "effects": [
+      {
+       "op": "knockdown",
+       "who": "target"
+      }
+     ],
+     "record": false
+    }
+   ]
+  },
+  "waist": {
+   "die": 10,
+   "entries": [
+    {
+     "min": 1,
+     "max": 3,
+     "name": "Torn Hip",
+     "text": "-1 movement permanently.",
+     "effects": [
+      {
+       "op": "stat",
+       "who": "target",
+       "stat": "movement",
+       "amount": -1,
+       "duration": "permanent"
+      }
+     ],
+     "record": true
+    },
+    {
+     "min": 4,
+     "max": 10,
+     "name": "Bruised",
+     "text": "Knocked down.",
+     "effects": [
+      {
+       "op": "knockdown",
+       "who": "target"
+      }
+     ],
+     "record": false
+    }
+   ]
+  },
+  "legs": {
+   "die": 10,
+   "entries": [
+    {
+     "min": 1,
+     "max": 3,
+     "name": "Shattered Shin",
+     "text": "-1 movement permanently.",
+     "effects": [
+      {
+       "op": "stat",
+       "who": "target",
+       "stat": "movement",
+       "amount": -1,
+       "duration": "permanent"
+      }
+     ],
+     "record": true
+    },
+    {
+     "min": 4,
+     "max": 10,
+     "name": "Sprain",
+     "text": "-2 movement for the rest of the showdown.",
+     "effects": [
+      {
+       "op": "stat",
+       "who": "target",
+       "stat": "movement",
+       "amount": -2,
+       "duration": "showdown"
+      }
+     ],
+     "record": false
+    }
+   ]
+  }
+ },
+ "timeline": [
+  {
+   "year": 1,
+   "name": "First Embers",
+   "text": "The survivors light their first fire and decide to hunt.",
+   "effects": [
+    {
+     "op": "log",
+     "text": "The settlement is founded."
+    }
+   ]
+  },
+  {
+   "year": 2,
+   "name": "Cold Season",
+   "text": "The dark grows colder. Every survivor loses 1 survival.",
+   "effects": [
+    {
+     "op": "survival",
+     "who": "all",
+     "amount": -1
+    }
+   ]
+  },
+  {
+   "year": 3,
+   "name": "Bone Harvest",
+   "text": "Gain 1 Bone Scrap.",
+   "effects": [
+    {
+     "op": "resource",
+     "id": "bone-scrap",
+     "count": 1
+    }
+   ]
+  },
+  {
+   "year": 4,
+   "name": "Restless Night",
+   "text": "A random survivor loses 1 insanity.",
+   "effects": [
+    {
+     "op": "insanity",
+     "who": "random",
+     "amount": -1
+    }
+   ]
+  },
+  {
+   "year": 5,
+   "name": "Last Light",
+   "text": "The stand-in campaign ends after this year's hunt.",
+   "effects": [
+    {
+     "op": "log",
+     "text": "The final year of the stand-in campaign."
+    }
+   ]
+  }
+ ],
+ "campaign": {
+  "name": "Ashen Proving (original stand-in campaign)",
+  "settlementName": "Cinderhold",
+  "startingSurvivors": 4,
+  "survivorNames": [
+   "Asha",
+   "Bren",
+   "Corin",
+   "Dova",
+   "Esk",
+   "Fenn",
+   "Garra",
+   "Holt"
+  ],
+  "startingResources": {
+   "bone-scrap": 1,
+   "rough-hide": 1
+  },
+  "startingGear": [
+   "flint-knife"
+  ],
+  "startingQuarry": "gloam-stag",
+  "lastYear": 5
+ }
+}
